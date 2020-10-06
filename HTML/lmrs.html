@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Piazzolla:wght@700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="../JS/search.js"></script>
+	<script type="text/javascript" src="../JS/keyword.json"></script>
+	<script type="text/javascript" src="../JS/document.json"></script>
+	<script type="text/javascript" src="../JS/example.json"></script>
+	<link rel="stylesheet" href="../CSS/search.css">
+	<script>
+	var keyword = JSON.parse(JSON.stringify(keyword));
+	var keyworddoc = JSON.parse(JSON.stringify(keyworddocument));
+	var example = JSON.parse(JSON.stringify(example));
+	//console.log(keyword)
+	</script>
+    <title>LMRS</title>
+	<link rel="icon" href="../img/lmrs.png" type="image/icon">
+  </head>
+  <body>
+  <nav class="navbar" style="background-color: #b5dbf7;" id="nav-dark">
+  <!-- Navbar content -->
+  <a href="../index.html"><img src="../img/lmrs.png" style="width:120px;height:60px;"></a>
+  <h2 style="margin:0;padding:0;">ROBOT FRAMEWORK</h2>
+  <Button class="btn btn-dark float-right" onclick="darkmode()" id="theme">Dark Mode</Button>
+</nav>
+	<div class="container-fluid" id="full-page">
+	<div class="row">
+	<div class="col-6">
+		<div id="down-div">
+		</div>
+		<input type="text" id="myInput" onkeyup="search(keyword, keyworddoc, example)" placeholder="Search Keyword" title="Type RobotFrame Keyword.." value=''>
+		
+		<ul id="myUL">
+		
+		</ul>
+		<div id="keyword" class="form-group form-group required">
+		</div>
+		<div role="alert" style="display:none;" id="alert">
+		</div>
+		<div id="btn-save-cancel">
+		</div>
+		<br>
+		<div id="viewdocument">
+		</div>
+		<div id="viewexample">
+		</div>
+	</div>
+	<div class="col-6" id="bdiv">
+	<div class="row">
+	<div class="col-6">
+	<div id="div-download-btn">
+	
+	<h1 id="source-clip">Robot Data</h1>
+	</div>
+	</div>
+	<div class="col-6">
+	<div id="div1">
+	<button type="button" class="btn btn-info float-right" id="view-clip-btn" onclick="viewclipboard()">View Clipboard</button>
+	<button type="button" class="btn btn-light float-right" id="editor-btn" onclick="openeditor()">Open Editor</button>
+	</div>
+	</div>
+	</div>
+	<div id="showclip">
+	<textarea id="sourcecode" style="display:none;"></textarea>
+	<button type="button" class="btn btn-success float-left" style="display:none;" id="updateeditor-btn" onclick="updateeditor()">Save</button>
+	<button type="button" class="fa fa-download" style="display:none;" id="editor-download-btn" onclick="downloadeditor()"></button>
+	</div>
+	</div>
+	
+	</div>
+	<div id="snackbar">Some text some message..</div>
+	</div>
+	
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script>
+	window.onbeforeunload = function() {
+	return "Data will be lost if you leave the page, are you sure?";
+	};
+	</script>
+	
+  </body>
+</html>
