@@ -6,6 +6,10 @@
   height: 600px;
 }
 
+#home-page{
+  height: 600px;
+}
+
 body {
   padding: 0px;
   margin: 0;
@@ -1038,4 +1042,3 @@ th {
 .white_bg .copyright_part_text {
   border-top: 1px solid #e0e1e3;
 }
-
