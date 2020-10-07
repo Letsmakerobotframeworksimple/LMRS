@@ -142,6 +142,14 @@ body {
   margin-bottom:10px;
 }
 
+#start-lmrs{
+	cursor: pointer;
+}
+
+#return-home{
+	cursor: pointer;
+}
+
 /**************** banner part css start ****************/
 /* line 2, E:/170 Kanox Agency/170_Kanox_Agency_html/sass/_banner.scss */
 .banner_part {
