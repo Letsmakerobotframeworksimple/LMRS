@@ -126,7 +126,6 @@ function createKeyword(select_keyword){
 					label.setAttribute('class', 'control-label');
 				}
 				document.getElementById('keyword').appendChild(label);
-				console.log(keyword[select_keyword]['keywordlist'][keylist]['htmltag']);
 				if(keyword[select_keyword]['keywordlist'][keylist]['htmltag'] == "text" || keyword[select_keyword]['keywordlist'][keylist]['htmltag'] == "number"){
 					const newtext = document.createElement("input");
 					newtext.setAttribute('type',keyword[select_keyword]['keywordlist'][keylist]['htmltag']);
@@ -216,7 +215,7 @@ function addkeyword(rfjsonkey){
 				}
 			}
 			else{
-			if(keyword[rfjsonkey]['keywordlist'][rfkey]['Mandatory'] == "Yes" && rfkeyword == ''){
+			if(keyword[rfjsonkey]['keywordlist'][rfkey]['Mandatory'] == "Yes" && rfkeyword.trim() == ''){
 				var alertkey = document.getElementById('alert');
 				alertkey.setAttribute('class', "alert alert-warning");
 				var textalert = document.createTextNode(keyword[rfjsonkey]['keywordlist'][rfkey]['element'] + ' is Required');
@@ -227,7 +226,7 @@ function addkeyword(rfjsonkey){
 				return
 			}
 			else{
-				if(rfkeyword != ""){
+				if(rfkeyword.trim() != ""){
 					robotkey = robotkey + '    ' + rfkeyword
 				}
 			}
@@ -303,15 +302,25 @@ function sourcecode(sourcecode, flag){
 	sourcecodelist = texteditorlist;
 	if(flag == '*** Variables ***' || flag == '*** Settings ***'){
 		for(var i = 0; i<sourcecodelist.length; i++){
-			if(sourcecodelist[i].indexOf(flag)>= 0){
-				sourcecodelist[sourcecodelist[i].indexOf(flag)] = sourcecodelist[sourcecodelist[i].indexOf(flag)] + '\n' + sourcecode;
+			if(sourcecodelist[i].trim() != ""){
+				if(sourcecodelist[i].indexOf(flag)>= 0){
+					sourcecodelist[sourcecodelist[i].indexOf(flag)] = sourcecodelist[sourcecodelist[i].indexOf(flag)] + '\n' + sourcecode;
+				}
 			}
 		}
 	}
 
-	else{
-		sourcecodelist.push(sourcecode);
+	else{		
+		sourcecodelist.push(sourcecode);		
 	}
+	texteditorlist = [];
+	codelen = sourcecodelist.length;
+	for(var i = 0; i<codelen; i++){
+		if(sourcecodelist[i].trim() != ""){
+			texteditorlist.push(sourcecodelist[i]);
+		}
+	}
+	sourcecodelist = texteditorlist;
 	const code = document.getElementById('sourcecode');
 	codelen = sourcecodelist.length;
 	for(var i = 0; i<codelen; i++){
@@ -411,13 +420,11 @@ function viewdocument(viewkeyword){
 				createdoc.appendChild(document.createTextNode('Documentation'));
 				createdoc.setAttribute('style', 'text-decoration:underline');
 				view.appendChild(createdoc);
-				//console.log(keyworddoc[key]);
 				for(var doclist in keyworddoc[key]){
 					var createdoc = document.createElement('h6');
 					var createdoctext = document.createTextNode(keyworddoc[key][doclist]);
 					var d = createdoc.appendChild(createdoctext);
 					for(var underline in underlinelist){
-						console.log(underline);
 						if(keyworddoc[key][doclist].indexOf(underlinelist[underline]) >= 0){
 							createdoc.setAttribute('style', 'text-decoration:underline');
 						}
@@ -570,7 +577,6 @@ function clipboardview(){
 		div1.appendChild(div2);
 		div1.appendChild(div3);
 		for(var k = 0; k < cliplen; k++){
-			console.log(clipboardlist[k]['keyword']);
 			const createcard = document.createElement('div');
 			createcard.setAttribute('class', cardclass[Math.floor(Math.random() * cardclass.length)]);
 			createcard.setAttribute('style', 'max-width: 18rem;');
