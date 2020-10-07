@@ -1,236 +1,284 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Piazzolla:wght@700&display=swap" rel="stylesheet">
-	<script type="text/javascript" src="JS/search.js"></script>
-	<script type="text/javascript" src="JS/keyword.json"></script>
-	<script type="text/javascript" src="JS/document.json"></script>
-	<script type="text/javascript" src="JS/example.json"></script>
-	<script>
-	var keyword = JSON.parse(JSON.stringify(keyword));
-	var keyworddoc = JSON.parse(JSON.stringify(keyworddocument));
-	var example = JSON.parse(JSON.stringify(example));
-	console.log(Object.keys(keyword).length);
-	var keycount = Object.keys(keyword).length;
-	console.log(document.getElementById('keycount'));
-	</script>
-	<link rel="stylesheet" href="CSS/search.css">
-	
-    <title>LMRS</title>
-	<link rel="icon" href="IMG/lmrs.png" type="image/icon">
-  </head>
-  <body>
-  <nav class="navbar" style="background-color: #b5dbf7;z-index:2" id="nav-dark">
-  <!-- Navbar content -->
-  <img src="IMG/lmrs.png" style="width:120px;height:60px;">
-  <h2>ROBOT FRAMEWORK</h2>
-  <Button class="btn btn-dark float-right" onclick="darkmode()" id="theme">Dark Mode</Button>
-</nav>
-	<div class="container-fluid" id="full-page">
-	<section class="banner_part">
-        <div class="container" id="home-center">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- Font CSS -->
+		<link href="https://fonts.googleapis.com/css2?family=Piazzolla:wght@700&display=swap" rel="stylesheet">
+		<!-- js  -->
+		<script type="text/javascript" src="JS/search.js"></script>
+		<!-- JSON -->
+		<script type="text/javascript" src="JS/keyword.json"></script>
+		<script type="text/javascript" src="JS/document.json"></script>
+		<script type="text/javascript" src="JS/example.json"></script>
+		<script>
+			var keyword = JSON.parse(JSON.stringify(keyword));
+			var keyworddoc = JSON.parse(JSON.stringify(keyworddocument));
+			var example = JSON.parse(JSON.stringify(example));
+			var keycount = Object.keys(keyword).length;
+		</script>
+		<link rel="stylesheet" href="CSS/search.css">
+		<title>LMRS</title>
+		<link rel="icon" href="IMG/lmrs.png" type="image/icon">
+	</head>
+	<body>
+		<nav class="navbar" style="background-color: #b5dbf7;z-index:2" id="nav-dark">
+		  <!-- Navbar content -->
+		  <button id="return-home" onclick="returnhome()"><img src="IMG/lmrs.png" style="width:120px;height:60px;"></button>
+		  <h2>ROBOT FRAMEWORK</h2>
+		  <Button class="btn btn-dark float-right" onclick="darkmode()" id="theme">Dark Mode</Button>
+		</nav>
+		<div class="container-fluid" id="home-page">
+			<section class="banner_part">
+				<div class="container" id="home-center">
+					<div class="Welcome">
+						Welcome to LMRS
+					</div>
+					<div class="LMRS">
+						LMRS - Lets Make RobotFramework Simple.
+					</div>
+					<div class="quotes">
+						Make your ROBOT Script easy
+					</div>
+					<div class="click">
+						Click below Icon to Start
+					</div>
+					<div>
+						<Button id="start-lmrs" onclick="startlmrs()">
+							<img src="IMG/lmrs.png" style="width:120px;height:60px;">
+						</Button>
+					</div>
                         
-			<div class="Welcome">Welcome to LMRS</div>
-			<div class="LMRS">LMRS - Lets Make RobotFramework Simple.</div>
-			<div class="quotes">Make your ROBOT Script easy</div>
-			<div class="click">Click below Icon to Start</div>
-			<div><a href="HTML/lmrs.html"><img src="IMG/lmrs.png" style="width:120px;height:60px;"><i class="ti-angle-right"></i> </a></div>
-                        
-        </div>
-        
-    </section>
+				</div>    
+			</section>
 
-	 
-    <section class="our_latest_work section_padding">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-lg-5">
-                    <div class="section_tittle text-center">
-                        <p>About LMRS</p>
-                        <h2>LMRS Learnings</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="single_work">
-                        <div class="row align-items-center">
-                            <div class="offset-lg-1 col-lg-4 col-md-6">
-                                <div class="single_work_demo">
-                                    <h5>Search Keyword</h5>
-                                    <h3>All keyword in one place</h3>
-                                    <p>Search all Robot Framework keyword in a single place.
-									Click and create your own robot file..
-									</p>
-                                    
-                                </div>
-                            </div>
-                            <div class="offset-lg-1 col-lg-6 col-md-6">
-                                <div class="demo_img">
-                                    <img src="IMG/Automation.jpeg" alt="demo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_work">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="demo_img">
-                                    <img src="IMG/documents.png" alt="demo">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single_work_demo">
-                                    <h5>Documentation</h5>
-                                    <h3></h3>
-                                    <p>Create syntax based on the keyword selection and 
-									save it as text file. It should help beginers to find keywords 
-									and create their own robot script much easier and simple.
-									Atlast learner should download the keyword in the text file format.</p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- upcoming_event part start-->
-
-    <!-- happy_client counter start -->
-    <section class="happy_client">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single_happy_client">
-                        
-                        <span class="counter-1"><script>
-						const counter = document.querySelector(".counter-1")
-						console.log(counter)
-
-							let count = 1;
-
-							setInterval(()=>{
-								if(count < Object.keys(keyword).length){
-									count++
-									counter.innerText = count
-
-								}
-							},1)
-
-						//document.write(Object.keys(example).length)
-						</script></span>
-                        <h4>Keywords</h4>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single_happy_client">
-                        
-                        <span class="counter-2"><script>
-						const counter2 = document.querySelector(".counter-2")
-						console.log(counter2)
-
-							count = 1;
-
-							setInterval(()=>{
-								if(count < Object.keys(keyworddoc).length){
-									count++
-									counter2.innerText = count
-
-								}
-							},1)
-
-						//document.write(Object.keys(example).length)
-						</script></span>
-                        <h4> Documentation</h4>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single_happy_client">
-                        
-                        <span class="counter-3"><script>
-						const counter3 = document.querySelector(".counter-3")
-						console.log(counter3)
-						console.log(Object.keys(example).length)
-
-							count = 1;
+			<!-- New Section -->
+			<section class="our_latest_work section_padding">
+				<div class="container-fluid">
+					<div class="row justify-content-center">
+						<div class="col-lg-5">
+							<div class="section_tittle text-center">
+								<p>About LMRS</p>
+								<h2>LMRS Learnings</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="single_work">
+								<div class="row align-items-center">
+									<div class="offset-lg-1 col-lg-4 col-md-6">
+										<div class="single_work_demo">
+											<h5>Search Keyword</h5>
+											<h3>All keyword in one place</h3>
+											<p>Search all Robot Framework keyword in a single place.
+											Click and create your own robot file..
+											</p>
+											
+										</div>
+									</div>
+									<div class="offset-lg-1 col-lg-6 col-md-6">
+										<div class="demo_img">
+											<img src="IMG/Automation.jpeg" alt="demo">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="single_work">
+								<div class="row align-items-center">
+									<div class="col-lg-6 col-md-6">
+										<div class="demo_img">
+											<img src="IMG/documents.png" alt="demo">
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-6">
+										<div class="single_work_demo">
+											<h5>Documentation</h5>
+											<h3></h3>
+											<p>Create syntax based on the keyword selection and 
+											save it as text file. It should help beginers to find keywords 
+											and create their own robot script much easier and simple.
+											Atlast learner should download the keyword in the text file format.</p>
+											
+										</div>
+									</div>
+								</div>
+							</div>
 							
-							counter3.innerText = count
-							setInterval(()=>{
-								if(count < Object.keys(example).length){
-									count++
-									counter3.innerText = count
+						</div>
+					</div>
+				</div>
+			</section>
 
-								}
-							},1)
+			<!-- Keyword counter start -->
+			<section class="happy_client">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-sm-6">
+							<div class="single_happy_client">
+								
+								<span class="counter-1">
+									<script>
+										const counter = document.querySelector(".counter-1");
+											let count = 1;
+											setInterval(()=>{
+												if(count < Object.keys(keyword).length){
+													count++;
+													counter.innerText = count;
+												}
+											},1)
+									</script>
+								</span>
+								<h4>Keywords</h4>
+							</div>
+						</div>
+						<div class="col-lg-3 col-sm-6">
+							<div class="single_happy_client">
+								
+								<span class="counter-2">
+									<script>
+										const counter2 = document.querySelector(".counter-2");
+											count = 1;
+											setInterval(()=>{
+												if(count < Object.keys(keyworddoc).length){
+													count++;
+													counter2.innerText = count;
+												}
+											},1)
+									</script>
+								</span>
+								<h4> Documentation</h4>
+							</div>
+						</div>
+						<div class="col-lg-3 col-sm-6">
+							<div class="single_happy_client">								
+								<span class="counter-3">
+									<script>
+										const counter3 = document.querySelector(".counter-3");
+											count = 1;
+											setInterval(()=>{
+												if(count < Object.keys(example).length){
+													count++;
+													counter3.innerText = count;
+												}
+											},1)
+									</script>
+								</span>
+								<h4>Examples</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- keyword counter end -->
 
-						//document.write(Object.keys(example).length)
-						</script></span>
-                        <h4>Examples</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- happy_client counter end -->
+			<!-- footer part start-->
+			<footer class="footer-area">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-sm-6 col-md-6 col-xl-3">
+							<div class="single-footer-widget footer_1">
+								<a href="index.html"> <img src="IMG/lmrs.png" alt=""> </a>
+								<h6 style="color:white;">Version : 1.0 </h6>
+								<p>Main Intention of this website is to learn the Robotframework much easier and find the keywords and make their robot script in single place.</p>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-6 col-xl-4">
+							<div class="single-footer-widget footer_2">
+								<h4>Contact Us</h4>
+								<p>Please drop a email to us for addition or any changes in the keywords or any queries..
+								</p>
+								
+								<div class="social_icon">
+									<a href="#"> <i class="ti-facebook"></i> </a>
+									<a href="#"> <i class="ti-twitter-alt"></i> </a>
+									<a href="#"> <i class="ti-instagram"></i> </a>
+									<a href="#"> <i class="ti-skype"></i> </a>
+								</div>
+							</div>
+						</div>
+						
+					</div>
 
-    <!-- footer part start-->
-    <footer class="footer-area">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-sm-6 col-md-6 col-xl-3">
-                    <div class="single-footer-widget footer_1">
-                        <a href="index.html"> <img src="IMG/lmrs.png" alt=""> </a>
-                        <h6 style="color:white;">Version : 1.0 </h6>
-						<p>Main Intention of this website is to learn the Robotframework much easier and find the keywords and make their robot script in single place.</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-xl-4">
-                    <div class="single-footer-widget footer_2">
-                        <h4>Contact Us</h4>
-                        <p>Please drop a email to us for addition or any changes in the keywords or any queries..
-                        </p>
-                        
-                        <div class="social_icon">
-                            <a href="#"> <i class="ti-facebook"></i> </a>
-                            <a href="#"> <i class="ti-twitter-alt"></i> </a>
-                            <a href="#"> <i class="ti-instagram"></i> </a>
-                            <a href="#"> <i class="ti-skype"></i> </a>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="copyright_part_text text-center">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Powered <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank">LMRS</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="copyright_part_text text-center">
+								<div class="row">
+									<div class="col-lg-12">
+										<p class="footer-text m-0">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights 	reserved | Powered <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank">LMRS</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
 	
-	</div>
-	 <!-- service_part start-->
+		</div>
+		<!-- LMRS start-->
 	 
+		<div class="container-fluid" id="lmrs-page" style="display:none">
+			<div class="row">
+				<div class="col-6">
+					<div id="down-div">
+					</div>
+					<input type="text" id="myInput" onkeyup="search(keyword, keyworddoc, example)" placeholder="Search Keyword" title="Type RobotFrame Keyword.." value=''>
+					<ul id="myUL">
+					</ul>
+					<div id="keyword" class="form-group form-group required">
+					</div>
+					<div role="alert" style="display:none;" id="alert">
+					</div>
+					<div id="btn-save-cancel">
+					</div>
+					<br>
+					<div id="viewdocument">
+					</div>
+					<div id="viewexample">
+					</div>
+				</div>
+				<div class="col-6" id="bdiv">
+					<div class="row">
+						<div class="col-6">
+							<div id="div-download-btn">
+								<h1 id="source-clip">Robot Data</h1>
+							</div>
+						</div>
+						<div class="col-6">
+							<div id="div1">
+								<button type="button" class="btn btn-info float-right" id="view-clip-btn" onclick="viewclipboard()">View Clipboard</button>
+								<button type="button" class="btn btn-light float-right" id="editor-btn" onclick="openeditor()">Open Editor</button>
+							</div>
+						</div>
+					</div>
+					<div id="showclip">
+						<textarea id="sourcecode" style="display:none;"></textarea>
+						<button type="button" class="btn btn-success float-left" style="display:none;" id="updateeditor-btn" onclick="updateeditor()">Save</button>
+						<button type="button" class="fa fa-download" style="display:none;" id="editor-download-btn" onclick="downloadeditor()"></button>
+					</div>
+				</div>
+		
+			</div>
+			<div id="snackbar">Some text some message..</div>
+		</div>
+	
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+		<script>
+			window.onbeforeunload = function() {
+			return "Data will be lost if you leave the page, are you sure?";
+			};
+		</script>
 	 
-  </body>
+	</body>
 </html>
