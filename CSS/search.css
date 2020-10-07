@@ -540,7 +540,6 @@ body {
 #bdiv{
 	-ms-flex: 30%; /* IE10 */
 	flex: 30%;
-	background-color: white;
 	padding: 30px;
 }
 
