@@ -6,7 +6,7 @@ example = {
 	
 	'Append To List' : [["Keyword","Variable", "Value", "Value optional", "Value optional"], ["Append To List",	"${L1}",	"xxx"], ["Append To List",	"${L2}",	"x",	"y",	"z"]],
 	
-	'Call Method' : [["Variable/Keyword","Variable/Keyword", "variable/Value", "Value", "Value"], ["Call Method",	"${hashtable}",	"put",	"myname",	"myvalue"], ["${isempty} =",	"Call Method",	"${hashtable}",	"isEmpty"], ["Should Not Be True",	"${isempty}"], ["${value} =",	"Call Method",	"${hashtable}",	"get",	"myname"], ["Should Be Equal",	"${value}",	"myvalue"], ["Call Method",	"${object}",	"kwargs",	"name=value",	"foo=bar"], ["Call Method",	"${object}",	"positional",	"escaped\/=equals"]],
+	'Call Method' : [["Variable/Keyword","Variable/Keyword", "variable/Value", "Value", "Value"], ["Call Method",	"${hashtable}",	"put",	"myname",	"myvalue"], ["${isempty} =",	"Call Method",	"${hashtable}",	"isEmpty"], ["Should Not Be True",	"${isempty}"], ["${value} =",	"Call Method",	"${hashtable}",	"get",	"myname"], ["Should Be Equal",	"${value}",	"myvalue"], ["Call Method",	"${object}",	"kwargs",	"name=value",	"foo=bar"], ["Call Method",	"${object}",	"positional",	"escaped=equals"]],
 	
 	'Catenate' : [["Variable","Keyword", "Separator/Value", "Value", "Value"], ["${str1} =",	"Catenate",	"Hello",	"world"], ["${str2} =",	"Catenate","SEPARATOR=---",	"Hello",	"world"], ["${str3} =",	"Catenate",	"SEPARATOR=",	"Hello",	"world"]],
 	
@@ -19,6 +19,78 @@ example = {
 	'Click Element' : [["Keyword","Xpath"], ["Click Element", '//*[@id="myInput"]']],
 	
 	'Combine Lists' : [["Variable","Keyword", "Variable", "Variable", "Variable"], ["${x} =",	"Combine Lists",	"${L1}",	"${L2}"], ["${y} =",	"Combine Lists",	"${L1}",	"${L2}",	"${L1}"]],
+	
+	'Comment' : [["Keyword","Xpath","Parameter"], ["Wait Until Page Contains element", '//*[@id="myInput"]', "30s"], ["Wait Until Page Contains element", '//*[@id="myInput"]', " "]],
+	
+	'Continue For Loop' : [["Loop", "Variable/Keyword", "Condition","Parameter"], ["FOR",	"${var}",	"IN",	"@{VALUES}"], [" ", "Run Keyword If",	"'${var}' == 'CONTINUE'",	"Continue For Loop"], [" ", "Do Something",	"${var}"], ["END"]],
+	
+	'Continue For Loop If' : [["Loop", "Variable/Keyword", "Condition","Parameter"], ["FOR",	"${var}",	"IN",	"@{VALUES}"], [" ", "Continue For Loop If",	"'${var}' == 'CONTINUE'",	" "], [" ", "Do Something",	"${var}"], ["END"]],
+	
+	'Convert To Binary' : [["Variable", "Keyword", "variable","Base", "Prefix", "Result"], ["${result} =",	"Convert To Binary",	"10", " ", " ",	"# Result is 1010"], ["${result} =",	"Convert To Binary",	"F",	"base=16",	"prefix=0b",	"# Result is 0b1111"], ["${result} =",	"Convert To Binary",	"-2",	"prefix=B",	"length=4",	"# Result is -B0010"]],
+	
+	'Convert To Boolean' : [["Variable", "Keyword", "Value"], ["${bool}=", "Convert To Boolean", "True"], ["${bool}=", "Convert To Boolean", "False"]],
+	
+	'Convert To Bytes' : [["Variable", "Keyword", "Value", "Input Type", "Result"], ["${bytes} =",  "Convert To Bytes",	"hyvä", " ", "# hyv\xe4"], ["${bytes} =",	"Convert To Bytes",	"\xff\x07", " ", "# \xff\x07"], ["${bytes} =",	"Convert To Bytes",	"82 70",	"int	# RF"], ["${bytes} =",	"Convert To Bytes",	"0b10 0x10",	"int	# \x02\x10"], ["${bytes} =",	"Convert To Bytes",	"ff 00 07",	"hex",	"# \xff\x00\x07"], ["${bytes} =",	"Convert To Bytes",	"5246212121",	"hex",	"# RF!!!"], ["${bytes} =",	"Convert To Bytes",	"0000 1000",	"bin",	"# \x08"], ["${input} =",	"Create List",	"1",	"2",	"12"], ["${bytes} =",	"Convert To Bytes", "${input}",	"int",	"# \x01\x02\x0c"], ["${bytes} =	Convert To Bytes	${input}	hex	# \x01\x02\x12"]],
+	
+	'Convert To Dictionary' : [["Variable", "Keyword", "Variable/Value"], ["${dict}=", "Convert To Dictionary", "${item}"]],
+	
+	'Convert To Hexa' : [["Variable", "Keyword", "variable","Base", "Prefix", "Length", "Result"], ["${result} =",	"Convert To Hexa",	"255", " ", " ",	"# Result is FF"], ["${result} =",	"Convert To Hexa",	"-10",	"prefix=0x", "length=2",	"# Result is -0x0A"], ["${result} =",	"Convert To Hexa",	"prefix=B",	"lowercase=yes", "# Result is -B0010"]],
+	
+	'Convert To Integer' : [["Variable", "Keyword", "variable","Base",  "Result"], ["${result} =",	"Convert To Integer",	"100", " ",	"# Result is 100"], ["${result} =",	"Convert To Integer",	"FF AA", "16",	"# Result is 65450"], ["${result} =",	"Convert To Integer",	"100",	"8",	"# Result is 64"], ["${result} =",	"Convert To Integer",	"-100",	"2",	"# Result is -4"], ["${result} =", "Convert To Integer",	"0b100", " ", "# Result is 4"], ["${result} =",	"Convert To Integer",	"-0x100", " ",	"# Result is -256"]],
+	
+	'Convert To List' : [["Variable", "Keyword", "item"], ["${list}=", "Convert To List", "${item}"]],
+	
+	'Convert To Number' : [["Variable", "Keyword", "variable/value","Precision",  "Result"], ["${result} =",	"Convert To Number",	"42.512", " ",	"# Result is 42.512"], ["${result} =",	"Convert To Number",	"42.512", "1",	"# Result is 42.5"],["${result} =",	"Convert To Number",	"42.512", "0",	"# Result is 43.0"],["${result} =",	"Convert To Number",	"42.512", "-1",	"# Result is 40.0"]],
+	
+	'Convert To Octal' : [["Variable", "Keyword", "value","Base", "Prefix", "Length", "Result"], ["${result} =",	"Convert To Octal",	"10", " ", " ",	"# Result is 12"], ["${result} =",	"Convert To Octal",	"-F",	"base=16", "prefix=0", " ",	"# Result is -017"], ["${result} =",	"Convert To Octal",	"16", "prefix=oct",	"length=4", "# Result is oct0020"]],
+	
+	'Convert To String' : [["Variable", "Keyword", "item"], ["${str}=", "Convert To String", "${item}"]],
+	
+	'Copy List' : [["Variable", "Keyword", "item", "Optional"], ["${list}=", "Copy List", "${item}", "deepcopy=False"]],
+	
+	'Create Dictionary' : [["Variable/Keyword", "Keyword/Variable", "Key","Value", "Result"], ["&{dict} =",	"Create Dictionary",	"key=value",	"foo=bar",	"# key=value syntax"], ["Should Be True",	"${dict} == {'key': 'value', 'foo': 'bar'}", " ", " ", " "], ["&{dict2} =",	"Create Dictionary",	"key",	"value"	, "# separate key and value"], ["Should Be Equal",	"${dict}",	"${dict2}"," "], ["&{dict} =",	"Create Dictionary",	"${1}=${2}",	"&{dict}",	"# using variables"], ["Should Be True",	"${dict} == {1: 2, 'key': 'value', 'foo': 'new'}"], ["Should Be Equal",	"${dict.key}","value",	" ", "# dot-access"]],
+	
+	'Create List' : [["Variable", "Keyword", "value/variable", "value/variable", "value/variable"], ["@{list} =",	"Create List",	"a",	"b",	"c"], ["${scalar} =",	"Create List",	"a",	"b",	"c"], ["${ints} =",	"Create List",	"${1}",	"${2}",	"${3}"]],
+	
+	'Count Values In List' : [["Variable", "Keyword", "item", "value"], ["${count}=", "Count Values In List", "${var}", "b"]],
+	
+	'Evaluate' : [["Variable", "Keyword", "Condition", "Result"], ["${status} =",	"Evaluate",	"0 < ${result} < 10",	"# Would also work with string '3.14'"], ["${status} =",	"Evaluate",	"0 < $result < 10",	"# Using variable itself, not string representation"], ["${random} =",	"Evaluate",	"random.randint(0, sys.maxsize)"], ["${options} =",	"Evaluate",	"selenium.webdriver.ChromeOptions()", "modules=selenium.webdriver"], ["${ns} =",	"Create Dictionary", "x=${4}",	"y=${2}"], ["${result} =",	"Evaluate",	"x*10 + y", "namespace=${ns}"]],
+	
+	'Exit For Loop' : [["Loop", "Variable/Keyword", "Condition","Parameter"], ["FOR",	"${var}",	"IN",	"@{VALUES}"], [" ", "Run Keyword If",	"'${var}' == 'EXIT'",	"Exit For Loop"], [" ", "Do Something",	"${var}"], ["END"]],
+	
+	'Exit For Loop If' : [["Loop", "Variable/Keyword", "Condition","Parameter"], ["FOR",	"${var}",	"IN",	"@{VALUES}"], [" ", "Exit For Loop If",	"'${var}' == 'EXIT'",	" "], [" ", "Do Something",	"${var}"], ["END"]],
+	
+	'Fail' : [["Keyword", "Failure", "Message", "Tag", "Comment"], ["Fail",	"Test not ready", " ", " ", "# Fails with the given message."], ["Fail",	"*HTML*<b>Test not ready</b>",	" ",	" ",	"# Fails using HTML in the message."], ["Fail",	"Test not ready",	"not-ready",	" ",	"# Fails and adds 'not-ready' tag."], ["Fail",	"OS not supported",	"-regression", " ",	"# Removes tag 'regression'."], ["Fail",	"My message",	"tag",	"-t*",	"# Removes all tags starting with 't' except the newly added 'tag'."]],
+	
+	'Fatal Error' : [["Keyword", "Message"], ["Fatal Error", "Error Message"]],
+	
+	'Get Count' : [["Variable", "Keyword", "item","Value"], ["${count} =",	"Get Count",	"${some item}",	"interesting value"]],
+	
+	'Get Dictionary Items' : [["Variable", "Keyword", "item","Optional"], ["${sorted} =",	"Get Dictionary Items",	"${D3}"], ["${unsorted} =",	"Get Dictionary Items",	"${D3}",	"sort_keys=False"]],
+	
+	'Get Dictionary Keys' : [["Variable", "Keyword", "item","Optional"], ["${sorted} =",	"Get Dictionary Keys",	"${D3}"], ["${unsorted} =",	"Get Dictionary Keys",	"${D3}",	"sort_keys=False"]],
+	
+	'Get Dictionary Values' : [["Variable", "Keyword", "item","Optional"], ["${sorted} =",	"Get Dictionary Values",	"${D3}"], ["${unsorted} =",	"Get Dictionary Values",	"${D3}",	"sort_keys=False"]],
+	
+	'Get From Dictionary' : [["Variable", "Keyword", "item","Optional"], ["${value} =",	"Get From Dictionary",	"${D3}", "b"]],
+	
+	'Get From List' : [["Variable", "Keyword", "Variable","Index", "Python Equivalent"], ["${x} =",	"Get From List",	"${L5}",	"0",	"# L5[0]"], ["${y} =",	"Get From List",	"${L5}",	"-2",	"# L5[-2]"]],
+	
+	'Get Index From List' : [["Variable", "Keyword", "item","Optional"], ["${value} =",	"Get Index From List",	"${L5}", "b"]],
+	
+	'Get Length' : [["Variable/Keyword", "Variable/Keyword", "Value","value Optional"], ["${length} =",	"Get Length",	"Hello, world!"], ["Should Be Equal As Integers",	"${length}",	"13"], ["@{list} =",	"Create List",	"Hello,",	"world!"], ["${length} =",	"Get Length",	"${list}"],	["Should Be Equal As Integers",	"${length}","2"]],
+	
+	'Get Library Instance' : [["Variable", "Keyword", "Optional"], ["&{all libs} =",	"Get library instance",	"all=True"]],
+	
+	'Get Matches' : [["Variable", "Keyword", "Variable", "Pattern" ,"Optional", "Description"], ["${matches}=",	"Get Matches",	"${list}",	"a*", " ",	"# ${matches} will contain any string beginning with 'a'"], ["${matches}=",	"Get Matches",	"${list}",	"regexp=a.*", " ",	"# ${matches} will contain any string beginning with 'a' (regexp version)"], ["${matches}=",	"Get Matches",	"${list}",	"a*",	"case_insensitive=${True}",	"# ${matches} will contain any string beginning with 'a' or 'A'"]],
+	
+	'Get Match Count' : [["Variable", "Keyword", "Variable", "Pattern" ,"Optional", "Description"], ["${count}=",	"Get Match Count",	"${list}",	"a*", " ",	"# ${count} will contain any string beginning with 'a'"], ["${count}=",	"Get Match Count",	"${list}",	"regexp=a.*", " ",	"# ${count} will contain any string beginning with 'a' (regexp version)"], ["${count}=",	"Get Match Count",	"${list}",	"a*",	"case_insensitive=${True}",	"# ${count} will contain any string beginning with 'a' or 'A'"]],
+	
+	'Get Slice From List' : [["Variable","Keyword", "Variable", "Start Index", "End Index", "Python Equivalent"], ["${x} =",	"Get Slice From List",	"${L5}",	"2",	"4",	"# L5[2:4]"], ["${y} =",	"Get Slice From List",	"${L5}",	"1",	" ",	"# L5[1:None]"], ["${z} =",	"Get Slice From List",	"${L5}",	"end=-2	",	"# L5[0:-2]"]],
+	
+	'Insert Into List' : [["Variable/Keyword", "Variable", "Index", "Value"], ["Insert Into List",	"${L1}",	"0",	"xxx"], ["Insert Into List",	"${L2}",	"${-1}",	"xxx"]],
+	
+	'Keep In Dictionary' : [["Variable/Keyword", "Variable", "value", "Value", "Value"], ["Keep In Dictionary",	"${D5}",	"b",	"x",	"d"]],
 	
 	'Wait Until Page Contains element' : [["Keyword","Xpath","Parameter"], ["Wait Until Page Contains element", '//*[@id="myInput"]', "30s"], ["Wait Until Page Contains element", '//*[@id="myInput"]', " "]],
 	
