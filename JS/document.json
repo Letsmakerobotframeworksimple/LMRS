@@ -1,22 +1,239 @@
 keyworddocument = {
 	'Add Time To Date' : ["Adds time to date and returns the resulting date.", " ", "Arguments:", "date: Date to add time to in one of the supported date formats.","time: Time that is added in one of the supported time formats.","result_format: Format of the returned date.", "exclude_millis: When set to any true value, rounds and drops milliseconds as explained in millisecond handling.","date_format: Possible custom timestamp format of date."],
-	
+
 	'Add Time To Time' : ["Adds time to another time and returns the resulting time.","Arguments:","time1: First time in one of the supported time formats.","time2: Second time in one of the supported time formats.","result_format: Format of the returned time.","exclude_millis: When set to any true value, rounds and drops milliseconds as explained in millisecond handling."],
-	
+
+	'Append To List': ["Appends a values to a list", "Arguments:", "List: List to be appeneded by the value", "values: values to be appended in the list separated by tab"],
+
+	'Call Method': ["Calls the named method of the given object with the provided arguments.", "The possible return value from the method is returned and can be assigned to a variable. Keyword fails both if the object does not have a method with the given name or if executing the method raises an exception.", "Possible equal signs in arguments must be escaped with a backslash like \=.", "Arguments:", "object","method_name", "*args", "**kwargs", "result_format:"],
+
+	'Catenate': ["Catenates the given items together and returns the resulted string.", "By default, items are catenated with spaces, but if the first item contains the string SEPARATOR=<sep>, the separator <sep> is used instead. Items are converted into strings when necessary.", "Arguments:", "items: List of items to be concatenate separated by tab", "result_format:"],
+
+	'Convert Date': ["", "Arguments:", "date: Date in one of the supported date formats.", "result_format: Format of the returned date.", "exclude_millis: When set to any true value, rounds and drops milliseconds as explained in millisecond handling.", "date_format: Specifies possible custom timestamp format.", "result_format:"],
+
+	'Convert Time': ["Converts between supported time formats.", "Arguments:", "time: Time in one of the supported time formats.", "result_format: Format of the returned time.", "exclude_millis: When set to any true value, rounds and drops milliseconds as explained in millisecond handling.", "result_format:"],
+
+	'Get Current Date': ["Returns current local or UTC time with an optional increment.", "Arguments:", "time_zone: Get the current time on this time zone. Currently only local (default) and UTC are supported.", "increment: Optional time increment to add to the returned date in one of the supported time formats. Can be negative.", "result_format: Format of the returned date (see date formats).", "exclude_millis: When set to any true value, rounds and drops milliseconds as explained in millisecond handling.", "result_format:"],
+
+	'Combine Lists': ["Combines the given lists together and returns the result." , "The given lists are not altered by this keyword.", "Arguments:", "lists: Lists to be combined", "result_format:"],
+
+	'Comment': ["Displays the given messages in the log file as keyword arguments.","This keyword does nothing with the arguments it receives, but as they are visible in the log, this keyword can be used to display simple messages. Given arguments are ignored so thoroughly that they can even contain non-existing variables. If you are interested about variable values, you can use the Log or Log Many keywords.", "Arguments:", "", "result_format:"],
+
+	'Continue For Loop': ["Skips the current for loop iteration and continues from the next.","Skips the remaining keywords in the current for loop iteration and continues from the next one. Can be used directly in a for loop or in a keyword that the loop uses.", "Arguments:", "", "result_format:"],
+
+	'Continue For Loop If': ["", "Arguments:", "Skips the current for loop iteration if the condition is true.", "A wrapper for Continue For Loop to continue a for loop based on the given condition. The condition is evaluated using the same semantics as with Should Be True keyword.", "result_format:"],
+
+	'Convert To Binary': ["Converts the given item to a binary string.", "The item, with an optional base, is first converted to an integer using Convert To Integer internally. After that it is converted to a binary number (base 2) represented as a string such as 1011.", "The returned value can contain an optional prefix and can be required to be of minimum length (excluding the prefix and a possible minus sign). If the value is initially shorter than the required length, it is padded with zeros.", "Arguments:", "", "result_format:"],
+
+	'Convert To Boolean': ["Converts the given item to Boolean true or false.", "Handles strings True and False (case-insensitive) as expected, otherwise returns item's truth value using Python's bool() method.", "Arguments:", "", "result_format:"],
+
+	'Convert To Bytes': ["Converts the given input to bytes according to the input_type.", "Valid input types are listed below:", "Arguments:", "", "result_format:"],
+
+	'Convert To Hex' : ["Converts the given item to a hexadecimal string.","The item, with an optional base, is first converted to an integer using Convert To Integer internally. After that it is converted to a hexadecimal number (base 16) represented as a string such as FF0A.", "The returned value can contain an optional prefix and can be required to be of minimum length (excluding the prefix and a possible minus sign). If the value is initially shorter than the required length, it is padded with zeros.",  "Arguments:", "", "result_format::","The item, with an optional base, is first converted to an integer using Convert To Integer internally. After that it is converted to a hexadecimal number (base 16) represented as a string such as FF0A.", "The returned value can contain an optional prefix and can be required to be of minimum length (excluding the prefix and a possible minus sign). If the value is initially shorter than the required length, it is padded with zeros.", "Arguments:", "", "result_format:"],
+
+	'Convert To Integer' : ["Converts the given item to an integer number.", "If the given item is a string, it is by default expected to be an integer in base 10. There are two ways to convert from other bases:", "Arguments:", "", "result_format:"],
+
+	'Convert To Number' : ["Converts the given item to a floating point number.", "If the optional precision is positive or zero, the returned number is rounded to that number of decimal digits. Negative precision means that the number is rounded to the closest multiple of 10 to the power of the absolute precision. If a number is equally close to a certain precision, it is always rounded away from zero.", "Arguments:", "", "result_format:"],
+
+
+
+	'Convert To Octal' : ["Converts the given item to an octal string.", "The item, with an optional base, is first converted to an integer using Convert To Integer internally. After that it is converted to an octal number (base 8) represented as a string such as 775.", "The returned value can contain an optional prefix and can be required to be of minimum length (excluding the prefix and a possible minus sign). If the value is initially shorter than the required length, it is padded with zeros.", "Arguments:", "", "result_format:"],
+
+	'Convert To String' : ["Converts the given item to a Unicode string.", "Strings are also NFC normalized.", "Use Encode String To Bytes and Decode Bytes To String keywords in String library if you need to convert between Unicode and byte strings using different encodings. Use Convert To Bytes if you just want to create byte strings.", "Arguments:", "", "result_format:"],
+
+	'Create Dictionary' : ["Creates and returns a dictionary based on the given items.", "Items are typically given using the key=value syntax same way as &{dictionary} variables are created in the Variable table. Both keys and values can contain variables, and possible equal sign in key can be escaped with a backslash like escaped\=key=value. It is also possible to get items from existing dictionaries by simply using them like &{dict}.", "Alternatively items can be specified so that keys and values are given separately. This and the key=value syntax can even be combined, but separately given items must be first. If same key is used multiple times, the last value has precedence.", "Arguments:", "", "result_format:"],
+	'Create List' : ["Returns a list containing given items.", "The returned list can be assigned both to ${scalar} and @{list} variables.", "Arguments:", "", "result_format:"],
+
+
 	'Convert Date' : ["Converts between supported date formats.","Arguments:","date: Date in one of the supported date formats.","result_format: Format of the returned date.","exclude_millis: When set to any true value, rounds and drops milliseconds as explained in millisecond handling.","date_format: Specifies possible custom timestamp format."],
-	
+
 	'Get Current Date' : ["Returns current local or UTC time with an optional increment.","Arguments:","time_zone: Get the current time on this time zone. Currently only local (default) and UTC are supported.","increment: Optional time increment to add to the returned date in one of the supported time formats. Can be negative.","result_format: Format of the returned date (see date formats).","exclude_millis: When set to any true value, rounds and drops milliseconds as explained in millisecond handling."],
-	
+
 	'Subtract Date From Date' : ["Subtracts date from another date and returns time between.","Arguments:","date1: Date to subtract another date from in one of the supported date formats.","date2: Date that is subtracted in one of the supported date formats.","result_format: Format of the returned time (see time formats).","exclude_millis: When set to any true value, rounds and drops milliseconds as explained in millisecond handling.","date1_format: Possible custom timestamp format of date1.","date2_format: Possible custom timestamp format of date2."],
-	
+
 	'Subtract Time From Date' : ["Subtracts time from date and returns the resulting date.","Arguments:","date: Date to subtract time from in one of the supported date formats.","time: Time that is subtracted in one of the supported time formats.","result_format: Format of the returned date.","exclude_millis: When set to any true value, rounds and drops milliseconds as explained in millisecond handling.","date_format: Possible custom timestamp format of date."],
-	
+
 	'Subtract Time From Time' : ["Subtracts time from another time and returns the resulting time.","Arguments:","time1: Time to subtract another time from in one of the supported time formats.","time2: Time to subtract in one of the supported time formats.","result_format: Format of the returned time.","exclude_millis: When set to any true value, rounds and drops milliseconds as explained in millisecond handling."],
-	
+
 	'Click Element' : ["Click the element identified by locator.","See the Locating elements section for details about the locator syntax.","The modifier argument can be used to pass Selenium Keys when clicking the element. The + can be used as a separator for different Selenium Keys. The CTRL is internally translated to the CONTROL key. The modifier is space and case insensitive, example 'alt' and ' aLt ' are supported formats to ALT key . If modifier does not match to Selenium Keys, keyword fails.","If action_chain argument is true, see Boolean arguments for more details on how to set boolean argument, then keyword uses ActionChain based click instead of the <web_element>.click() function. If both action_chain and modifier are defined, the click will be performed using modifier and action_chain will be ignored."],
 
-	'Wait Until Page Contains element' : ["Waits until the element locator appears on the current page.","Fails if timeout expires before the element appears. See the Timeouts section for more information about using timeouts and their default value and the Locating elements section for details about the locator syntax.","error can be used to override the default error message","The limit argument can used to define how many elements the page should contain. When limit is None (default) page can contain one or more elements. When limit is a number, page must contain same number of elements.","limit is new in SeleniumLibrary 4.4"]
+	'Wait Until Page Contains element' : ["Waits until the element locator appears on the current page.","Fails if timeout expires before the element appears. See the Timeouts section for more information about using timeouts and their default value and the Locating elements section for details about the locator syntax.","error can be used to override the default error message","The limit argument can used to define how many elements the page should contain. When limit is None (default) page can contain one or more elements. When limit is a number, page must contain same number of elements.","limit is new in SeleniumLibrary 4.4"],
 
+	'Evaluate' : ["Evaluates the given expression in Python and returns the result.", "expression is evaluated in Python as explained in the Evaluating expressions section.","modules argument can be used to specify a comma separated list of Python modules to be imported and added to the evaluation namespace.", "namespace argument can be used to pass a custom evaluation namespace as a dictionary. Possible modules are added to this namespace.", "Arguments:", "", "result_format:"],
+
+	'Exit For Loop' : ["Stops executing the enclosing for loop.", "Exits the enclosing for loop and continues execution after it. Can be used directly in a for loop or in a keyword that the loop uses.", "Arguments:", "", "result_format:"],
+
+	'Exit For Loop If' : ["Stops executing the enclosing for loop if the condition is true.","A wrapper for Exit For Loop to exit a for loop based on the given condition. The condition is evaluated using the same semantics as with Should Be True keyword.", "Arguments:", "", "result_format:"],
+
+	'Fail' : ["Fails the test with the given message and optionally alters its tags.","The error message is specified using the msg argument. It is possible to use HTML in the given error message, similarly as with any other keyword accepting an error message, by prefixing the error with *HTML*.","It is possible to modify tags of the current test case by passing tags after the message. Tags starting with a hyphen (e.g. -regression) are removed and others added. Tags are modified using Set Tags and Remove Tags internally, and the semantics setting and removing them are the same as with these keywords.", "Arguments:", "", "result_format:"],
+
+	'Fatal Error' : ["Stops the whole test execution.","The test or suite where this keyword is used fails with the provided message, and subsequent tests fail with a canned message. Possible teardowns will nevertheless be executed.", "Arguments:", "", "result_format:"],
+
+	'Get Count' : ["Returns and logs how many times item is found from container.","This keyword works with Python strings and lists and all objects that either have count method or can be converted to Python lists.", "Arguments:", "", "result_format:"],
+
+	'Get Dictionary Items' : ["Returns and logs the length of the given item as an integer.","The item can be anything that has a length, for example, a string, a list, or a mapping. The keyword first tries to get the length with the Python function len, which calls the item's __len__ method internally. If that fails, the keyword tries to call the item's possible length and size methods directly. The final attempt is trying to get the value of the item's length attribute. If all these attempts are unsuccessful, the keyword fails.", "Arguments:", "", "result_format:"],
+
+	'Get Length' : ["Returns and logs the length of the given item as an integer.","The item can be anything that has a length, for example, a string, a list, or a mapping. The keyword first tries to get the length with the Python function len, which calls the item's __len__ method internally. If that fails, the keyword tries to call the item's possible length and size methods directly. The final attempt is trying to get the value of the item's length attribute. If all these attempts are unsuccessful, the keyword fails." , "Arguments:", "", "result_format:"],
+
+	'Get Library Instance' : ["Returns the currently active instance of the specified test library.","This keyword makes it easy for test libraries to interact with other test libraries that have state. This is illustrated by the Python example below:", "Arguments:", "", "result_format:"],
+
+	'Get Time' : ["Returns the given time in the requested format.","NOTE: DateTime library contains much more flexible keywords for getting the current date and time and for date and time handling in general.", "Arguments:", "", "result_format:"],
+
+	'Get Variable Value' : ["Returns variable value or default if the variable does not exist.","The name of the variable can be given either as a normal variable name (e.g. ${NAME}) or in escaped format (e.g. \${NAME}). Notice that the former has some limitations explained in Set Suite Variable.", "Arguments:", "", "result_format:"],
+
+	'Get Variables' : ["Returns a dictionary containing all variables in the current scope.","Variables are returned as a special dictionary that allows accessing variables in space, case, and underscore insensitive manner similarly as accessing variables in the test data. This dictionary supports all same operations as normal Python dictionaries and, for example, Collections library can be used to access or modify it. Modifying the returned dictionary has no effect on the variables available in the current scope.", "Arguments:", "", "result_format:"],
+
+	'Import Library' : ["Imports a library with the given name and optional arguments.","This functionality allows dynamic importing of libraries while tests are running. That may be necessary, if the library itself is dynamic and not yet available when test data is processed. In a normal case, libraries should be imported using the Library setting in the Setting table.","This keyword supports importing libraries both using library names and physical paths. When paths are used, they must be given in absolute format or found from search path. Forward slashes can be used as path separators in all operating systems." ,"Arguments:", "", "result_format:"],
+
+	'Import Resource' : ["Imports a resource file with the given path.","Resources imported with this keyword are set into the test suite scope similarly when importing them in the Setting table using the Resource setting.","The given path must be absolute or found from search path. Forward slashes can be used as path separator regardless the operating system." ,"Arguments:", "", "result_format:"],
 	
+	'Import Variables' : ["Imports a variable file with the given path and optional arguments.", "Variables imported with this keyword are set into the test suite scope similarly when importing them in the Setting table using the Variables setting. These variables override possible existing variables with the same names. This functionality can thus be used to import new variables, for example, for each test in a test suite.", "Arguments:", "", "result_format:"],
 
-}
+	'Keyword Should Exist' : ["Fails unless the given keyword exists in the current scope.","Fails also if there are more than one keywords with the same name. Works both with the short name (e.g. Log) and the full name (e.g. BuiltIn.Log).","The default error message can be overridden with the msg argument.", "Arguments:", "", "result_format:"],
+
+	'Length Should Be' : ["Verifies that the length of the given item is correct.","The length of the item is got using the Get Length keyword. The default error message can be overridden with the msg argument.", "Arguments:", "", "result_format:"],
+
+	'Log' : ["Logs the given message with the given level.","Valid levels are TRACE, DEBUG, INFO (default), HTML, WARN, and ERROR. Messages below the current active log level are ignored. See Set Log Level keyword and --loglevel command line option for more details about setting the level.","Messages logged with the WARN or ERROR levels will be automatically visible also in the console and in the Test Execution Errors section in the log file.", "Arguments:", "", "result_format:"],
+
+	'Log Many' : ["Logs the given messages as separate entries using the INFO level.","Supports also logging list and dictionary variable items individually.", "Arguments:", "", "result_format:"],
+
+	'Log To Console' : ["Logs the given message to the console.", "By default uses the standard output stream. Using the standard error stream is possibly by giving the stream argument value STDERR (case-insensitive).",  "Arguments:", "", "result_format:"],
+
+	'Log Variables' : ["Logs all variables in the current scope with given log level.", "Arguments:", "", "result_format:"],
+
+	'No Operation' : ["Does absolutely nothing.", "Arguments:", "", "result_format:"],
+	'Pass Execution' : ["Skips rest of the current test, setup, or teardown with PASS status.","This keyword can be used anywhere in the test data, but the place where used affects the behavior:", "Arguments:", "When used in any setup or teardown (suite, test or keyword), passes that setup or teardown. Possible keyword teardowns of the started keywords are executed. Does not affect execution or statuses otherwise.","When used in a test outside setup or teardown, passes that particular test case. Possible test and keyword teardowns are executed.", "result_format:"],
+
+	'Pass Execution If' : ["Conditionally skips rest of the current test, setup, or teardown with PASS status.", "A wrapper for Pass Execution to skip rest of the current test, setup or teardown based the given condition. The condition is evaluated similarly as with Should Be True keyword, and message and *tags have same semantics as with Pass Execution.", "Arguments:", "", "result_format:"],
+
+	'Regexp Escape' : ["Returns each argument string escaped for use as a regular expression.","This keyword can be used to escape strings to be used with Should Match Regexp and Should Not Match Regexp keywords.","Escaping is done with Python's re.escape() function.", "Arguments:", "", "result_format:"],
+
+	'Remove Duplicates' : ["", "Arguments:", "", "result_format:"],
+	'Reload Library' : ["Rechecks what keywords the specified library provides.","Can be called explicitly in the test data or by a library itself when keywords it provides have changed.","The library can be specified by its name or as the active instance of the library. The latter is especially useful if the library itself calls this keyword as a method.", "Arguments:", "", "result_format:"],
+
+	'Remove Tags' : ["Removes given tags from the current test or all tests in a suite.","Tags can be given exactly or using a pattern with *, ? and [chars] acting as wildcards. See the Glob patterns section for more information.","This keyword can affect either one test case or all test cases in a test suite similarly as Set Tags keyword.", "Arguments:", "", "result_format:"],
+
+	'Repeat Keyword' : ["Executes the specified keyword multiple times.","name and args define the keyword that is executed similarly as with Run Keyword. repeat specifies how many times (as a count) or how long time (as a timeout) the keyword should be executed.","If repeat is given as count, it specifies how many times the keyword should be executed. repeat can be given as an integer or as a string that can be converted to an integer. If it is a string, it can have postfix times or x (case and space insensitive) to make the expression more explicit.",	 "Arguments:", "", "result_format:"],
+
+
+	'Replace Variables' : ["Replaces variables in the given text with their current values.","If the text contains undefined variables, this keyword fails. If the given text contains only a single variable, its value is returned as-is and it can be any object. Otherwise this keyword always returns a string.", "Arguments:", "", "result_format:"],
+
+	'Return From Keyword' : ["Returns from the enclosing user keyword.","This keyword can be used to return from a user keyword with PASS status without executing it fully. It is also possible to return values similarly as with the [Return] setting. For more detailed information about working with the return values, see the User Guide.", "Arguments:", "", "result_format:"],
+
+	'Return From Keyword If' : ["Returns from the enclosing user keyword if condition is true.","A wrapper for Return From Keyword to return based on the given condition. The condition is evaluated using the same semantics as with Should Be True keyword.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword' : ["Executes the given keyword with the given arguments.","Because the name of the keyword to execute is given as an argument, it can be a variable and thus set dynamically, e.g. from a return value of another keyword or from the command line.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword And Continue On Failure' : ["Runs the keyword and continues execution even if a failure occurs.","The keyword name and arguments work as with Run Keyword.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword And Expect Error' : ["Runs the keyword and checks that the expected error occurred.","The keyword to execute and its arguments are specified using name and *args exactly like with Run Keyword.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword And Ignore Error' : ["Runs the given keyword with the given arguments and ignores possible error.","This keyword returns two values, so that the first is either string PASS or FAIL, depending on the status of the executed keyword. The second value is either the return value of the keyword or the received error message. See Run Keyword And Return Status If you are only interested in the execution status.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword And Return' : ["Runs the specified keyword and returns from the enclosing user keyword.","The keyword to execute is defined with name and *args exactly like with Run Keyword. After running the keyword, returns from the enclosing user keyword and passes possible return value from the executed keyword further. Returning from a keyword has exactly same semantics as with Return From Keyword.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword And Return If' : ["Runs the specified keyword and returns from the enclosing user keyword.","A wrapper for Run Keyword And Return to run and return based on the given condition. The condition is evaluated using the same semantics as with Should Be True keyword.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword And Return Status' : ["Runs the given keyword with given arguments and returns the status as a Boolean value.","This keyword returns Boolean True if the keyword that is executed succeeds and False if it fails. This is useful, for example, in combination with Run Keyword If. If you are interested in the error message or return value, use Run Keyword And Ignore Error instead.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword If' : ["Runs the given keyword with the given arguments, if condition is true.","The given condition is evaluated in Python as explained in Evaluating expressions, and name and *args have same semantics as with Run Keyword.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword If All Critical Tests Passed' : ["Runs the given keyword with the given arguments, if all critical tests passed.","This keyword can only be used in suite teardown. Trying to use it in any other place will result in an error.","Otherwise, this keyword works exactly like Run Keyword, see its documentation for more details.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword If All Tests Passed' : ["Runs the given keyword with the given arguments, if all tests passed.","This keyword can only be used in a suite teardown. Trying to use it anywhere else results in an error.","Otherwise, this keyword works exactly like Run Keyword, see its documentation for more details.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword If Any Critical Tests Failed' : ["Runs the given keyword with the given arguments, if any critical tests failed.","This keyword can only be used in a suite teardown. Trying to use it anywhere else results in an error.","Otherwise, this keyword works exactly like Run Keyword, see its documentation for more details.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword If Any Tests Failed' : ["Runs the given keyword with the given arguments, if one or more tests failed.","This keyword can only be used in a suite teardown. Trying to use it anywhere else results in an error.","Otherwise, this keyword works exactly like Run Keyword, see its documentation for more details.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword If Test Failed' : ["Runs the given keyword with the given arguments, if the test failed.","This keyword can only be used in a test teardown. Trying to use it anywhere else results in an error.","Otherwise, this keyword works exactly like Run Keyword, see its documentation for more details.", "Arguments:", "", "result_format:"],
+
+
+	'Run Keyword If Test Passed' : ["Runs the given keyword with the given arguments, if the test passed.","This keyword can only be used in a test teardown. Trying to use it anywhere else results in an error.","Otherwise, this keyword works exactly like Run Keyword, see its documentation for more details.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword If Timeout Occurred' : ["Runs the given keyword if either a test or a keyword timeout has occurred.","This keyword can only be used in a test teardown. Trying to use it anywhere else results in an error.","Otherwise, this keyword works exactly like Run Keyword, see its documentation for more details.", "Arguments:", "", "result_format:"],
+
+	'Run Keyword Unless' : ["Runs the given keyword with the given arguments if condition is false.","See Run Keyword If for more information and an example. Notice that this keyword does not support ELSE or ELSE IF branches like Run Keyword If does, though.", "Arguments:", "", "result_format:"],
+
+	'Run Keywords' : ["Executes all the given keywords in a sequence.","This keyword is mainly useful in setups and teardowns when they need to take care of multiple actions and creating a new higher level user keyword would be an overkill.","By default all arguments are expected to be keywords to be executed.", "Arguments:", "", "result_format:"],
+
+	'Set Global Variable' : ["Makes a variable available globally in all tests and suites.","Variables set with this keyword are globally available in all subsequent test suites, test cases and user keywords. Also variables in variable tables are overridden. Variables assigned locally based on keyword return values or by using Set Test Variable and Set Suite Variable override these variables in that scope, but the global value is not changed in those cases.","In practice setting variables with this keyword has the same effect as using command line options --variable and --variablefile. Because this keyword can change variables everywhere, it should be used with care.", "Arguments:", "", "result_format:"],
+
+	'Set Library Search Order' : ["Sets the resolution order to use when a name matches multiple keywords.","The library search order is used to resolve conflicts when a keyword name in the test data matches multiple keywords. The first library (or resource, see below) containing the keyword is selected and that keyword implementation used. If the keyword is not found from any library (or resource), test executing fails the same way as when the search order is not set.", "Arguments:", "", "result_format:"],
+
+	'Set Local Variable' : ["Makes a variable available everywhere within the local scope.","Variables set with this keyword are available within the local scope of the currently executed test case or in the local scope of the keyword in which they are defined. For example, if you set a variable in a user keyword, it is available only in that keyword. Other test cases or keywords will not see variables set with this keyword.", "Arguments:", "", "result_format:"],
+
+	'Set Log Level' : ["Sets the log threshold to the specified level and returns the old level.","Messages below the level will not logged. The default logging level is INFO, but it can be overridden with the command line option --loglevel.","The available levels: TRACE, DEBUG, INFO (default), WARN, ERROR and NONE (no logging).", "Arguments:", "", "result_format:"],
+
+	'Set Suite Documentation' : ["Sets documentation for the current test suite.","By default the possible existing documentation is overwritten, but this can be changed using the optional append argument similarly as with Set Test Message keyword.","This keyword sets the documentation of the current suite by default. If the optional top argument is given a true value (see Boolean arguments), the documentation of the top level suite is altered instead.", "Arguments:", "", "result_format:"],
+
+	'Set Suite Variable' : ["Makes a variable available everywhere within the scope of the current suite.","Variables set with this keyword are available everywhere within the scope of the currently executed test suite. Setting variables with this keyword thus has the same effect as creating them using the Variable table in the test data file or importing them from variable files.","Possible child test suites do not see variables set with this keyword by default, but that can be controlled by using children=<option> as the last argument. If the specified <option> given a true value (see Boolean arguments), the variable is set also to the child suites. Parent and sibling suites will never see variables set with this keyword.", "Arguments:", "", "result_format:"],
+
+	'Set Task Variable' : ["Makes a variable available everywhere within the scope of the current task.","This is an alias for Set Test Variable that is more applicable when creating tasks, not tests.", "Arguments:", "", "result_format:"],
+
+	'Set Test Documentation' : ["Sets documentation for the current test case.","By default the possible existing documentation is overwritten, but this can be changed using the optional append argument similarly as with Set Test Message keyword.","The current test documentation is available as a built-in variable ${TEST DOCUMENTATION}. This keyword can not be used in suite setup or suite teardown.", "Arguments:", "", "result_format:"],
+
+	'Set Test Message' : ["Sets message for the current test case.","If the optional append argument is given a true value (see Boolean arguments), the given message is added after the possible earlier message by joining the messages with a space.","In test teardown this keyword can alter the possible failure message, but otherwise failures override messages set by this keyword. Notice that in teardown the message is available as a built-in variable ${TEST MESSAGE}.", "Arguments:", "", "result_format:"],
+
+	'Set Variable' : ["Returns the given values which can then be assigned to a variables.","This keyword is mainly used for setting scalar variables. Additionally it can be used for converting a scalar variable containing a list to a list variable or to multiple scalar variables. It is recommended to use Create List when creating new lists.", "Arguments:", "", "result_format:"],
+
+	'Set Variable If' : ["Sets variable based on the given condition.","The basic usage is giving a condition and two values. The given condition is first evaluated the same way as with the Should Be True keyword. If the condition is true, then the first value is returned, and otherwise the second value is returned. The second value can also be omitted, in which case it has a default value None. This usage is illustrated in the examples below, where ${rc} is assumed to be zero.", "Arguments:", "", "result_format:"],
+
+	'Should Be Empty' : ["Verifies that the given item is empty.","The length of the item is got using the Get Length keyword. The default error message can be overridden with the msg argument.", "Arguments:", "", "result_format:"],
+
+	'Should Be Equal' : ["Fails if the given objects are unequal.","Optional msg, values and formatter arguments specify how to construct the error message if this keyword fails:","1. If msg is not given, the error message is <first> != <second>.","2. If msg is given and values gets a true value (default), the error message is <msg>: <first> != <second>.","3. If msg is given and values gets a false value (see Boolean arguments), the error message is simply <msg>.","4. formatter controls how to format the values. Possible values are str (default), repr and ascii, and they work similarly as Python built-in functions with same names. See String representations for more details.", "Arguments:", "", "result_format:"],
+
+	'Should Be Equal As Integers' : ["Fails if objects are unequal after converting them to integers.","See Convert To Integer for information how to convert integers from other bases than 10 using base argument or 0b/0o/0x prefixes.","See Should Be Equal for an explanation on how to override the default error message with msg and values.", "Arguments:", "", "result_format:"],
+
+	'Should Be Equal As Numbers' : ["Fails if objects are unequal after converting them to real numbers.","The conversion is done with Convert To Number keyword using the given precision.", "Arguments:", "", "result_format:"],
+
+	'Should Be Equal As Strings' : ["Fails if objects are unequal after converting them to strings.","See Should Be Equal for an explanation on how to override the default error message with msg, values and formatter.","If ignore_case is given a true value (see Boolean arguments), comparison is done case-insensitively. If both arguments are multiline strings, this keyword uses multiline string comparison.", "Arguments:", "", "result_format:"],
+
+	'Should Be True' : ["Fails if the given condition is not true.","If condition is a string (e.g. ${rc} < 10), it is evaluated as a Python expression as explained in Evaluating expressions and the keyword status is decided based on the result. If a non-string item is given, the status is got directly from its truth value.","The default error message (<condition> should be true) is not very informative, but it can be overridden with the msg argument.", "Arguments:", "", "result_format:"],
+
+	'Should Contain' : ["Fails if container does not contain item one or more times.","Works with strings, lists, and anything that supports Python's in operator.","See Should Be Equal for an explanation on how to override the default error message with arguments msg and values.","If ignore_case is given a true value (see Boolean arguments) and compared items are strings, it indicates that comparison should be case-insensitive. If the container is a list-like object, string items in it are compared case-insensitively. New option in Robot Framework 3.0.1.", "Arguments:", "", "result_format:"],
+
+	'Should Contain Any' : ["Fails if container does not contain any of the *items.","Works with strings, lists, and anything that supports Python's in operator.","Supports additional configuration parameters msg, values and ignore_case, which have exactly the same semantics as arguments with same names have with Should Contain. These arguments must always be given using name=value syntax after all items.", "Arguments:", "", "result_format:"],
+
+	'Should Contain X Times' : ["Fails if container does not contain item count times.","Works with strings, lists and all objects that Get Count works with. The default error message can be overridden with msg and the actual count is always logged.","If ignore_case is given a true value (see Boolean arguments) and compared items are strings, it indicates that comparison should be case-insensitive. If the container is a list-like object, string items in it are compared case-insensitively. New option in Robot Framework 3.0.1.", "Arguments:", "", "result_format:"],
+
+	'Should End With' : ["Fails if the string str1 does not end with the string str2.","See Should Be Equal for an explanation on how to override the default error message with msg and values, as well as for semantics of the ignore_case option.", "Arguments:", "", "result_format:"],
+
+	'Should Match' : ["Fails if the given string does not match the given pattern.", "Pattern matching is similar as matching files in a shell with *, ? and [chars] acting as wildcards. See the Glob patterns section for more information.", "Arguments:", "", "result_format:"],
+
+	'Should Match Regexp' : ["Fails if string does not match pattern as a regular expression.","See the Regular expressions section for more information about regular expressions and how to use then in Robot Framework test data.","Notice that the given pattern does not need to match the whole string. For example, the pattern ello matches the string Hello world!. If a full match is needed, the ^ and $ characters can be used to denote the beginning and end of the string, respectively. For example, ^ello$ only matches the exact string ello.", "Arguments:", "", "result_format:"],
+
+	'Should Not Be Empty' : ["Verifies that the given item is not empty.","The length of the item is got using the Get Length keyword. The default error message can be overridden with the msg argument.", "Arguments:", "", "result_format:"],
+
+	'Should Not Be Equal' : ["Fails if the given objects are equal.","See Should Be Equal for an explanation on how to override the default error message with msg and values.","If ignore_case is given a true value (see Boolean arguments) and both arguments are strings, comparison is done case-insensitively. New option in Robot Framework 3.0.1.", "Arguments:", "", "result_format:"],
+
+	'Should Not Be Equal As Integers' : ["Fails if objects are equal after converting them to integers.", "See Convert To Integer for information how to convert integers from other bases than 10 using base argument or 0b/0o/0x prefixes.", "See Should Be Equal for an explanation on how to override the default error message with msg and values.", "Arguments:", "", "result_format:"],
+
+	'Should Not Be Equal As Numbers' : ["Fails if objects are equal after converting them to real numbers.", "The conversion is done with Convert To Number keyword using the given precision.", "See Should Be Equal As Numbers for examples on how to use precision and why it does not always work as expected. See also Should Be Equal for an explanation on how to override the default error message with msg and values.", "Arguments:", "", "result_format:"],
+
+	'Should Not Be Equal As Strings' : ["Fails if objects are equal after converting them to strings.", "See Should Be Equal for an explanation on how to override the default error message with msg and values.", "If ignore_case is given a true value (see Boolean arguments), comparison is done case-insensitively.","Strings are always NFC normalized.", "ignore_case is a new feature in Robot Framework 3.0.1.", "Arguments:", "", "result_format:"],
+
+	'Should Not Be True' : ["Fails if the given condition is true.", "See Should Be True for details about how condition is evaluated and how msg can be used to override the default error message.", "Arguments:", "", "result_format:"],
+
+	'Should Not Contain' : ["Fails if container contains item one or more times.", "Works with strings, lists, and anything that supports Python's in operator.", "See Should Be Equal for an explanation on how to override the default error message with arguments msg and values. ignore_case has exactly the same semantics as with Should Contain.", "Arguments:", "", "result_format:"],
+
+	'Should Not Contain Any' : ["Fails if container contains one or more of the *items.", "Works with strings, lists, and anything that supports Python's in operator.", "Supports additional configuration parameters msg, values and ignore_case, which have exactly the same semantics as arguments with same names have with Should Contain. These arguments must always be given using name=value syntax after all items.",  "Arguments:", "", "result_format:"],
+
+	'Should Not End With' : ["Fails if the string str1 ends with the string str2.", "See Should Be Equal for an explanation on how to override the default error message with msg and values, as well as for semantics of the ignore_case option.", "Arguments:", "", "result_format:"],
+
+	'Should Not Match' : ["Fails if the given string matches the given pattern.", "Pattern matching is similar as matching files in a shell with *, ? and [chars] acting as wildcards. See the Glob patterns section for more information.", "Arguments:", "", "result_format:"],
+
+	'Should Not Match Regexp' : ["Fails if string matches pattern as a regular expression.", "See Should Match Regexp for more information about arguments.", "Arguments:", "", "result_format:"],
+
+	'Should Not Start With' : ["Fails if the string str1 starts with the string str2.", "See Should Be Equal for an explanation on how to override the default error message with msg and values, as well as for semantics of the ignore_case option.", "Arguments:", "", "result_format:"],
+
+	'Should Start With' : ["Fails if the string str1 does not start with the string str2.", "See Should Be Equal for an explanation on how to override the default error message with msg and values, as well as for semantics of the ignore_case option.", "Arguments:", "", "result_format:"],
+
+	'Sleep' : ["Pauses the test executed for the given time.","time may be either a number or a time string. Time strings are in a format such as 1 day 2 hours 3 minutes 4 seconds 5milliseconds or 1d 2h 3m 4s 5ms, and they are fully explained in an appendix of Robot Framework User Guide. Optional reason can be used to explain why sleeping is necessary. Both the time slept and the reason are logged.", "Arguments:", "", "result_format:"],
+
+	'Variable Should Not Exist' : ["Fails if the given variable exists within the current scope.", "The name of the variable can be given either as a normal variable name (e.g. ${NAME}) or in escaped format (e.g. \${NAME}). Notice that the former has some limitations explained in Set Suite Variable.", "Arguments:", "", "result_format:"],
+
+	'Wait Until Keyword Succeeds' : ["Runs the specified keyword and retries if it fails.", "name and args define the keyword that is executed similarly as with Run Keyword. How long to retry running the keyword is defined using retry argument either as timeout or count. retry_interval is the time to wait before trying to run the keyword again after the previous run has failed.", "If retry is given as timeout, it must be in Robot Framework's time format (e.g. 1 minute, 2 min 3 s, 4.5) that is explained in an appendix of Robot Framework User Guide. If it is given as count, it must have times or x postfix (e.g. 5 times, 10 x). retry_interval must always be given in Robot Framework's time format.", "Arguments:", "", "result_format:"],
+
+	}
+
