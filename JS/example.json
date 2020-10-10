@@ -1,98 +1,355 @@
 example = {
+
+	'Call Method' : [['Call Method', '${hashtable}', 'put', 'myname', 'myvalue'], ['${isempty} =', 'Call Method', '${hashtable}', 'isEmpty', ''], ['Should Not Be True', '${isempty}', '', '', ''], ['${value} =', 'Call Method', '${hashtable}', 'get', 'myname'], ['Should Be Equal', '${value}', 'myvalue', '', ''], ['Call Method', '${object}', 'kwargs', 'name=value', 'foo=bar'], ['Call Method', '${object}', 'positional', 'escaped=equals', '']],
+
+	'Catenate' : [['${str1} =', 'Catenate', 'Hello', 'world', ''], ['${str2} =', 'Catenate', 'SEPARATOR=---', 'Hello', 'world'], ['${str3} =', 'Catenate', 'SEPARATOR=', 'Hello', 'world']],
+
+	'Continue For Loop' : [['FOR', '${var}', 'IN', '@{VALUES}'], ['', 'Run Keyword If', "'${var}' == 'CONTINUE'", 'Continue For Loop'], ['', 'Do Something', '${var}', ''], ['END', '', '', '']],
+
+	'Continue For Loop If' : [['FOR', '${var}', 'IN', '@{VALUES}'], ['', 'Continue For Loop If', "'${var}' == 'CONTINUE'", ''], ['', 'Do Something', '${var}', ''], ['END', '', '', '']],
+
+	'Convert To Binary' : [['${result} =', 'Convert To Binary', '10', '', '', '# Result is 1010'], ['${result} =', 'Convert To Binary', 'F', 'base=16', 'prefix=0b', '# Result is 0b1111'], ['${result} =', 'Convert To Binary', '-2', 'prefix=B', 'length=4', '# Result is -B0010']],
+
+	'Convert To Bytes' : [['${bytes} =', 'Convert To Bytes', 'hyvä', '', '# hyvxe4'], ['${bytes} =', 'Convert To Bytes', 'xffx07', '', '# xffx07'], ['${bytes} =', 'Convert To Bytes', '82 70', 'int', '# RF'], ['${bytes} =', 'Convert To Bytes', '0b10 0x10', 'int', '# x02x10'], ['${bytes} =', 'Convert To Bytes', 'ff 00 07', 'hex', '# xffx00x07'], ['${bytes} =', 'Convert To Bytes', '5246212121', 'hex', '# RF!!!'], ['${bytes} =', 'Convert To Bytes', '0000 1000', 'bin', '# x08'], ['${input} =', 'Create List', '1', '2', '12'], ['${bytes} =', 'Convert To Bytes', '${input}', 'int', '# x01x02x0c'], ['${bytes} =', 'Convert To Bytes', '${input}', 'hex', '# x01x02x12']],
+
+	'Convert To Hex' : [['${result} =', 'Convert To Hex', '255', '', '', '# Result is FF'], ['${result} =', 'Convert To Hex', '-10', 'prefix=0x', 'length=2', '# Result is -0x0A'], ['${result} =', 'Convert To Hex', '255', 'prefix=X', 'lowercase=yes', '# Result is Xff']],
+
+	'Convert To Integer' : [['${result} =', 'Convert To Integer', '100', '', '# Result is 100'], ['${result} =', 'Convert To Integer', 'FF AA', '16', '# Result is 65450'], ['${result} =', 'Convert To Integer', '100', '8', '# Result is 64'], ['${result} =', 'Convert To Integer', '-100', '2', '# Result is -4'], ['${result} =', 'Convert To Integer', '0b100', '', '# Result is 4'], ['${result} =', 'Convert To Integer', '-0x100', '', '# Result is -256']],
+
+	'Convert To Number' : [['${result} =', 'Convert To Number', '42.512', '', '# Result is 42.512'], ['${result} =', 'Convert To Number', '42.512', '1', '# Result is 42.5'], ['${result} =', 'Convert To Number', '42.512', '0', '# Result is 43.0'], ['${result} =', 'Convert To Number', '42.512', '-1', '# Result is 40.0']],
+
+	'Convert To Octal' : [['${result} =', 'Convert To Octal', '10', '', '', '# Result is 12'], ['${result} =', 'Convert To Octal', '-F', 'base=16', 'prefix=0', '# Result is -017'], ['${result} =', 'Convert To Octal', '16', 'prefix=oct', 'length=4', '# Result is oct0020']],
+
+	'Create Dictionary' : [['&amp;{dict} =', 'Create Dictionary', 'key=value', 'foo=bar', '', '', '# key=value syntax'], ['Should Be True', "${dict} == {'key': 'value', 'foo': 'bar'}", '', '', '', '', ''], ['&amp;{dict2} =', 'Create Dictionary', 'key', 'value', 'foo', 'bar', '# separate key and value'], ['Should Be Equal', '${dict}', '${dict2}', '', '', '', ''], ['&amp;{dict} =', 'Create Dictionary', '${1}=${2}', '&amp;{dict}', 'foo=new', '', '# using variables'], ['Should Be True', "${dict} == {1: 2, 'key': 'value', 'foo': 'new'}", '', '', '', '', ''], ['Should Be Equal', '${dict.key}', 'value', '', '', '', '# dot-access']],
+
+	'Create List' : [['@{list} =', 'Create List', 'a', 'b', 'c'], ['${scalar} =', 'Create List', 'a', 'b', 'c'], ['${ints} =', 'Create List', '${1}', '${2}', '${3}']],
+
+	'Evaluate' : [['${status} =', 'Evaluate', '0 &lt; ${result} &lt; 10', "# Would also work with string '3.14'"], ['${status} =', 'Evaluate', '0 &lt; $result &lt; 10', '# Using variable itself, not string representation'], ['${random} =', 'Evaluate', 'random.randint(0, sys.maxsize)', ''], ['${options} =', 'Evaluate', 'selenium.webdriver.ChromeOptions()', 'modules=selenium.webdriver'], ['${ns} =', 'Create Dictionary', 'x=${4}', 'y=${2}'], ['${result} =', 'Evaluate', 'x*10 + y', 'namespace=${ns}']],
+
+	'Exit For Loop' : [['FOR', '${var}', 'IN', '@{VALUES}'], ['', 'Run Keyword If', "'${var}' == 'EXIT'", 'Exit For Loop'], ['', 'Do Something', '${var}', ''], ['END', '', '', '']],
+
+	'Exit For Loop If' : [['FOR', '${var}', 'IN', '@{VALUES}'], ['', 'Exit For Loop If', "'${var}' == 'EXIT'", ''], ['', 'Do Something', '${var}', ''], ['END', '', '', '']],
+
+	'Fail' : [['Fail', 'Test not ready', '', '', '# Fails with the given message.'], ['Fail', '*HTML*&lt;b&gt;Test not ready&lt;/b&gt;', '', '', '# Fails using HTML in the message.'], ['Fail', 'Test not ready', 'not-ready', '', "# Fails and adds 'not-ready' tag."], ['Fail', 'OS not supported', '-regression', '', "# Removes tag 'regression'."], ['Fail', 'My message', 'tag', '-t*', "# Removes all tags starting with 't' except the newly added 'tag'."]],
+
+	'Get Count' : [['${count} =', 'Get Count', '${some item}', 'interesting value'], ['Should Be True', '5 &lt; ${count} &lt; 10', '', '']],
+
+	'Get Length' : [['${length} =', 'Get Length', 'Hello, world!', ''], ['Should Be Equal As Integers', '${length}', '13', ''], ['@{list} =', 'Create List', 'Hello,', 'world!'], ['${length} =', 'Get Length', '${list}', ''], ['Should Be Equal As Integers', '${length}', '2', '']],
+
+	'Get Library Instance' : [['&amp;{all libs} =', 'Get library instance', 'all=True']],
+
+	'Get Time' : [['${time} =', 'Get Time', '', '', ''], ['${secs} =', 'Get Time', 'epoch', '', ''], ['${year} =', 'Get Time', 'return year', '', ''], ['${yyyy}', '${mm}', '${dd} =', 'Get Time', 'year,month,day'], ['@{time} =', 'Get Time', 'year month day hour min sec', '', ''], ['${y}', '${s} =', 'Get Time', 'seconds and year', '']],
+
+	'Get Variable Value' : [['${x} =', 'Get Variable Value', '${a}', 'default'], ['${y} =', 'Get Variable Value', '${a}', '${b}'], ['${z} =', 'Get Variable Value', '${z}', '']],
+
+	'Get Variables' : [['${example_variable} =', 'Set Variable', 'example value', ''], ['${variables} =', 'Get Variables', '', ''], ['Dictionary Should Contain Key', '${variables}', '${example_variable}', ''], ['Dictionary Should Contain Key', '${variables}', '${ExampleVariable}', ''], ['Set To Dictionary', '${variables}', '${name}', 'value'], ['Variable Should Not Exist', '${name}', '', ''], ['${no decoration} =', 'Get Variables', 'no_decoration=Yes', ''], ['Dictionary Should Contain Key', '${no decoration}', 'example_variable', '']],
+
+	'Import Library' : [['Import Library', 'MyLibrary', '', '', ''], ['Import Library', '${CURDIR}/../Library.py', 'arg1', 'named=arg2', ''], ['Import Library', '${LIBRARIES}/Lib.java', 'arg', 'WITH NAME', 'JavaLib']],
+
+	'Import Resource' : [['Import Resource', '${CURDIR}/resource.txt'], ['Import Resource', '${CURDIR}/../resources/resource.html'], ['Import Resource', 'found_from_pythonpath.robot']],
+
+	'Import Variables' : [['Import Variables', '${CURDIR}/variables.py', '', ''], ['Import Variables', '${CURDIR}/../vars/env.py', 'arg1', 'arg2'], ['Import Variables', 'file_from_pythonpath.py', '', '']],
+
+	'Log' : [['Log', 'Hello, world!', '', '', '# Normal INFO message.'], ['Log', 'Warning, world!', 'WARN', '', '# Warning.'], ['Log', '&lt;b&gt;Hello&lt;/b&gt;, world!', 'html=yes', '', '# INFO message as HTML.'], ['Log', '&lt;b&gt;Hello&lt;/b&gt;, world!', 'HTML', '', '# Same as above.'], ['Log', '&lt;b&gt;Hello&lt;/b&gt;, world!', 'DEBUG', 'html=true', '# DEBUG as HTML.'], ['Log', 'Hello, console!', 'console=yes', '', '# Log also to the console.'], ['Log', 'Null is x00', 'formatter=repr', '', "# Log 'Null is x00'."]],
+
+	'Log Many' : [['Log Many', 'Hello', '${var}'], ['Log Many', '@{list}', '&amp;{dict}']],
+
+	'Log To Console' : [['Log To Console', 'Hello, console!', ''], ['Log To Console', 'Hello, stderr!', 'STDERR'], ['Log To Console', 'Message starts here and is', 'no_newline=true'], ['Log To Console', 'continued without newline.', '']],
+
+	'Pass Execution' : [['Pass Execution', 'All features available in this version tested.', '', ''], ['Pass Execution', 'Deprecated test.', 'deprecated', '-regression']],
+
+	'Pass Execution If' : [['FOR', '${var}', 'IN', '@{VALUES}'], ['', 'Pass Execution If', "'${var}' == 'EXPECTED'", 'Correct value was found'], ['', 'Do Something', '${var}', ''], ['END', '', '', '']],
+
+	'Regexp Escape' : [['${escaped} =', 'Regexp Escape', '${original}'], ['@{strings} =', 'Regexp Escape', '@{strings}']],
+
+	'Remove Tags' : [['Remove Tags', 'mytag', 'something-*', '?ython']],
+
+	'Repeat Keyword' : [['Repeat Keyword', '5 times', 'Go to Previous Page', '', ''], ['Repeat Keyword', '${var}', 'Some Keyword', 'arg1', 'arg2'], ['Repeat Keyword', '2 minutes', 'Some Keyword', 'arg1', 'arg2']],
+
+	'Replace Variables' : [['${template} =', 'Get File', '${CURDIR}/template.txt'], ['${message} =', 'Replace Variables', '${template}'], ['Should Be Equal', '${message}', 'Hello Robot!']],
+
+	'Return From Keyword' : [['Run Keyword If', '${rc} &lt; 0', 'Return From Keyword'], ['Run Keyword If Test Passed', 'Return From Keyword', '']],
+
+	'Run Keyword And Continue On Failure' : [['Run Keyword And Continue On Failure', 'Fail', 'This is a stupid example'], ['Log', 'This keyword is executed', '']],
+
+	'Run Keyword And Expect Error' : [[], ['EQUALS', 'Exact match. Especially useful if the error contains glob wildcards.'], ['STARTS', 'Error must start with the specified error.'], ['REGEXP', 'Regular expression match.'], ['GLOB', 'Same as the default behavior.']],
+
+	'Run Keyword And Return' : [['Run Keyword And Return', 'My Keyword', 'arg1', 'arg2'], ['# Above is equivalent to:', '', '', ''], ['${result} =', 'My Keyword', 'arg1', 'arg2'], ['Return From Keyword', '${result}', '', '']],
+
+	'Run Keyword And Return If' : [['Run Keyword And Return If', '${rc} &gt; 0', 'My Keyword', 'arg1', 'arg2', ''], ['# Above is equivalent to:', '', '', '', '', ''], ['Run Keyword If', '${rc} &gt; 0', 'Run Keyword And Return', 'My Keyword ', 'arg1', 'arg2']],
+
+	'Run Keyword And Return Status' : [['${passed} =', 'Run Keyword And Return Status', 'Keyword', 'args'], ['Run Keyword If', '${passed}', 'Another keyword', '']],
+
+	'Run Keyword If' : [['${status}', '${value} =', 'Run Keyword And Ignore Error', 'My Keyword'], ['Run Keyword If', "'${status}' == 'PASS'", 'Some Action', 'arg'], ['Run Keyword Unless', "'${status}' == 'PASS'", 'Another Action', '']],
+
+	'Run Keywords' : [['Run Keywords', 'Initialize database', 'Start servers', 'Clear logs'], ['Run Keywords', '${KW 1}', '${KW 2}', ''], ['Run Keywords', '@{KEYWORDS}', '', '']],
+
+	'Set Library Search Order' : [['MyLibrary.Keyword', 'arg'], ['MyLibrary.Another Keyword', ''], ['MyLibrary.Keyword', 'xxx']],
+
+	'Set Local Variable' : [['@{list} =', 'Create List', 'item1', 'item2', 'item3']],
+
+	'Set Suite Variable' : [['Set Suite Variable', '${SCALAR}', 'Hello, world!', ''], ['Set Suite Variable', '${SCALAR}', 'Hello, world!', 'children=true'], ['Set Suite Variable', '@{LIST}', 'First item', 'Second item'], ['Set Suite Variable', '&amp;{DICT}', 'key=value', 'foo=bar'], ['${ID} =', 'Get ID', '', ''], ['Set Suite Variable', '${ID}', '', '']],
+
+	'Set Test Message' : [['Set Test Message', 'My message', ''], ['Set Test Message', 'is continued.', 'append=yes'], ['Should Be Equal', '${TEST MESSAGE}', 'My message is continued.'], ['Set Test Message', '*HTML* &lt;b&gt;Hello!&lt;/b&gt;', '']],
+
+	'Set Variable' : [['${hi} =', 'Set Variable', 'Hello, world!', '', ''], ['${hi2} =', 'Set Variable', 'I said: ${hi}', '', ''], ['${var1}', '${var2} =', 'Set Variable', 'Hello', 'world'], ['@{list} =', 'Set Variable', '${list with some items}', '', ''], ['${item1}', '${item2} =', 'Set Variable', '${list with 2 items}', '']],
+
+	'Set Variable If' : [['${var1} =', 'Set Variable If', '${rc} == 0', 'zero', 'nonzero'], ['${var2} =', 'Set Variable If', '${rc} &gt; 0', 'value1', 'value2'], ['${var3} =', 'Set Variable If', '${rc} &gt; 0', 'whatever', '']],
+
+	'Should Be Equal' : [['Should Be Equal', '${x}', 'expected', '', ''], ['Should Be Equal', '${x}', 'expected', 'Custom error message', ''], ['Should Be Equal', '${x}', 'expected', 'Custom message', 'values=False'], ['Should Be Equal', '${x}', 'expected', 'ignore_case=True', 'formatter=repr']],
+
+	'Should Be Equal As Integers' : [['Should Be Equal As Integers', '42', '${42}', 'Error message'], ['Should Be Equal As Integers', 'ABCD', 'abcd', 'base=16'], ['Should Be Equal As Integers', '0b1011', '11', '']],
+
+	'Should Be Equal As Numbers' : [['Should Be Equal As Numbers', '${x}', '1.1', '', '# Passes if ${x} is 1.1'], ['Should Be Equal As Numbers', '1.123', '1.1', 'precision=1', '# Passes'], ['Should Be Equal As Numbers', '1.123', '1.4', 'precision=0', '# Passes'], ['Should Be Equal As Numbers', '112.3', '75', 'precision=-2', '# Passes']],
+
+	'Should Be True' : [['Should Be True', '${rc} &lt; 10', ''], ['Should Be True', "'${status}' == 'PASS'", '# Strings must be quoted'], ['Should Be True', '${number}', '# Passes if ${number} is not zero'], ['Should Be True', '${list}', '# Passes if ${list} is not empty']],
+
+	'Should Contain' : [['Should Contain', '${output}', 'PASS', '', ''], ['Should Contain', '${some list}', 'value', 'msg=Failure!', 'values=False'], ['Should Contain', '${some list}', 'value', 'ignore_case=True', '']],
+
+	'Should Contain Any' : [['Should Contain Any', '${string}', 'substring 1', 'substring 2', '', ''], ['Should Contain Any', '${list}', 'item 1', 'item 2', 'item 3', ''], ['Should Contain Any', '${list}', 'item 1', 'item 2', 'item 3', 'ignore_case=True'], ['Should Contain Any', '${list}', '@{items}', 'msg=Custom message', 'values=False', '']],
+
+	'Should Contain X Times' : [['Should Contain X Times', '${output}', 'hello', '2', ''], ['Should Contain X Times', '${some list}', 'value', '3', 'ignore_case=True']],
+
+	'Should Match Regexp' : [['Should Match Regexp', '${output}', 'd{6}', '# Output contains six numbers'], ['Should Match Regexp', '${output}', '^d{6}$', '# Six numbers and nothing more'], ['${ret} =', 'Should Match Regexp', 'Foo: 42', '(?i)foo: d+'], ['${match}', '${group1}', '${group2} =', ''], ['...', 'Should Match Regexp', 'Bar: 43', '(Foo|Bar): (d+)']],
+
+	'Should Not Contain' : [['Should Not Contain', '${some list}', 'value', ''], ['Should Not Contain', '${output}', 'FAILED', 'ignore_case=True']],
+
+	'Should Not Contain Any' : [['Should Not Contain Any', '${string}', 'substring 1', 'substring 2', '', ''], ['Should Not Contain Any', '${list}', 'item 1', 'item 2', 'item 3', ''], ['Should Not Contain Any', '${list}', 'item 1', 'item 2', 'item 3', 'ignore_case=True'], ['Should Not Contain Any', '${list}', '@{items}', 'msg=Custom message', 'values=False', '']],
+
+	'Sleep' : [['Sleep', '42', ''], ['Sleep', '1.5', ''], ['Sleep', '2 minutes 10 seconds', ''], ['Sleep', '10s', 'Wait for a reply']],
+
+	'Wait Until Keyword Succeeds' : [['Wait Until Keyword Succeeds', '2 min', '5 sec', 'My keyword', 'argument'], ['${result} =', 'Wait Until Keyword Succeeds', '3x', '200ms', 'My keyword']],
 	
-	'Add Time To Date' : [["Variable/Keyword","Variable/Keyword", "Value", "Value"], ["${date} =", "Add Time To Date", "2014-05-28 12:05:03.111", "7 days"], ["Should Be Equal",	"${date}",	"2014-06-04 12:05:03.111"], ["${date} =	", "Add Time To Date",	"2014-05-28 12:05:03.111",	"01:02:03:004"], ["Should Be Equal",	"${date}",	"2014-05-28 13:07:06.115"]],
+	'Append To List' : [['Append To List', '${L1}', 'xxx', '', ''], ['Append To List', '${L2}', 'x', 'y', 'z']],
+
+	'Combine Lists' : [['${x} =', 'Combine Lists', '${L1}', '${L2}', ''], ['${y} =', 'Combine Lists', '${L1}', '${L2}', '${L1}']],
+
+	'Count Values In List' : [['${x} =', 'Count Values In List', '${L3}', 'b']],
+
+	'Get Dictionary Items' : [['${sorted} =', 'Get Dictionary Items', '${D3}', ''], ['${unsorted} =', 'Get Dictionary Items', '${D3}', 'sort_keys=False']],
+
+	'Get Dictionary Keys' : [['${sorted} =', 'Get Dictionary Keys', '${D3}', ''], ['${unsorted} =', 'Get Dictionary Keys', '${D3}', 'sort_keys=False']],
+
+	'Get Dictionary Values' : [['${sorted} =', 'Get Dictionary Values', '${D3}', ''], ['${unsorted} =', 'Get Dictionary Values', '${D3}', 'sort_keys=False']],
+
+	'Get From Dictionary' : [['${value} =', 'Get From Dictionary', '${D3}', 'b']],
+
+	'Get From List' : [['${x} =', 'Get From List', '${L5}', '0', '# L5[0]'], ['${y} =', 'Get From List', '${L5}', '-2', '# L5[-2]']],
+
+	'Get Index From List' : [['${x} =', 'Get Index From List', '${L5}', 'd']],
+
+	'Get Match Count' : [['${count}=', 'Get Match Count', '${list}', 'a*', "# ${count} will be the count of strings beginning with 'a'", ''], ['${count}=', 'Get Match Count', '${list}', 'regexp=a.*', "# ${matches} will be the count of strings beginning with 'a' (regexp version)", ''], ['${count}=', 'Get Match Count', '${list}', 'a*', 'case_insensitive=${True}', "# ${matches} will be the count of strings beginning with 'a' or 'A'"]],
+
+	'Get Matches' : [['${matches}=', 'Get Matches', '${list}', 'a*', "# ${matches} will contain any string beginning with 'a'", ''], ['${matches}=', 'Get Matches', '${list}', 'regexp=a.*', "# ${matches} will contain any string beginning with 'a' (regexp version)", ''], ['${matches}=', 'Get Matches', '${list}', 'a*', 'case_insensitive=${True}', "# ${matches} will contain any string beginning with 'a' or 'A'"]],
+
+	'Get Slice From List' : [['${x} =', 'Get Slice From List', '${L5}', '2', '4', '# L5[2:4]'], ['${y} =', 'Get Slice From List', '${L5}', '1', '', '# L5[1:None]'], ['${z} =', 'Get Slice From List', '${L5}', 'end=-2', '', '# L5[0:-2]']],
+
+	'Insert Into List' : [['Insert Into List', '${L1}', '0', 'xxx'], ['Insert Into List', '${L2}', '${-1}', 'xxx']],
+
+	'Keep In Dictionary' : [['Keep In Dictionary', '${D5}', 'b', 'x', 'd']],
+
+	'Lists Should Be Equal' : [['${names} =', 'Create List', 'First Name', 'Family Name', 'Email'], ['Lists Should Be Equal', '${people1}', '${people2}', 'names=${names}', ''], ['${names} =', 'Create Dictionary', '0=First Name', '2=Email', ''], ['Lists Should Be Equal', '${people1}', '${people2}', 'names=${names}', '']],
+
+	'Pop From Dictionary' : [['${val}=', 'Pop From Dictionary', '${D3}', 'b']],
+
+	'Remove From Dictionary' : [['Remove From Dictionary', '${D3}', 'b', 'x', 'y']],
+
+	'Remove From List' : [['${x} =', 'Remove From List', '${L2}', '0']],
+
+	'Remove Values From List' : [['Remove Values From List', '${L4}', 'a', 'c', 'e', 'f']],
+
+	'Reverse List' : [['Reverse List', '${L3}']],
+
+	'Set List Value' : [['Set List Value', '${L3}', '1', 'xxx'], ['Set List Value', '${L3}', '-1', 'yyy']],
+
+	'Set To Dictionary' : [['Set To Dictionary', '${D1}', 'key', 'value', 'second', '${2}']],
+
+	'Should Contain Match' : [['Should Contain Match', '${list}', 'a*', '', '', "# Match strings beginning with 'a'."], ['Should Contain Match', '${list}', 'regexp=a.*', '', '', '# Same as the above but with regexp.'], ['Should Contain Match', '${list}', 'regexp=d{6}', '', '', '# Match strings containing six digits.'], ['Should Contain Match', '${list}', 'a*', 'case_insensitive=True', '', "# Match strings beginning with 'a' or 'A'."], ['Should Contain Match', '${list}', 'ab*', 'whitespace_insensitive=yes', '', "# Match strings beginning with 'ab' with possible whitespace ignored."], ['Should Contain Match', '${list}', 'ab*', 'whitespace_insensitive=true', 'case_insensitive=true', '# Same as the above but also ignore case.']],
 	
-	'Add Time To Time' : [["Variable/Keyword","Variable/Keyword", "Value", "Value", "Optional Parameter", "Optional Parameter"], ["${time} =	", "Add Time To Time",	"1 minute",	"42"], ["Should Be Equal",	"${time}",	"${102}"], ["${time} =", "Add Time To Time",	"3 hours 5 minutes	01:02:03",	"timer","exclude_millis=yes"], ["Should Be Equal",	"${time}",	"04:07:03"]],
+	'Add Time To Date' : [['${date} =', 'Add Time To Date', '2014-05-28 12:05:03.111', '7 days'], ['Should Be Equal', '${date}', '2014-06-04 12:05:03.111', ''], ['${date} =', 'Add Time To Date', '2014-05-28 12:05:03.111', '01:02:03:004'], ['Should Be Equal', '${date}', '2014-05-28 13:07:06.115', '']],
+
+	'Add Time To Time' : [['${time} =', 'Add Time To Time', '1 minute', '42', '', ''], ['Should Be Equal', '${time}', '${102}', '', '', ''], ['${time} =', 'Add Time To Time', '3 hours 5 minutes', '01:02:03', 'timer', 'exclude_millis=yes'], ['Should Be Equal', '${time}', '04:07:03', '', '', '']],
+
+	'Convert Date' : [['${date} =', 'Convert Date', '20140528 12:05:03.111', '', ''], ['Should Be Equal', '${date}', '2014-05-28 12:05:03.111', '', ''], ['${date} =', 'Convert Date', '${date}', 'epoch', ''], ['Should Be Equal', '${date}', '${1401267903.111}', '', ''], ['${date} =', 'Convert Date', '5.28.2014 12:05', 'exclude_millis=yes', 'date_format=%m.%d.%Y %H:%M'], ['Should Be Equal', '${date}', '2014-05-28 12:05:00', '', '']],
+
+	'Convert Time' : [['${time} =', 'Convert Time', '10 seconds', '', ''], ['Should Be Equal', '${time}', '${10}', '', ''], ['${time} =', 'Convert Time', '1:00:01', 'verbose', ''], ['Should Be Equal', '${time}', '1 hour 1 second', '', ''], ['${time} =', 'Convert Time', '${3661.5}', 'timer', 'exclude_milles=yes'], ['Should Be Equal', '${time}', '01:01:02', '', '']],
+
+	'Get Current Date' : [['${date} =', 'Get Current Date', '', ''], ['Should Be Equal', '${date}', '2014-06-12 20:00:58.946', ''], ['${date} =', 'Get Current Date', 'UTC', ''], ['Should Be Equal', '${date}', '2014-06-12 17:00:58.946', ''], ['${date} =', 'Get Current Date', 'increment=02:30:00', ''], ['Should Be Equal', '${date}', '2014-06-12 22:30:58.946', ''], ['${date} =', 'Get Current Date', 'UTC', '- 5 hours'], ['Should Be Equal', '${date}', '2014-06-12 12:00:58.946', ''], ['${date} =', 'Get Current Date', 'result_format=datetime', ''], ['Should Be Equal', '${date.year}', '${2014}', ''], ['Should Be Equal', '${date.month}', '${6}', '']],
+
+	'Subtract Date From Date' : [['${time} =', 'Subtract Date From Date', '2014-05-28 12:05:52', '2014-05-28 12:05:10', ''], ['Should Be Equal', '${time}', '${42}', '', ''], ['${time} =', 'Subtract Date From Date', '2014-05-28 12:05:52', '2014-05-27 12:05:10', 'verbose'], ['Should Be Equal', '${time}', '1 day 42 seconds', '', '']],
+
+	'Subtract Time From Date' : [['${date} =', 'Subtract Time From Date', '2014-06-04 12:05:03.111', '7 days'], ['Should Be Equal', '${date}', '2014-05-28 12:05:03.111', ''], ['${date} =', 'Subtract Time From Date', '2014-05-28 13:07:06.115', '01:02:03:004'], ['Should Be Equal', '${date}', '2014-05-28 12:05:03.111', '']],
+
+	'Subtract Time From Time' : [['${time} =', 'Subtract Time From Time', '00:02:30', '100', ''], ['Should Be Equal', '${time}', '${50}', '', ''], ['${time} =', 'Subtract Time From Time', '${time}', '1 minute', 'compact'], ['Should Be Equal', '${time}', '- 10s', '', '']],
 	
-	'Append To List' : [["Keyword","Variable", "Value", "Value optional", "Value optional"], ["Append To List",	"${L1}",	"xxx"], ["Append To List",	"${L2}",	"x",	"y",	"z"]],
+	'Get Selection From User' : [['${user} =', 'Get Selection From User', 'Select user', 'user1', 'user2', 'admin']],
+
+	'Get Selections From User' : [['${users} =', 'Get Selections From User', 'Select users', 'user1', 'user2', 'admin']],
+
+	'Get Value From User' : [['${username} =', 'Get Value From User', 'Input user name', 'default'], ['${password} =', 'Get Value From User', 'Input password', 'hidden=yes']],
 	
-	'Call Method' : [["Variable/Keyword","Variable/Keyword", "variable/Value", "Value", "Value"], ["Call Method",	"${hashtable}",	"put",	"myname",	"myvalue"], ["${isempty} =",	"Call Method",	"${hashtable}",	"isEmpty"], ["Should Not Be True",	"${isempty}"], ["${value} =",	"Call Method",	"${hashtable}",	"get",	"myname"], ["Should Be Equal",	"${value}",	"myvalue"], ["Call Method",	"${object}",	"kwargs",	"name=value",	"foo=bar"], ["Call Method",	"${object}",	"positional",	"escaped=equals"]],
+	'Append To Environment Variable' : [['Append To Environment Variable', 'NAME', 'first', ''], ['Should Be Equal', '%{NAME}', 'first', ''], ['Append To Environment Variable', 'NAME', 'second', 'third'], ['Should Be Equal', '%{NAME}', 'first${:}second${:}third', ''], ['Append To Environment Variable', 'NAME2', 'first', 'separator=-'], ['Should Be Equal', '%{NAME2}', 'first', ''], ['Append To Environment Variable', 'NAME2', 'second', 'separator=-'], ['Should Be Equal', '%{NAME2}', 'first-second', '']],
+
+	'Copy Files' : [['Copy Files', '${dir}/file1.txt', '${dir}/file2.txt', '${dir2}'], ['Copy Files', '${dir}/file-*.txt', '${dir2}', '']],
+
+	'Create Binary File' : [['Create Binary File', '${dir}/example.png', '${image content}'], ['Create Binary File', '${path}', 'x01x00xe4x00']],
+
+	'Create File' : [['Create File', '${dir}/example.txt', 'Hello, world!', ''], ['Create File', '${path}', 'Hyvxe4 esimerkki', 'Latin-1'], ['Create File', '/tmp/foo.txt', '3nlinesnheren', 'SYSTEM']],
+
+	'Get Modified Time' : [['${time} =', 'Get Modified Time', '${CURDIR}', '', ''], ['${secs} =', 'Get Modified Time', '${CURDIR}', 'epoch', ''], ['${year} =', 'Get Modified Time', '${CURDIR}', 'return year', ''], ['${y}', '${d} =', 'Get Modified Time', '${CURDIR}', 'year,day'], ['@{time} =', 'Get Modified Time', '${CURDIR}', 'year,month,day,hour,min,sec', '']],
+
+	'Grep File' : [['${errors} =', 'Grep File', '/var/log/myapp.log', 'ERROR'], ['${ret} =', 'Grep File', '${CURDIR}/file.txt', '[Ww]ildc??d ex*ple']],
+
+	'Join Path' : [['${path} =', 'Join Path', 'my', 'path', '', ''], ['${p2} =', 'Join Path', 'my/', 'path/', '', ''], ['${p3} =', 'Join Path', 'my', 'path', 'my', 'file.txt'], ['${p4} =', 'Join Path', 'my', '/path', '', ''], ['${p5} =', 'Join Path', '/my/path/', '..', 'path2', '']],
+
+	'Join Paths' : [['@{p1} =', 'Join Paths', 'base', 'example', 'other', ''], ['@{p2} =', 'Join Paths', '/my/base', '/example', 'other', ''], ['@{p3} =', 'Join Paths', 'my/base', 'example/path/', 'other', 'one/more']],
+
+	'List Directory' : [['@{items} =', 'List Directory', '${TEMPDIR}', '', ''], ['@{files} =', 'List Files In Directory', '/tmp', '*.txt', 'absolute'], ['${count} =', 'Count Files In Directory', '${CURDIR}', '???', '']],
+
+	'Normalize Path' : [['${path1} =', 'Normalize Path', 'abc/'], ['${path2} =', 'Normalize Path', 'abc/../def'], ['${path3} =', 'Normalize Path', 'abc/./def//ghi'], ['${path4} =', 'Normalize Path', '~robot/stuff']],
+
+	'Remove Files' : [['Remove Files', '${TEMPDIR}${/}foo.txt', '${TEMPDIR}${/}bar.txt', '${TEMPDIR}${/}zap.txt']],
+
+	'Run' : [['${output} =', 'Run', 'ls -lhF /tmp'], ['Log', '${output}', ''], ['${result} =', 'Run', '${CURDIR}${/}tester.py arg1 arg2'], ['Should Not Contain', '${result}', 'FAIL'], ['${stdout} =', 'Run', '/opt/script.sh 2&gt;/tmp/stderr.txt'], ['Should Be Equal', '${stdout}', 'TEST PASSED'], ['File Should Be Empty', '/tmp/stderr.txt', '']],
+
+	'Run And Return Rc' : [['${rc} =', 'Run and Return RC', '${CURDIR}${/}script.py arg'], ['Should Be Equal As Integers', '${rc}', '0'], ['${rc} =', 'Run and Return RC', '/path/to/example.rb arg1 arg2'], ['Should Be True', '0 &lt; ${rc} &lt; 42', '']],
+
+	'Run And Return Rc And Output' : [['${rc}', '${output} =', 'Run and Return RC and Output', '${CURDIR}${/}mytool'], ['Should Be Equal As Integers', '${rc}', '0', ''], ['Should Not Contain', '${output}', 'FAIL', ''], ['${rc}', '${stdout} =', 'Run and Return RC and Output', '/opt/script.sh 2&gt;/tmp/stderr.txt'], ['Should Be True', '${rc} &gt; 42', '', ''], ['Should Be Equal', '${stdout}', 'TEST PASSED', ''], ['File Should Be Empty', '/tmp/stderr.txt', '', '']],
+
+	'Set Modified Time' : [['Set Modified Time', '/path/file', '1177654467', '# Time given as epoch seconds'], ['Set Modified Time', '/path/file', '2007-04-27 9:14:27', '# Time given as a timestamp'], ['Set Modified Time', '/path/file', 'NOW', '# The local time of execution'], ['Set Modified Time', '/path/file', 'NOW - 1 day', '# 1 day subtracted from the local time'], ['Set Modified Time', '/path/file', 'UTC + 1h 2min 3s', '# 1h 2min 3s added to the UTC time']],
+
+	'Split Extension' : [['${path}', '${ext} =', 'Split Extension', 'file.extension'], ['${p2}', '${e2} =', 'Split Extension', 'path/file.ext'], ['${p3}', '${e3} =', 'Split Extension', 'path/file'], ['${p4}', '${e4} =', 'Split Extension', 'p1/../p2/file.ext'], ['${p5}', '${e5} =', 'Split Extension', 'path/.file.ext'], ['${p6}', '${e6} =', 'Split Extension', 'path/.file']],
+
+	'Split Path' : [['${path1}', '${dir} =', 'Split Path', 'abc/def'], ['${path2}', '${file} =', 'Split Path', 'abc/def/ghi.txt'], ['${path3}', '${d2}  =', 'Split Path', 'abc/../def/ghi/']],
 	
-	'Catenate' : [["Variable","Keyword", "Separator/Value", "Value", "Value"], ["${str1} =",	"Catenate",	"Hello",	"world"], ["${str2} =",	"Catenate","SEPARATOR=---",	"Hello",	"world"], ["${str3} =",	"Catenate",	"SEPARATOR=",	"Hello",	"world"]],
+	'Get Process Result' : [['Run Process', 'python', '-c', "print 'Hello, world!'", 'alias=myproc', ''], ['# Get result object', '', '', '', '', ''], ['${result} =', 'Get Process Result', 'myproc', '', '', ''], ['Should Be Equal', '${result.rc}', '${0}', '', '', ''], ['Should Be Equal', '${result.stdout}', 'Hello, world!', '', '', ''], ['Should Be Empty', '${result.stderr}', '', '', '', ''], ['# Get one attribute', '', '', '', '', ''], ['${stdout} =', 'Get Process Result', 'myproc', 'stdout=true', '', ''], ['Should Be Equal', '${stdout}', 'Hello, world!', '', '', ''], ['# Multiple attributes', '', '', '', '', ''], ['${stdout}', '${stderr} =', 'Get Process Result', 'myproc', 'stdout=yes', 'stderr=yes'], ['Should Be Equal', '${stdout}', 'Hello, world!', '', '', ''], ['Should Be Empty', '${stderr}', '', '', '', '']],
+
+	'Join Command Line' : [['${cmd} =', 'Join Command Line', '--option', 'value with spaces'], ['Should Be Equal', '${cmd}', '--option "value with spaces"', '']],
+
+	'Run Process' : [['${result} =', 'Run Process', 'python', '-c', "print 'Hello, world!'"], ['Should Be Equal', '${result.stdout}', 'Hello, world!', '', ''], ['${result} =', 'Run Process', '${command}', 'stderr=STDOUT', 'timeout=10s'], ['${result} =', 'Run Process', '${command}', 'timeout=1min', 'on_timeout=continue'], ['${result} =', 'Run Process', 'java -Dname=value Example', 'shell=True', 'cwd=${EXAMPLE}']],
+
+	'Send Signal To Process' : [['Send Signal To Process', '2', '', '# Send to active process'], ['Send Signal To Process', 'INT', '', ''], ['Send Signal To Process', 'SIGINT', 'myproc', '# Send to named process']],
+
+	'Split Command Line' : [['@{cmd} =', 'Split Command Line', '--option "value with spaces"'], ['Should Be True', "$cmd == ['--option', 'value with spaces']", '']],
+
+	'Switch Process' : [['Start Process', 'prog1', 'alias=process1'], ['Start Process', 'prog2', 'alias=process2'], ['# currently active process is process2', '', ''], ['Switch Process', 'process1', ''], ['# now active process is process1', '', '']],
+
+	'Terminate Process' : [['${result} =', 'Terminate Process', '', ''], ['Should Be Equal As Integers', '${result.rc}', '-15', '# On Unixes'], ['Terminate Process', 'myproc', 'kill=true', '']],
+
+	'Wait For Process' : [[], ['continue', 'The process is left running (default).'], ['terminate', 'The process is gracefully terminated.'], ['kill', 'The process is forcefully stopped.']],
 	
-	'Convert Date' : [["Variable/Keyword","Variable/Keyword", "Value", "Optional Parameter", "Optional Parameter"], ["${date} =",	"Convert Date",	"20140528 12:05:03.111"], ["Should Be Equal",	"${date}",	"2014-05-28 12:05:03.111"], ["${date} =",	"Convert Date",	"${date}",	"epoch"], ["Should Be Equal",	"${date}",	"${1401267903.111}"], ["${date} =",	"Convert Date",	"5.28.2014 12:05",	"exclude_millis=yes",	"date_format=%m.%d.%Y %H:%M"], ["Should Be Equal",	"${date}",	"2014-05-28 12:05:00"]],
+	'Init' : [[], ['Library', 'Screenshot', ''], ['Library', 'Screenshot', '${TEMPDIR}'], ['Library', 'Screenshot', 'screenshot_module=PyGTK']],
+
+	'Take Screenshot' : [['Take Screenshot', '', '', '# LOGDIR/screenshot_1.jpg (index automatically incremented)'], ['Take Screenshot', 'mypic', '', '# LOGDIR/mypic_1.jpg (index automatically incremented)'], ['Take Screenshot', '${TEMPDIR}/mypic', '', '# /tmp/mypic_1.jpg (index automatically incremented)'], ['Take Screenshot', 'pic.jpg', '', '# LOGDIR/pic.jpg (always uses this file)'], ['Take Screenshot', 'images/login.jpg', '80%', '# Specify both name and width.'], ['Take Screenshot', 'width=550px', '', '# Specify only width.']],
 	
-	'Convert Time' : [["Variable/Keyword","Variable/Keyword", "Value", "Optional Parameter", "Optional Parameter"], ["${time} =",	"Convert Time",	"10 seconds"], ["Should Be Equal",	"${time}",	"${10}"], ["${time} =",	"Convert Time",	"1:00:01",	"verbose"], ["Should Be Equal",	"${time}",	"1 hour 1 second"], ["${time} =",	"Convert Time",	"${3661.5}",	"timer",	"exclude_milles=yes"], ["Should Be Equal",	"${time}",	"01:01:02"]],
+	'Convert To Lower Case' : [['${str1} =', 'Convert To Lower Case', 'ABC'], ['${str2} =', 'Convert To Lower Case', '1A2c3D'], ['Should Be Equal', '${str1}', 'abc'], ['Should Be Equal', '${str2}', '1a2c3d']],
+
+	'Convert To Title Case' : [['${str1} =', 'Convert To Title Case', 'hello, world!', ''], ['${str2} =', 'Convert To Title Case', "it's an OK iPhone", 'exclude=a, an, the'], ['${str3} =', 'Convert To Title Case', 'distance is 1 km.', 'exclude=is, km.?'], ['Should Be Equal', '${str1}', 'Hello, World!', ''], ['Should Be Equal', '${str2}', "It's an OK iPhone", ''], ['Should Be Equal', '${str3}', 'Distance is 1 km.', '']],
+
+	'Convert To Upper Case' : [['${str1} =', 'Convert To Upper Case', 'abc'], ['${str2} =', 'Convert To Upper Case', '1a2C3d'], ['Should Be Equal', '${str1}', 'ABC'], ['Should Be Equal', '${str2}', '1A2C3D']],
+
+	'Decode Bytes To String' : [['${string} =', 'Decode Bytes To String', '${bytes}', 'UTF-8', ''], ['${string} =', 'Decode Bytes To String', '${bytes}', 'ASCII', 'errors=ignore']],
+
+	'Encode String To Bytes' : [['${bytes} =', 'Encode String To Bytes', '${string}', 'UTF-8', ''], ['${bytes} =', 'Encode String To Bytes', '${string}', 'ASCII', 'errors=ignore']],
+
+	'Format String' : [['${to} =', 'Format String', 'To: {} &lt;{}&gt;', '${user}', '${email}', ''], ['${to} =', 'Format String', 'To: {name} &lt;{email}&gt;', 'name=${name}', 'email=${email}', ''], ['${to} =', 'Format String', 'To: {user.name} &lt;{user.email}&gt;', 'user=${user}', '', ''], ['${xx} =', 'Format String', '{:*^30}', 'centered', '', ''], ['${yy} =', 'Format String', '{0:{width}{base}}', '${42}', 'base=X', 'width=10'], ['${zz} =', 'Format String', '${CURDIR}/template.txt', 'positional', 'named=value', '']],
+
+	'Generate Random String' : [[], ['[LOWER]', 'Lowercase ASCII characters from a to z.'], ['[UPPER]', 'Uppercase ASCII characters from A to Z.'], ['[LETTERS]', 'Lowercase and uppercase ASCII characters.'], ['[NUMBERS]', 'Numbers from 0 to 9.']],
+
+	'Get Line' : [['${first} =', 'Get Line', '${string}', '0'], ['${2nd last} =', 'Get Line', '${string}', '-2']],
+
+	'Get Lines Containing String' : [['${lines} =', 'Get Lines Containing String', '${result}', 'An example', ''], ['${ret} =', 'Get Lines Containing String', '${ret}', 'FAIL', 'case-insensitive']],
+
+	'Get Lines Matching Pattern' : [['*', 'matches everything'], ['?', 'matches any single character'], ['[chars]', 'matches any character inside square brackets (e.g. [abc] matches either a, b or c)'], ['[!chars]', 'matches any character not inside square brackets']],
+
+	'Get Lines Matching Regexp' : [['${lines} =', 'Get Lines Matching Regexp', '${result}', 'Regw{3} example', ''], ['${lines} =', 'Get Lines Matching Regexp', '${result}', 'Regw{3} example', 'partial_match=true'], ['${ret} =', 'Get Lines Matching Regexp', '${ret}', '(?i)FAIL: .*', '']],
+
+	'Get Regexp Matches' : [['${no match} =', 'Get Regexp Matches', 'the string', 'xxx', '', ''], ['${matches} =', 'Get Regexp Matches', 'the string', 't..', '', ''], ['${one group} =', 'Get Regexp Matches', 'the string', 't(..)', '1', ''], ['${named group} =', 'Get Regexp Matches', 'the string', 't(?P&lt;name&gt;..)', 'name', ''], ['${two groups} =', 'Get Regexp Matches', 'the string', 't(.)(.)', '1', '2']],
+
+	'Get Substring' : [['${ignore first} =', 'Get Substring', '${string}', '1', ''], ['${ignore last} =', 'Get Substring', '${string}', '', '-1'], ['${5th to 10th} =', 'Get Substring', '${string}', '4', '10'], ['${first two} =', 'Get Substring', '${string}', '', '1'], ['${last two} =', 'Get Substring', '${string}', '-2', '']],
+
+	'Remove String' : [['${str} =', 'Remove String', 'Robot Framework', 'work', ''], ['Should Be Equal', '${str}', 'Robot Frame', '', ''], ['${str} =', 'Remove String', 'Robot Framework', 'o', 'bt'], ['Should Be Equal', '${str}', 'R Framewrk', '', '']],
+
+	'Replace String' : [['${str} =', 'Replace String', 'Hello, world!', 'world', 'tellus', ''], ['Should Be Equal', '${str}', 'Hello, tellus!', '', '', ''], ['${str} =', 'Replace String', 'Hello, world!', 'l', '${EMPTY}', 'count=1'], ['Should Be Equal', '${str}', 'Helo, world!', '', '', '']],
+
+	'Replace String Using Regexp' : [['${str} =', 'Replace String Using Regexp', '${str}', '20dd-dd-dd', '&lt;DATE&gt;', ''], ['${str} =', 'Replace String Using Regexp', '${str}', '(Hello|Hi)', '${EMPTY}', 'count=1']],
+
+	'Split String' : [['@{words} =', 'Split String', '${string}', '', '', ''], ['@{words} =', 'Split String', '${string}', ',${SPACE}', '', ''], ['${pre}', '${post} =', 'Split String', '${string}', '::', '1']],
+
+	'Split String From Right' : [['${first}', '${rest} =', 'Split String', '${string}', '-', '1'], ['${rest}', '${last} =', 'Split String From Right', '${string}', '-', '1']],
+
+	'Split String To Characters' : [['@{characters} =', 'Split String To Characters', '${string}']],
+
+	'Split To Lines' : [['@{lines} =', 'Split To Lines', '${manylines}', '', ''], ['@{ignore first} =', 'Split To Lines', '${manylines}', '1', ''], ['@{ignore last} =', 'Split To Lines', '${manylines}', '', '-1'], ['@{5th to 10th} =', 'Split To Lines', '${manylines}', '4', '10'], ['@{first two} =', 'Split To Lines', '${manylines}', '', '1'], ['@{last two} =', 'Split To Lines', '${manylines}', '-2', '']],
+
+	'Strip String' : [['${stripped}=', 'Strip String', '${SPACE}Hello${SPACE}', ''], ['Should Be Equal', '${stripped}', 'Hello', ''], ['${stripped}=', 'Strip String', '${SPACE}Hello${SPACE}', 'mode=left'], ['Should Be Equal', '${stripped}', 'Hello${SPACE}', ''], ['${stripped}=', 'Strip String', 'aabaHelloeee', 'characters=abe'], ['Should Be Equal', '${stripped}', 'Hello', '']],
 	
-	'Get Current Date' : [["Variable/Keyword","Variable/Keyword", "Value", "Optional Parameter"], ["${date} =",	"Get Current Date"] ,["Should Be Equal",	"${date}",	"2014-06-12 20:00:58.946"], ["${date} =",	"Get Current Date",	"UTC"], ["Should Be Equal",	"${date}",	"2014-06-12 17:00:58.946"], ["${date} =",	"Get Current Date",	"increment=02:30:00"], ["Should Be Equal",	"${date}",	"2014-06-12 22:30:58.946"], ["${date} =",	"Get Current Date",	"UTC	- 5 hours"], ["Should Be Equal",	"${date}",	"2014-06-12 12:00:58.946"], ["${date} =",	"Get Current Date",	"result_format=datetime"], ["Should Be Equal",	"${date.year}",	"${2014}"],	["Should Be Equal",	"${date.month}",	"${6}"]],
+	'Init' : [[], ['Library', 'Telnet', '', '', '', '# default values'], ['Library', 'Telnet', '5 seconds', '', '', '# set only timeout'], ['Library', 'Telnet', 'newline=LF', 'encoding=ISO-8859-1', '', '# set newline and encoding using named arguments'], ['Library', 'Telnet', 'prompt=$', '', '', '# set prompt'], ['Library', 'Telnet', 'prompt=(&gt; |# )', 'prompt_is_regexp=yes', '', '# set prompt as a regular expression'], ['Library', 'Telnet', 'terminal_emulation=True', 'terminal_type=vt100', 'window_size=400x100', '# use terminal emulation with defined window size and terminal type'], ['Library', 'Telnet', 'telnetlib_log_level=NONE', '', '', '# disable logging messages from the underlying telnetlib']],
+
+	'Execute Command' : [['${out} =', 'Execute Command', 'pwd']],
+
+	'Read Until Regexp' : [['Read Until Regexp', '(#|$)', ''], ['Read Until Regexp', 'first_regexp', 'second_regexp'], ['Read Until Regexp', 'd{4}-d{2}-d{2}', 'DEBUG']],
+
+	'Set Prompt' : [['${prompt}', '${regexp} =', 'Set Prompt', '$'], ['Do Something', '', '', ''], ['Set Prompt', '${prompt}', '${regexp}', '']],
+
+	'Set Timeout' : [['${old} =', 'Set Timeout', '2 minute 30 seconds'], ['Do Something', '', ''], ['Set Timeout', '${old}', '']],
+
+	'Switch Connection' : [['Open Connection', 'myhost.net', '', ''], ['Login', 'john', 'secret', ''], ['Write', 'some command', '', ''], ['Open Connection', 'yourhost.com', '2nd conn', ''], ['Login', 'root', 'password', ''], ['Write', 'another cmd', '', ''], ['${old index}=', 'Switch Connection', '1', '# index'], ['Write', 'something', '', ''], ['Switch Connection', '2nd conn', '', '# alias'], ['Write', 'whatever', '', ''], ['Switch Connection', '${old index}', '', '# back to original'], ['[Teardown]', 'Close All Connections', '', '']],
+
+	'Write Control Character' : [['Write Control Character', 'BRK', '# Send Break command'], ['Write Control Character', '241', '# Send No operation command']],
+
+	'Write Until Expected Output' : [['Write Until Expected Output', 'ps -ef| grep myprocessrn', 'myprocess'], ['...', '5 s', '0.5 s']],
 	
-	'Click Element' : [["Keyword","Xpath"], ["Click Element", '//*[@id="myInput"]']],
-	
-	'Combine Lists' : [["Variable","Keyword", "Variable", "Variable", "Variable"], ["${x} =",	"Combine Lists",	"${L1}",	"${L2}"], ["${y} =",	"Combine Lists",	"${L1}",	"${L2}",	"${L1}"]],
-	
-	'Comment' : [["Keyword","Xpath","Parameter"], ["Wait Until Page Contains element", '//*[@id="myInput"]', "30s"], ["Wait Until Page Contains element", '//*[@id="myInput"]', " "]],
-	
-	'Continue For Loop' : [["Loop", "Variable/Keyword", "Condition","Parameter"], ["FOR",	"${var}",	"IN",	"@{VALUES}"], [" ", "Run Keyword If",	"'${var}' == 'CONTINUE'",	"Continue For Loop"], [" ", "Do Something",	"${var}"], ["END"]],
-	
-	'Continue For Loop If' : [["Loop", "Variable/Keyword", "Condition","Parameter"], ["FOR",	"${var}",	"IN",	"@{VALUES}"], [" ", "Continue For Loop If",	"'${var}' == 'CONTINUE'",	" "], [" ", "Do Something",	"${var}"], ["END"]],
-	
-	'Convert To Binary' : [["Variable", "Keyword", "variable","Base", "Prefix", "Result"], ["${result} =",	"Convert To Binary",	"10", " ", " ",	"# Result is 1010"], ["${result} =",	"Convert To Binary",	"F",	"base=16",	"prefix=0b",	"# Result is 0b1111"], ["${result} =",	"Convert To Binary",	"-2",	"prefix=B",	"length=4",	"# Result is -B0010"]],
-	
-	'Convert To Boolean' : [["Variable", "Keyword", "Value"], ["${bool}=", "Convert To Boolean", "True"], ["${bool}=", "Convert To Boolean", "False"]],
-	
-	'Convert To Bytes' : [["Variable", "Keyword", "Value", "Input Type", "Result"], ["${bytes} =",  "Convert To Bytes",	"hyvä", " ", "# hyv\xe4"], ["${bytes} =",	"Convert To Bytes",	"\xff\x07", " ", "# \xff\x07"], ["${bytes} =",	"Convert To Bytes",	"82 70",	"int	# RF"], ["${bytes} =",	"Convert To Bytes",	"0b10 0x10",	"int	# \x02\x10"], ["${bytes} =",	"Convert To Bytes",	"ff 00 07",	"hex",	"# \xff\x00\x07"], ["${bytes} =",	"Convert To Bytes",	"5246212121",	"hex",	"# RF!!!"], ["${bytes} =",	"Convert To Bytes",	"0000 1000",	"bin",	"# \x08"], ["${input} =",	"Create List",	"1",	"2",	"12"], ["${bytes} =",	"Convert To Bytes", "${input}",	"int",	"# \x01\x02\x0c"], ["${bytes} =	Convert To Bytes	${input}	hex	# \x01\x02\x12"]],
-	
-	'Convert To Dictionary' : [["Variable", "Keyword", "Variable/Value"], ["${dict}=", "Convert To Dictionary", "${item}"]],
-	
-	'Convert To Hexa' : [["Variable", "Keyword", "variable","Base", "Prefix", "Length", "Result"], ["${result} =",	"Convert To Hexa",	"255", " ", " ",	"# Result is FF"], ["${result} =",	"Convert To Hexa",	"-10",	"prefix=0x", "length=2",	"# Result is -0x0A"], ["${result} =",	"Convert To Hexa",	"prefix=B",	"lowercase=yes", "# Result is -B0010"]],
-	
-	'Convert To Integer' : [["Variable", "Keyword", "variable","Base",  "Result"], ["${result} =",	"Convert To Integer",	"100", " ",	"# Result is 100"], ["${result} =",	"Convert To Integer",	"FF AA", "16",	"# Result is 65450"], ["${result} =",	"Convert To Integer",	"100",	"8",	"# Result is 64"], ["${result} =",	"Convert To Integer",	"-100",	"2",	"# Result is -4"], ["${result} =", "Convert To Integer",	"0b100", " ", "# Result is 4"], ["${result} =",	"Convert To Integer",	"-0x100", " ",	"# Result is -256"]],
-	
-	'Convert To List' : [["Variable", "Keyword", "item"], ["${list}=", "Convert To List", "${item}"]],
-	
-	'Convert To Number' : [["Variable", "Keyword", "variable/value","Precision",  "Result"], ["${result} =",	"Convert To Number",	"42.512", " ",	"# Result is 42.512"], ["${result} =",	"Convert To Number",	"42.512", "1",	"# Result is 42.5"],["${result} =",	"Convert To Number",	"42.512", "0",	"# Result is 43.0"],["${result} =",	"Convert To Number",	"42.512", "-1",	"# Result is 40.0"]],
-	
-	'Convert To Octal' : [["Variable", "Keyword", "value","Base", "Prefix", "Length", "Result"], ["${result} =",	"Convert To Octal",	"10", " ", " ",	"# Result is 12"], ["${result} =",	"Convert To Octal",	"-F",	"base=16", "prefix=0", " ",	"# Result is -017"], ["${result} =",	"Convert To Octal",	"16", "prefix=oct",	"length=4", "# Result is oct0020"]],
-	
-	'Convert To String' : [["Variable", "Keyword", "item"], ["${str}=", "Convert To String", "${item}"]],
-	
-	'Copy List' : [["Variable", "Keyword", "item", "Optional"], ["${list}=", "Copy List", "${item}", "deepcopy=False"]],
-	
-	'Create Dictionary' : [["Variable/Keyword", "Keyword/Variable", "Key","Value", "Result"], ["&{dict} =",	"Create Dictionary",	"key=value",	"foo=bar",	"# key=value syntax"], ["Should Be True",	"${dict} == {'key': 'value', 'foo': 'bar'}", " ", " ", " "], ["&{dict2} =",	"Create Dictionary",	"key",	"value"	, "# separate key and value"], ["Should Be Equal",	"${dict}",	"${dict2}"," "], ["&{dict} =",	"Create Dictionary",	"${1}=${2}",	"&{dict}",	"# using variables"], ["Should Be True",	"${dict} == {1: 2, 'key': 'value', 'foo': 'new'}"], ["Should Be Equal",	"${dict.key}","value",	" ", "# dot-access"]],
-	
-	'Create List' : [["Variable", "Keyword", "value/variable", "value/variable", "value/variable"], ["@{list} =",	"Create List",	"a",	"b",	"c"], ["${scalar} =",	"Create List",	"a",	"b",	"c"], ["${ints} =",	"Create List",	"${1}",	"${2}",	"${3}"]],
-	
-	'Count Values In List' : [["Variable", "Keyword", "item", "value"], ["${count}=", "Count Values In List", "${var}", "b"]],
-	
-	'Evaluate' : [["Variable", "Keyword", "Condition", "Result"], ["${status} =",	"Evaluate",	"0 < ${result} < 10",	"# Would also work with string '3.14'"], ["${status} =",	"Evaluate",	"0 < $result < 10",	"# Using variable itself, not string representation"], ["${random} =",	"Evaluate",	"random.randint(0, sys.maxsize)"], ["${options} =",	"Evaluate",	"selenium.webdriver.ChromeOptions()", "modules=selenium.webdriver"], ["${ns} =",	"Create Dictionary", "x=${4}",	"y=${2}"], ["${result} =",	"Evaluate",	"x*10 + y", "namespace=${ns}"]],
-	
-	'Exit For Loop' : [["Loop", "Variable/Keyword", "Condition","Parameter"], ["FOR",	"${var}",	"IN",	"@{VALUES}"], [" ", "Run Keyword If",	"'${var}' == 'EXIT'",	"Exit For Loop"], [" ", "Do Something",	"${var}"], ["END"]],
-	
-	'Exit For Loop If' : [["Loop", "Variable/Keyword", "Condition","Parameter"], ["FOR",	"${var}",	"IN",	"@{VALUES}"], [" ", "Exit For Loop If",	"'${var}' == 'EXIT'",	" "], [" ", "Do Something",	"${var}"], ["END"]],
-	
-	'Fail' : [["Keyword", "Failure", "Message", "Tag", "Comment"], ["Fail",	"Test not ready", " ", " ", "# Fails with the given message."], ["Fail",	"*HTML*<b>Test not ready</b>",	" ",	" ",	"# Fails using HTML in the message."], ["Fail",	"Test not ready",	"not-ready",	" ",	"# Fails and adds 'not-ready' tag."], ["Fail",	"OS not supported",	"-regression", " ",	"# Removes tag 'regression'."], ["Fail",	"My message",	"tag",	"-t*",	"# Removes all tags starting with 't' except the newly added 'tag'."]],
-	
-	'Fatal Error' : [["Keyword", "Message"], ["Fatal Error", "Error Message"]],
-	
-	'Get Count' : [["Variable", "Keyword", "item","Value"], ["${count} =",	"Get Count",	"${some item}",	"interesting value"]],
-	
-	'Get Dictionary Items' : [["Variable", "Keyword", "item","Optional"], ["${sorted} =",	"Get Dictionary Items",	"${D3}"], ["${unsorted} =",	"Get Dictionary Items",	"${D3}",	"sort_keys=False"]],
-	
-	'Get Dictionary Keys' : [["Variable", "Keyword", "item","Optional"], ["${sorted} =",	"Get Dictionary Keys",	"${D3}"], ["${unsorted} =",	"Get Dictionary Keys",	"${D3}",	"sort_keys=False"]],
-	
-	'Get Dictionary Values' : [["Variable", "Keyword", "item","Optional"], ["${sorted} =",	"Get Dictionary Values",	"${D3}"], ["${unsorted} =",	"Get Dictionary Values",	"${D3}",	"sort_keys=False"]],
-	
-	'Get From Dictionary' : [["Variable", "Keyword", "item","Optional"], ["${value} =",	"Get From Dictionary",	"${D3}", "b"]],
-	
-	'Get From List' : [["Variable", "Keyword", "Variable","Index", "Python Equivalent"], ["${x} =",	"Get From List",	"${L5}",	"0",	"# L5[0]"], ["${y} =",	"Get From List",	"${L5}",	"-2",	"# L5[-2]"]],
-	
-	'Get Index From List' : [["Variable", "Keyword", "item","Optional"], ["${value} =",	"Get Index From List",	"${L5}", "b"]],
-	
-	'Get Length' : [["Variable/Keyword", "Variable/Keyword", "Value","value Optional"], ["${length} =",	"Get Length",	"Hello, world!"], ["Should Be Equal As Integers",	"${length}",	"13"], ["@{list} =",	"Create List",	"Hello,",	"world!"], ["${length} =",	"Get Length",	"${list}"],	["Should Be Equal As Integers",	"${length}","2"]],
-	
-	'Get Library Instance' : [["Variable", "Keyword", "Optional"], ["&{all libs} =",	"Get library instance",	"all=True"]],
-	
-	'Get Matches' : [["Variable", "Keyword", "Variable", "Pattern" ,"Optional", "Description"], ["${matches}=",	"Get Matches",	"${list}",	"a*", " ",	"# ${matches} will contain any string beginning with 'a'"], ["${matches}=",	"Get Matches",	"${list}",	"regexp=a.*", " ",	"# ${matches} will contain any string beginning with 'a' (regexp version)"], ["${matches}=",	"Get Matches",	"${list}",	"a*",	"case_insensitive=${True}",	"# ${matches} will contain any string beginning with 'a' or 'A'"]],
-	
-	'Get Match Count' : [["Variable", "Keyword", "Variable", "Pattern" ,"Optional", "Description"], ["${count}=",	"Get Match Count",	"${list}",	"a*", " ",	"# ${count} will contain any string beginning with 'a'"], ["${count}=",	"Get Match Count",	"${list}",	"regexp=a.*", " ",	"# ${count} will contain any string beginning with 'a' (regexp version)"], ["${count}=",	"Get Match Count",	"${list}",	"a*",	"case_insensitive=${True}",	"# ${count} will contain any string beginning with 'a' or 'A'"]],
-	
-	'Get Slice From List' : [["Variable","Keyword", "Variable", "Start Index", "End Index", "Python Equivalent"], ["${x} =",	"Get Slice From List",	"${L5}",	"2",	"4",	"# L5[2:4]"], ["${y} =",	"Get Slice From List",	"${L5}",	"1",	" ",	"# L5[1:None]"], ["${z} =",	"Get Slice From List",	"${L5}",	"end=-2	",	"# L5[0:-2]"]],
-	
-	'Insert Into List' : [["Variable/Keyword", "Variable", "Index", "Value"], ["Insert Into List",	"${L1}",	"0",	"xxx"], ["Insert Into List",	"${L2}",	"${-1}",	"xxx"]],
-	
-	'Keep In Dictionary' : [["Variable/Keyword", "Variable", "value", "Value", "Value"], ["Keep In Dictionary",	"${D5}",	"b",	"x",	"d"]],
-	
-	'Wait Until Page Contains element' : [["Keyword","Xpath","Parameter"], ["Wait Until Page Contains element", '//*[@id="myInput"]', "30s"], ["Wait Until Page Contains element", '//*[@id="myInput"]', " "]],
-	
-	
+	'Add Element' : [['Add Element', '${XML}', '&lt;new id="x"&gt;&lt;c1/&gt;&lt;/new&gt;', '', ''], ['Add Element', '${XML}', '&lt;c2/&gt;', 'xpath=new', ''], ['Add Element', '${XML}', '&lt;c3/&gt;', 'index=1', 'xpath=new'], ['${new} =', 'Get Element', '${XML}', 'new', ''], ['Elements Should Be Equal', '${new}', '&lt;new id="x"&gt;&lt;c1/&gt;&lt;c3/&gt;&lt;c2/&gt;&lt;/new&gt;', '', '']],
+
+	'Clear Element' : [['Clear Element', '${XML}', 'xpath=first', '', ''], ['${first} =', 'Get Element', '${XML}', 'xpath=first', ''], ['Elements Should Be Equal', '${first}', '&lt;first/&gt;', '', ''], ['Clear Element', '${XML}', 'xpath=html/p/b', 'clear_tail=yes', ''], ['Element Text Should Be', '${XML}', 'Text with italics.', 'xpath=html/p', 'normalize_whitespace=yes'], ['Clear Element', '${XML}', '', '', ''], ['Elements Should Be Equal', '${XML}', '&lt;example/&gt;', '', '']],
+
+	'Copy Element' : [['${elem} =', 'Get Element', '${XML}', 'xpath=first'], ['${copy1} =', 'Copy Element', '${elem}', ''], ['${copy2} =', 'Copy Element', '${XML}', 'xpath=first'], ['Set Element Text', '${XML}', 'new text', 'xpath=first'], ['Set Element Attribute', '${copy1}', 'id', 'new'], ['Elements Should Be Equal', '${elem}', '&lt;first id="1"&gt;new text&lt;/first&gt;', ''], ['Elements Should Be Equal', '${copy1}', '&lt;first id="new"&gt;text&lt;/first&gt;', ''], ['Elements Should Be Equal', '${copy2}', '&lt;first id="1"&gt;text&lt;/first&gt;', '']],
+
+	'Element Attribute Should Be' : [['Element Attribute Should Be', '${XML}', 'id', '1', 'xpath=first'], ['Element Attribute Should Be', '${XML}', 'id', '${NONE}', '']],
+
+	'Element Attribute Should Match' : [['Element Attribute Should Match', '${XML}', 'id', '?', 'xpath=first'], ['Element Attribute Should Match', '${XML}', 'id', 'c*d', 'xpath=third/second']],
+
+	'Element Should Not Have Attribute' : [['Element Should Not Have Attribute', '${XML}', 'id', ''], ['Element Should Not Have Attribute', '${XML}', 'xxx', 'xpath=first']],
+
+	'Element Text Should Be' : [['Element Text Should Be', '${XML}', 'text', 'xpath=first'], ['Element Text Should Be', '${XML}', '${EMPTY}', 'xpath=second/child'], ['${paragraph} =', 'Get Element', '${XML}', 'xpath=html/p'], ['Element Text Should Be', '${paragraph}', 'Text with bold and italics.', 'normalize_whitespace=yes']],
+
+	'Element Text Should Match' : [['Element Text Should Match', '${XML}', 't???', 'xpath=first'], ['${paragraph} =', 'Get Element', '${XML}', 'xpath=html/p'], ['Element Text Should Match', '${paragraph}', 'Text with * and *.', 'normalize_whitespace=yes']],
+
+	'Elements Should Be Equal' : [['${first} =', 'Get Element', '${XML}', 'first', ''], ['Elements Should Be Equal', '${first}', '&lt;first id="1"&gt;text&lt;/first&gt;', '', ''], ['${p} =', 'Get Element', '${XML}', 'html/p', ''], ['Elements Should Be Equal', '${p}', '&lt;p&gt;Text with &lt;b&gt;bold&lt;/b&gt; and &lt;i&gt;italics&lt;/i&gt;.&lt;/p&gt;', 'normalize_whitespace=yes', ''], ['Elements Should Be Equal', '${p}', '&lt;p&gt;Text with&lt;/p&gt;', 'exclude', 'normalize']],
+
+	'Elements Should Match' : [['${first} =', 'Get Element', '${XML}', 'first'], ['Elements Should Match', '${first}', '&lt;first id="?"&gt;*&lt;/first&gt;', '']],
+
+	'Evaluate Xpath' : [['${count} =', 'Evaluate Xpath', '${XML}', 'count(third/*)', ''], ['Should Be Equal', '${count}', '${3}', '', ''], ['${text} =', 'Evaluate Xpath', '${XML}', 'string(descendant::second[last()]/@id)', ''], ['Should Be Equal', '${text}', 'child', '', ''], ['${bold} =', 'Evaluate Xpath', '${XML}', "boolean(preceding-sibling::*[1] = 'bold')", 'context=html/p/i'], ['Should Be Equal', '${bold}', '${True}', '', '']],
+
+	'Get Child Elements' : [['${children} =', 'Get Child Elements', '${XML}', ''], ['Length Should Be', '${children}', '4', ''], ['${children} =', 'Get Child Elements', '${XML}', 'xpath=first'], ['Should Be Empty', '${children}', '', '']],
+
+	'Get Element' : [['${element} =', 'Get Element', '${XML}', 'second'], ['${child} =', 'Get Element', '${element}', 'child']],
+
+	'Get Element Attribute' : [['${attribute} =', 'Get Element Attribute', '${XML}', 'id', 'xpath=first', ''], ['Should Be Equal', '${attribute}', '1', '', '', ''], ['${attribute} =', 'Get Element Attribute', '${XML}', 'xx', 'xpath=first', 'default=value'], ['Should Be Equal', '${attribute}', 'value', '', '', '']],
+
+	'Get Element Attributes' : [['${attributes} =', 'Get Element Attributes', '${XML}', 'first'], ['Dictionary Should Contain Key', '${attributes}', 'id', ''], ['${attributes} =', 'Get Element Attributes', '${XML}', 'third'], ['Should Be Empty', '${attributes}', '', '']],
+
+	'Get Element Text' : [['${text} =', 'Get Element Text', '${XML}', 'first'], ['Should Be Equal', '${text}', 'text', ''], ['${text} =', 'Get Element Text', '${XML}', 'second/child'], ['Should Be Empty', '${text}', '', ''], ['${paragraph} =', 'Get Element', '${XML}', 'html/p'], ['${text} =', 'Get Element Text', '${paragraph}', 'normalize_whitespace=yes'], ['Should Be Equal', '${text}', 'Text with bold and italics.', '']],
+
+	'Get Elements' : [['${children} =', 'Get Elements', '${XML}', 'third/child'], ['Length Should Be', '${children}', '2', ''], ['${children} =', 'Get Elements', '${XML}', 'first/child'], ['Should Be Empty', '${children}', '', '']],
+
+	'Get Elements Texts' : [['@{texts} =', 'Get Elements Texts', '${XML}', 'third/child'], ['Length Should Be', '${texts}', '2', ''], ['Should Be Equal', '@{texts}[0]', 'more text', ''], ['Should Be Equal', '@{texts}[1]', '${EMPTY}', '']],
+
+	'Parse Xml' : [['${root} =', 'Parse XML', '&lt;root&gt;&lt;child/&gt;&lt;/root&gt;', ''], ['${xml} =', 'Parse XML', '${CURDIR}/test.xml', 'keep_clark_notation=True'], ['${xml} =', 'Parse XML', '${CURDIR}/test.xml', 'strip_namespaces=True']],
+
+	'Remove Element' : [['Remove Element', '${XML}', 'xpath=second', '', ''], ['Element Should Not Exist', '${XML}', 'xpath=second', '', ''], ['Remove Element', '${XML}', 'xpath=html/p/b', 'remove_tail=yes', ''], ['Element Text Should Be', '${XML}', 'Text with italics.', 'xpath=html/p', 'normalize_whitespace=yes']],
+
+	'Remove Element Attribute' : [['Remove Element Attribute', '${XML}', 'id', 'xpath=first'], ['Element Should Not Have Attribute', '${XML}', 'id', 'xpath=first']],
+
+	'Remove Element Attributes' : [['Remove Element Attributes', '${XML}', 'xpath=first', ''], ['Element Should Not Have Attribute', '${XML}', 'id', 'xpath=first']],
+
+	'Remove Elements' : [['Remove Elements', '${XML}', 'xpath=*/child'], ['Element Should Not Exist', '${XML}', 'xpath=second/child'], ['Element Should Not Exist', '${XML}', 'xpath=third/child']],
+
+	'Set Element Attribute' : [['Set Element Attribute', '${XML}', 'attr', 'value', ''], ['Element Attribute Should Be', '${XML}', 'attr', 'value', ''], ['Set Element Attribute', '${XML}', 'id', 'new', 'xpath=first'], ['Element Attribute Should Be', '${XML}', 'id', 'new', 'xpath=first']],
+
+	'Set Element Tag' : [['Set Element Tag', '${XML}', 'newTag', ''], ['Should Be Equal', '${XML.tag}', 'newTag', ''], ['Set Element Tag', '${XML}', 'xxx', 'xpath=second/child'], ['Element Should Exist', '${XML}', 'second/xxx', ''], ['Element Should Not Exist', '${XML}', 'second/child', '']],
+
+	'Set Element Text' : [['Set Element Text', '${XML}', 'new text', 'xpath=first', ''], ['Element Text Should Be', '${XML}', 'new text', 'xpath=first', ''], ['Set Element Text', '${XML}', 'tail=&amp;', 'xpath=html/p/b', ''], ['Element Text Should Be', '${XML}', 'Text with bold&amp;italics.', 'xpath=html/p', 'normalize_whitespace=yes'], ['Set Element Text', '${XML}', 'slanted', '!!', 'xpath=html/p/i'], ['Element Text Should Be', '${XML}', 'Text with bold&amp;slanted!!', 'xpath=html/p', 'normalize_whitespace=yes']]
+
 }
