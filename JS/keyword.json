@@ -968,11 +968,491 @@ keyword = {
 	'Get Value From User' : {
 		'library' : 'Dialogs',
 		'key' : 'Get Value From User',
-		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'Yes', 'placeholder' : '${Variables}='},{'htmltag' : 'text', 'element' : 'Get Value From User', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Message', 'Mandatory' : 'No', 'placeholder' : 'msg'},{'htmltag' : 'text', 'element' : 'Default Value', 'Mandatory' : 'No', 'placeholder' : 'default_value='},{'htmltag' : 'select', 'element' : 'Message', 'Mandatory' : 'No', 'placeholder' : 'hidden=True,False'}]
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'Yes', 'placeholder' : '${Variables}='},{'htmltag' : 'text', 'element' : 'Get Value From User', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Message', 'Mandatory' : 'No', 'placeholder' : 'msg'},{'htmltag' : 'text', 'element' : 'Default Value', 'Mandatory' : 'No', 'placeholder' : 'default_value='},{'htmltag' : 'select', 'element' : 'Hidden', 'Mandatory' : 'No', 'placeholder' : 'hidden=True,False'}]
 	},
 	'Pause Execution' : {
 		'library' : 'Dialogs',
 		'key' : 'Pause Execution',
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Pause Execution', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Message', 'Mandatory' : 'No', 'placeholder' : 'msg'}]
 	},
+	'Change Timeout' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Change Timeout',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Change Timeout', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Time', 'Mandatory' : 'No', 'placeholder' : 'In Seconds'}]
+	},
+	'Change Wait Time' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Change Wait Time',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Change Wait Time', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Time', 'Mandatory' : 'No', 'placeholder' : 'In Seconds'}]
+	},
+	'Change Wait Time After Write' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Change Wait Time After Write',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Change Wait Time After Write', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Time', 'Mandatory' : 'No', 'placeholder' : 'In Seconds'}]
+	},
+	'Close Connection' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Close Connection',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Close Connection', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Delete Char' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Delete Char',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Delete Char', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Y - Position', 'Mandatory' : 'No', 'placeholder' : 'ypos=6'},{'htmltag' : 'text', 'element' : 'X - Position', 'Mandatory' : 'No', 'placeholder' : 'xpos=25'}]
+	},
+	'Delete Field' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Delete Field',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Delete Field', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Y - Position', 'Mandatory' : 'No', 'placeholder' : 'ypos=6'},{'htmltag' : 'text', 'element' : 'X - Position', 'Mandatory' : 'No', 'placeholder' : 'xpos=25'}]
+	},
+	'Execute Command' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Execute Command',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Execute Command', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Command', 'Mandatory' : 'Yes', 'placeholder' : 'Keypad Key'}]
+	},
+	'Move Next Field' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Move Next Field',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Move Next Field', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Move Previous Field' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Move Previous Field',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Move Previous Field', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Open Connection' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Open Connection',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Open Connection', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Host Name', 'Mandatory' : 'Yes', 'placeholder' : 'Hostname'},{'htmltag' : 'text', 'element' : 'Logical Unit', 'Mandatory' : 'No', 'placeholder' : 'LU=LUName'},{'htmltag' : 'text', 'element' : 'Port', 'Mandatory' : 'No', 'placeholder' : 'port=992'}]
+	},
+	'Page Should Contain All Strings' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Page Should Contain All Strings',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Page Should Contain All Strings', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'List String', 'Mandatory' : 'Yes', 'placeholder' : '${list_of_string}'},{'htmltag' : 'select', 'element' : 'IgnoreCase', 'Mandatory' : 'No', 'placeholder' : 'ignore_case=True,False'},{'htmltag' : 'text', 'element' : 'Error Message', 'Mandatory' : 'No', 'placeholder' : 'error_message=msg'}]
+	},
+	'Page Should Contain Any Strings' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Page Should Contain Any Strings',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Page Should Contain Any Strings', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'List String', 'Mandatory' : 'Yes', 'placeholder' : '${list_of_string}'},{'htmltag' : 'select', 'element' : 'IgnoreCase', 'Mandatory' : 'No', 'placeholder' : 'ignore_case=True,False'},{'htmltag' : 'text', 'element' : 'Error Message', 'Mandatory' : 'No', 'placeholder' : 'error_message=msg'}]
+	},
+	'Page Should Contain Match' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Page Should Contain Match',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Page Should Contain Match', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'String', 'Mandatory' : 'Yes', 'placeholder' : '${string}'},{'htmltag' : 'select', 'element' : 'IgnoreCase', 'Mandatory' : 'No', 'placeholder' : 'ignore_case=True,False'},{'htmltag' : 'text', 'element' : 'Error Message', 'Mandatory' : 'No', 'placeholder' : 'error_message=msg'}]
+	},
+	'Page Should Contain String' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Page Should Contain String',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Page Should Contain String', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'String', 'Mandatory' : 'Yes', 'placeholder' : '${string}'},{'htmltag' : 'select', 'element' : 'IgnoreCase', 'Mandatory' : 'No', 'placeholder' : 'ignore_case=True,False'},{'htmltag' : 'text', 'element' : 'Error Message', 'Mandatory' : 'No', 'placeholder' : 'error_message=msg'}]
+	},
+	'Page Should Contain String X Times' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Page Should Contain String X Times',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Page Should Contain String X Times', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'String', 'Mandatory' : 'Yes', 'placeholder' : '${string}'},{'htmltag' : 'text', 'element' : 'Number', 'Mandatory' : 'Yes', 'placeholder' : '${Number}'},{'htmltag' : 'select', 'element' : 'IgnoreCase', 'Mandatory' : 'No', 'placeholder' : 'ignore_case=True,False'},{'htmltag' : 'text', 'element' : 'Error Message', 'Mandatory' : 'No', 'placeholder' : 'error_message=msg'}]
+	},
+	'Page Should Match Regex' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Page Should Match Regex',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Page Should Match Regex', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Regex Pattern', 'Mandatory' : 'Yes', 'placeholder' : 'Pattern'}]
+	},
+	'Page Should Not Contain All Strings' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Page Should Not Contain All Strings',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Page Should Not Contain All Strings', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'List String', 'Mandatory' : 'Yes', 'placeholder' : '${list_of_string}'},{'htmltag' : 'select', 'element' : 'IgnoreCase', 'Mandatory' : 'No', 'placeholder' : 'ignore_case=True,False'},{'htmltag' : 'text', 'element' : 'Error Message', 'Mandatory' : 'No', 'placeholder' : 'error_message=msg'}]
+	},
+	'Page Should Not Contain Any Strings' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Page Should Not Contain Any Strings',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Page Should Not Contain Any Strings', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'List String', 'Mandatory' : 'Yes', 'placeholder' : '${list_of_string}'},{'htmltag' : 'select', 'element' : 'IgnoreCase', 'Mandatory' : 'No', 'placeholder' : 'ignore_case=True,False'},{'htmltag' : 'text', 'element' : 'Error Message', 'Mandatory' : 'No', 'placeholder' : 'error_message=msg'}]
+	},
+	'Page Should Not Contain Match' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Page Should Not Contain Match',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Page Should Not Contain Match', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'String', 'Mandatory' : 'Yes', 'placeholder' : '${string}'},{'htmltag' : 'select', 'element' : 'IgnoreCase', 'Mandatory' : 'No', 'placeholder' : 'ignore_case=True,False'},{'htmltag' : 'text', 'element' : 'Error Message', 'Mandatory' : 'No', 'placeholder' : 'error_message=msg'}]
+	},
+	'Page Should Not Contain String' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Page Should Not Contain String',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Page Should Not Contain String', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'String', 'Mandatory' : 'Yes', 'placeholder' : '${string}'},{'htmltag' : 'select', 'element' : 'IgnoreCase', 'Mandatory' : 'No', 'placeholder' : 'ignore_case=True,False'},{'htmltag' : 'text', 'element' : 'Error Message', 'Mandatory' : 'No', 'placeholder' : 'error_message=msg'}]
+	},
+	'Page Should Not Match Regex' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Page Should Not Match Regex',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Page Should Not Match Regex', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Regex Pattern', 'Mandatory' : 'Yes', 'placeholder' : 'Pattern'}]
+	},
+	'Read' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Read',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Read', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Y - Position', 'Mandatory' : 'No', 'placeholder' : 'ypos=6'},{'htmltag' : 'text', 'element' : 'X - Position', 'Mandatory' : 'No', 'placeholder' : 'xpos=25'},{'htmltag' : 'text', 'element' : 'Length', 'Mandatory' : 'No', 'placeholder' : 'length'}]
+	},
+	'Send Enter' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Send Enter',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Send Enter', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Send PF' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Send PF',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Send PF', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Set Screenshot Folder' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Set Screenshot Folder',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Screenshot Folder', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Folder Path', 'Mandatory' : 'Yes', 'placeholder' : 'path'}]
+	},
+	'Take Screenshot' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Take Screenshot',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Take Screenshot', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Height', 'Mandatory' : 'No', 'placeholder' : 'height=500'},{'htmltag' : 'text', 'element' : 'Width', 'Mandatory' : 'No', 'placeholder' : 'width=700'}]
+	},
+	'Wait Field Detected' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Wait Field Detected',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Wait Field Detected', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Wait Until String' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Wait Until String',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Wait Until String', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'String', 'Mandatory' : 'Yes', 'placeholder' : 'String'},{'htmltag' : 'text', 'element' : 'Timeout', 'Mandatory' : 'No', 'placeholder' : 'timeout=10'}]
+	},
+	'Write' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Write',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Write', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'String', 'Mandatory' : 'Yes', 'placeholder' : 'String'}]
+	},
+	'Write Bare' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Write Bare',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Write Bare', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'String', 'Mandatory' : 'Yes', 'placeholder' : 'String'}]
+	},
+	'Write Bare In Position' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Write Bare In Position',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Write Bare In Position', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Text', 'Mandatory' : 'Yes', 'placeholder' : 'Text'},{'htmltag' : 'text', 'element' : 'Y - Position', 'Mandatory' : 'No', 'placeholder' : 'ypos=6'},{'htmltag' : 'text', 'element' : 'X - Position', 'Mandatory' : 'No', 'placeholder' : 'xpos=25'},{'htmltag' : 'text', 'element' : 'Length', 'Mandatory' : 'No', 'placeholder' : 'length'}]
+	},
+	'Write In Position' : {
+		'library' : 'Mainframe3270',
+		'key' : 'Write In Position',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Write In Position', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Text', 'Mandatory' : 'Yes', 'placeholder' : 'Text'},{'htmltag' : 'text', 'element' : 'Y - Position', 'Mandatory' : 'No', 'placeholder' : 'ypos=6'},{'htmltag' : 'text', 'element' : 'X - Position', 'Mandatory' : 'No', 'placeholder' : 'xpos=25'},{'htmltag' : 'text', 'element' : 'Length', 'Mandatory' : 'No', 'placeholder' : 'length'}]
+	},
+	'Add Image Path' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Add Image Path',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Add Image Path', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Path', 'Mandatory' : 'Yes', 'placeholder' : 'path'}]
+	},
+	'Capture Region' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Capture Region',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}'},{'htmltag' : 'text', 'element' : 'Capture Region', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Cooridnates', 'Mandatory' : 'Yes', 'placeholder' : 'cooridnates'}]
+	},
+	'Capture Roi' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Capture Roi',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Capture Roi', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Capture Screen' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Capture Screen',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Capture Screen', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Change Screen Id' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Change Screen Id',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Change Screen Id', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'number', 'element' : 'ScreenId', 'Mandatory' : 'Yes', 'placeholder' : 'path'}]
+	},
+	'Clear All Highlights' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Clear All Highlights',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Clear All Highlights', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Clear Highlights' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Clear Highlights',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Clear Highlights', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'No', 'placeholder' : 'image'}]
+	},
+	'Click' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Click',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Click', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'No', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'X offset', 'Mandatory' : 'No', 'placeholder' : 'xOffset=0'},{'htmltag' : 'text', 'element' : 'Y offset', 'Mandatory' : 'No', 'placeholder' : 'yOffset=0'}]
+	},
+	'Click In' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Click In',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Click In', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Area Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'Target Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'}]
+	},
+	'Click Nth' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Click Nth',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Click Nth', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'Index', 'Mandatory' : 'No', 'placeholder' : 'index'},{'htmltag' : 'text', 'element' : 'Similarity', 'Mandatory' : 'No', 'placeholder' : 'Similarity'},{'htmltag' : 'select', 'element' : 'SortByColumn', 'Mandatory' : 'No', 'placeholder' : 'sortByColumn=True,False'}]
+	},
+	'Click Region' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Click Region',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Click Region', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Cooridnates', 'Mandatory' : 'Yes', 'placeholder' : '[x,y,w,h]'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'No', 'placeholder' : 'image'},{'htmltag' : 'number', 'element' : 'WaitChange', 'Mandatory' : 'No', 'placeholder' : 'waitChange'},{'htmltag' : 'number', 'element' : 'Timeout', 'Mandatory' : 'No', 'placeholder' : 'timeout'}]
+	},
+	'Click Text' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Click Text',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Click Text', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Text', 'Mandatory' : 'Yes', 'placeholder' : 'String'}]
+	},
+	'Close Application' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Close Application',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Close Application', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Application Name', 'Mandatory' : 'Yes', 'placeholder' : ' Name'}]
+	},
+	'Double Click' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Double Click',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Double Click', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'Yes', 'placeholder' : ' Name'},{'htmltag' : 'text', 'element' : 'X offset', 'Mandatory' : 'No', 'placeholder' : 'xOffset=0'},{'htmltag' : 'text', 'element' : 'Y offset', 'Mandatory' : 'No', 'placeholder' : 'yOffset=0'}]
+	},
+	'Double Click In' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Double Click In',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Double Click In', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Area Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'Target Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'}]
+	},
+	'Double Click In' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Double Click In',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Double Click In', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Area Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'Target Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'}]
+	},
+	'Drag And Drop' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Drag And Drop',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Drag And Drop', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Source Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'Target Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'}]
+	},
+	'Drag And Drop By Offset' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Drag And Drop By Offset',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Drag And Drop By Offset', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Source Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'X offset', 'Mandatory' : 'No', 'placeholder' : 'xOffset=0'},{'htmltag' : 'text', 'element' : 'Y offset', 'Mandatory' : 'No', 'placeholder' : 'yOffset=0'}]
+	},
+	'Exists' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Exists',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Exists', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'number', 'element' : 'Timeout', 'Mandatory' : 'No', 'placeholder' : 'Integer'}]
+	},
+	'Get Current Screen Id' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Get Current Screen Id',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Get Current Screen Id', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Get Extended Region From' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Get Extended Region From',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Get Extended Region From', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'Direction', 'Mandatory' : 'No', 'placeholder' : 'direction'},,{'htmltag' : 'text', 'element' : 'Number of Times to Repeat', 'Mandatory' : 'No', 'placeholder' : 'Number of Times to Repeat'}]
+	},
+	'Get Image Coordinates' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Get Image Coordinates',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Get Image Coordinates', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'Coordinates', 'Mandatory' : 'No', 'placeholder' : '[x,y,w,h]'}]
+	},
+	'Get Match Score' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Get Match Score',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Get Match Score', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'}]
+	},
+	'Get Number Of Screens' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Get Number Of Screens',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Get Number Of Screens', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Get Screen Coordinates' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Get Screen Coordinates',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Get Screen Coordinates', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'number', 'element' : 'Coordinates', 'Mandatory' : 'No', 'placeholder' : 'Integer'}]
+	},
+	'Get Text' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Get Text',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Get Text', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'No', 'placeholder' : 'image'}]
+	},
+	'Highlight' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Highlight',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Highlight', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'No', 'placeholder' : 'image'},{'htmltag' : 'number', 'element' : 'Seconds', 'Mandatory' : 'No', 'placeholder' : 'Seconds'}]
+	},
+	'Highlight Region' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Highlight Region',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Highlight Region', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'No', 'placeholder' : 'image'},{'htmltag' : 'number', 'element' : 'Seconds', 'Mandatory' : 'No', 'placeholder' : 'Seconds'},{'htmltag' : 'text', 'element' : 'Coordinates', 'Mandatory' : 'No', 'placeholder' : '[x,y,w,h]'},{'htmltag' : 'number', 'element' : 'Timeout', 'Mandatory' : 'No', 'placeholder' : 'Seconds'}]
+	},
+	'Highlight Roi' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Highlight Roi',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Highlight Roi', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'number', 'element' : 'Timeout', 'Mandatory' : 'No', 'placeholder' : 'Seconds'}]
+	},
+	'Image Count' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Image Count',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Image Count', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'No', 'placeholder' : 'image'}]
+	},
+	'Input Text' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Input Text',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Input Text', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'No', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'Text', 'Mandatory' : 'No', 'placeholder' : 'String'}]
+	},
+	'Mouse Down' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Mouse Down',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Mouse Down', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'select', 'element' : 'Mouse Button', 'Mandatory' : 'yes', 'placeholder' : 'mousebutton=LEFT,RIGHT,MIDDLE'}]
+	},
+	'Mouse Move' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Mouse Move',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Mouse Move', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'yes', 'placeholder' : 'image'}]
+	},
+	'Mouse Up' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Mouse Up',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Mouse Up', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'select', 'element' : 'Mouse Button', 'Mandatory' : 'yes', 'placeholder' : 'mousebutton=LEFT,RIGHT,MIDDLE'}]
+	},
+	'Open Application' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Open Application',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Open Application', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Path', 'Mandatory' : 'yes', 'placeholder' : 'Path'}]
+	},
+	'Paste Text' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Paste Text',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Paste Text', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'yes', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'Text', 'Mandatory' : 'yes', 'placeholder' : 'String'}]
+	},
+	'Press Special Key' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Press Special Key',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Press Special Key', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Special Key', 'Mandatory' : 'yes', 'placeholder' : 'Special Key'}]
+	},
+	'Read Text From Region' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Read Text From Region',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Read Text From Region', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Region', 'Mandatory' : 'yes', 'placeholder' : 'Region'}]
+	},
+	'Remove Image Path' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Remove Image Path',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Remove Image Path', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Path', 'Mandatory' : 'yes', 'placeholder' : 'Path'}]
+	},
+	'Reset Roi' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Reset Roi',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Reset Roi', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Right Click' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Right Click',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Right Click', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'yes', 'placeholder' : 'image'}]
+	},
+	'Right Click In' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Right Click In',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Right Click In', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Area Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'text', 'element' : 'Target Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'}]
+	},
+	'Screen Should Contain' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Screen Should Contain',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Screen Should Contain', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'yes', 'placeholder' : 'image'}]
+	},
+	'Screen Should Not Contain' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Screen Should Not Contain',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Screen Should Not Contain', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'yes', 'placeholder' : 'image'}]
+	},
+	'Select Region' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Select Region',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${VariableName}='},{'htmltag' : 'text', 'element' : 'Select Region', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Message', 'Mandatory' : 'No', 'placeholder' : 'msg'}]
+	},
+	'Set Capture Folder' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Set Capture Folder',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Capture Folder', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Path', 'Mandatory' : 'Yes', 'placeholder' : 'path'}]
+	},
+	'Set Capture Matched Image' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Set Capture Matched Image',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Capture Matched Image', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'select', 'element' : 'Value', 'Mandatory' : 'Yes', 'placeholder' : 'value=True,False'}]
+	},
+	'Set Min Similarity' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Set Min Similarity',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Min Similarity', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Min Similarity', 'Mandatory' : 'Yes', 'placeholder' : 'Min Similarity'}]
+	},
+	'Set Move Mouse Delay' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Set Move Mouse Delay',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Move Mouse Delay', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Delay', 'Mandatory' : 'Yes', 'placeholder' : 'Delay'}]
+	},
+	'Set Ocr Text Read' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Set Ocr Text Read',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Ocr Text Read', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'OcrTextRead', 'Mandatory' : 'Yes', 'placeholder' : 'ocrTextRead'}]
+	},
+	'Set Roi' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Set Roi',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Roi', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Coordinates', 'Mandatory' : 'No', 'placeholder' : '[x,y,w,h]'},{'htmltag' : 'number', 'element' : 'Timeout', 'Mandatory' : 'No', 'placeholder' : 'Seconds'}]
+	},
+	'Set Show Actions' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Set Show Actions',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Show Actions', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Show Actions', 'Mandatory' : 'No', 'placeholder' : 'Show Actions'}]
+	},
+	'Set Slow Motion Delay' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Set Slow Motion Delay',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Slow Motion Delay', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Delay', 'Mandatory' : 'Yes', 'placeholder' : 'Delay'}]
+	},
+	'Set Timeout' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Set Timeout',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Timeout', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'number', 'element' : 'Timeout', 'Mandatory' : 'No', 'placeholder' : 'Seconds'}]
+	},
+	'Set Wait Scan Rate' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Set Wait Scan Rate',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Wait Scan Rate', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Delay', 'Mandatory' : 'Yes', 'placeholder' : 'Delay'}]
+	},
+	'Start Sikuli Process' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Start Sikuli Process',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Start Sikuli Process', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Port', 'Mandatory' : 'Yes', 'placeholder' : 'Port'}]
+	},
+	'Stop Remote Server' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Stop Remote Server',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Stop Remote Server', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'}]
+	},
+	'Type With Modifiers' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Type With Modifiers',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Type With Modifiers', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Text', 'Mandatory' : 'No', 'placeholder' : 'Text'},{'htmltag' : 'text', 'element' : 'Modifiers', 'Mandatory' : 'Yes', 'placeholder' : 'Modifiers'}]
+	},
+	'Wait For Image' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Wait For Image',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Wait For Image', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'number', 'element' : 'Wanted Image', 'Mandatory' : 'No', 'placeholder' : 'Wanted Image'},{'htmltag' : 'number', 'element' : 'Not Wanted Image', 'Mandatory' : 'No', 'placeholder' : 'Not Wanted Image'},{'htmltag' : 'number', 'element' : 'Timeout', 'Mandatory' : 'No', 'placeholder' : 'Timeout'}]
+	},
+	'Wait For Multiple Images' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Wait For Multiple Images',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Wait For Multiple Images', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'number', 'element' : 'Wanted Image', 'Mandatory' : 'No', 'placeholder' : 'Wanted Image'},{'htmltag' : 'number', 'element' : 'Not Wanted Image', 'Mandatory' : 'No', 'placeholder' : 'Not Wanted Image'},{'htmltag' : 'number', 'element' : 'Timeout', 'Mandatory' : 'No', 'placeholder' : 'Timeout'},{'htmltag' : 'number', 'element' : 'Polling Interval', 'Mandatory' : 'No', 'placeholder' : 'Polling Interval'}]
+	},
+	'Wait Until Screen Contain' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Wait Until Screen Contain',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Wait Until Screen Contain', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'number', 'element' : 'Timeout', 'Mandatory' : 'No', 'placeholder' : 'Integer'}]
+	},
+	'Wait Until Screen Not Contain' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Wait Until Screen Contain',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Wait Until Screen Not Contain', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'},{'htmltag' : 'number', 'element' : 'Timeout', 'Mandatory' : 'No', 'placeholder' : 'Integer'}]
+	},
+	'Wheel Down' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Wheel Down',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Wheel Down', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'number', 'element' : 'Steps', 'Mandatory' : 'No', 'placeholder' : 'Integer'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'}]
+	},
+	'Wheel Up' : {
+		'library' : 'SikuliLibrary',
+		'key' : 'Wheel Up',
+		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Wheel Up', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'number', 'element' : 'Steps', 'Mandatory' : 'No', 'placeholder' : 'Integer'},{'htmltag' : 'text', 'element' : 'Image', 'Mandatory' : 'Yes', 'placeholder' : 'image'}]
+	}
 }
