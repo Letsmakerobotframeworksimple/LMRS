@@ -350,6 +350,110 @@ example = {
 
 	'Set Element Tag' : [['Set Element Tag', '${XML}', 'newTag', ''], ['Should Be Equal', '${XML.tag}', 'newTag', ''], ['Set Element Tag', '${XML}', 'xxx', 'xpath=second/child'], ['Element Should Exist', '${XML}', 'second/xxx', ''], ['Element Should Not Exist', '${XML}', 'second/child', '']],
 
-	'Set Element Text' : [['Set Element Text', '${XML}', 'new text', 'xpath=first', ''], ['Element Text Should Be', '${XML}', 'new text', 'xpath=first', ''], ['Set Element Text', '${XML}', 'tail=&amp;', 'xpath=html/p/b', ''], ['Element Text Should Be', '${XML}', 'Text with bold&amp;italics.', 'xpath=html/p', 'normalize_whitespace=yes'], ['Set Element Text', '${XML}', 'slanted', '!!', 'xpath=html/p/i'], ['Element Text Should Be', '${XML}', 'Text with bold&amp;slanted!!', 'xpath=html/p', 'normalize_whitespace=yes']]
+	'Set Element Text' : [['Set Element Text', '${XML}', 'new text', 'xpath=first', ''], ['Element Text Should Be', '${XML}', 'new text', 'xpath=first', ''], ['Set Element Text', '${XML}', 'tail=&amp;', 'xpath=html/p/b', ''], ['Element Text Should Be', '${XML}', 'Text with bold&amp;italics.', 'xpath=html/p', 'normalize_whitespace=yes'], ['Set Element Text', '${XML}', 'slanted', '!!', 'xpath=html/p/i'], ['Element Text Should Be', '${XML}', 'Text with bold&amp;slanted!!', 'xpath=html/p', 'normalize_whitespace=yes']],
+	
+	'Change Wait Time' : [['Change Wait Time', '0.1'], ['Change Wait Time', '2']],
+
+	'Change Wait Time After Write' : [['Change Wait Time After Write', '0.5'], ['Change Wait Time After Write', '2']],
+
+	'Delete Char' : [['Delete Char', '', ''], ['Delete Char', 'ypos=9', 'xpos=25']],
+
+	'Delete Field' : [['Delete Field', '', ''], ['Delete Field', 'ypos=12', 'xpos=6']],
+
+	'Execute Command' : [['Execute Command', 'Enter'], ['Execute Command', 'Home'], ['Execute Command', 'Tab'], ['Execute Command', 'PF(1)']],
+
+	'Open Connection' : [['Open Connection', 'Hostname', ''], ['Open Connection', 'Hostname', 'LU=LUname'], ['Open Connection', 'Hostname', 'port=992']],
+
+	'Page Should Contain All Strings' : [['Page Should Contain All Strings', '${list_of_string}', ''], ['Page Should Contain All Strings', '${list_of_string}', 'ignore_case=${True}'], ['Page Should Contain All Strings', '${list_of_string}', 'error_message=New error message']],
+
+	'Page Should Contain Any String' : [['Page Should Contain Any String', '${list_of_string}', ''], ['Page Should Contain Any String', '${list_of_string}', 'ignore_case=${True}'], ['Page Should Contain Any String', '${list_of_string}', 'error_message=New error message']],
+
+	'Page Should Contain Match' : [['Page Should Contain Match', '*something*', ''], ['Page Should Contain Match', '*so???hing*', ''], ['Page Should Contain Match', '*someTHING*', 'ignore_case=${True}'], ['Page Should Contain Match', '*something*', 'error_message=New error message']],
+
+	'Page Should Contain String' : [['Page Should Contain String', 'something', ''], ['Page Should Contain String', 'someTHING', 'ignore_case=${True}'], ['Page Should Contain String', 'something', 'error_message=New error message']],
+
+	'Page Should Contain String X Times' : [['Page Should Contain String X Times', 'something', '3', ''], ['Page Should Contain String X Times', 'someTHING', '3', 'ignore_case=${True}'], ['Page Should Contain String X Times', 'something', '3', 'error_message=New error message']],
+
+	'Page Should Not Contain All Strings' : [['Page Should Not Contain All Strings', '${list_of_string}', ''], ['Page Should Not Contain All Strings', '${list_of_string}', 'ignore_case=${True}'], ['Page Should Not Contain All Strings', '${list_of_string}', 'error_message=New error message']],
+
+	'Page Should Not Contain Any String' : [['Page Should Not Contain Any Strings', '${list_of_string}', ''], ['Page Should Not Contain Any Strings', '${list_of_string}', 'ignore_case=${True}'], ['Page Should Not Contain Any Strings', '${list_of_string}', 'error_message=New error message']],
+
+	'Page Should Not Contain Match' : [['Page Should Not Contain Match', '*something*', ''], ['Page Should Not Contain Match', '*so???hing*', ''], ['Page Should Not Contain Match', '*someTHING*', 'ignore_case=${True}'], ['Page Should Not Contain Match', '*something*', 'error_message=New error message']],
+
+	'Page Should Not Contain String' : [['Page Should Not Contain String', 'something', ''], ['Page Should Not Contain String', 'someTHING', 'ignore_case=${True}'], ['Page Should Not Contain String', 'something', 'error_message=New error message']],
+
+	'Read' : [['${value}', 'Read', '8', '10', '15']],
+
+	'Send PF' : [['Send PF', '3']],
+
+	'Set Screenshot Folder' : [['Set Screenshot Folder', 'C:TempImages']],
+
+	'Take Screenshot' : [['Take Screenshot', '', ''], ['Take Screenshot', 'height=500', 'width=700']],
+
+	'Wait Until String' : [['Wait Until String', 'something', ''], ['Wait Until String', 'something', 'timeout=10']],
+
+	'Write' : [['Write', 'something']],
+
+	'Write Bare' : [['Write Bare', 'something']],
+
+	'Write Bare In Position' : [['Write Bare in Position', 'something', '9', '11']],
+
+	'Write In Position' : [['Write in Position', 'something', '9', '11']],
+	
+	'Capture Region' : [['${screenshotname}=', 'Capture region', '[x, y, w, h]']],
+
+	'Change Screen Id' : [['Change screen id', '1']],
+
+	'Click' : [['Click', 'hello.png']],
+
+	'Click Nth' : [['Click on nth image in region', 'image.png', '1', '0.9', ''], ['Click on nth image in region', 'image.png', '1', '0.9', '${FALSE}']],
+
+	'Click Region' : [['Click on region', '[x,y,w,h]', 'image.png', '', ''], ['Click on region', '[x,y,w,h]', 'image.png', '0', ''], ['Click on region', '[x,y,w,h]', 'image.png', '0', '2']],
+
+	'Click Text' : [['Click Text', 'Hello']],
+
+	'Exists' : [['${is_exist}=', 'Exists', 'image.png', '0']],
+
+	'Get Image Coordinates' : [['${imageCoordinates}=', 'Get Image Coordinates', 'image.png=0.75', ''], ['${imageCoordinates}=', 'Get Image Coordinates', 'image.png=0.75', '[x, y, w, z]']],
+
+	'Get Match Score' : [['${score} =', 'Get Match Score', 'somethingThatMayExist.png', '', ''], ['Run Keyword if', '${score} &gt; 0.95', 'keyword1', 'ELSE', 'keyword2']],
+
+	'Get Screen Coordinates' : [['@{coordinates}=', 'Get Screen Coordinates', '0']],
+
+	'Get Text' : [['Set Ocr Text Read', 'true'], ['Get Text', ''], ['Get Text', 'test.png']],
+
+	'Image Count' : [['${image_cnt}=', 'Image Count', 'test.png']],
+
+	'Input Text' : [['Input text', 'Sikuli']],
+
+	'Mouse Down' : [['Mouse Move', 'test.png', ''], ['Mouse Down', 'LEFT', 'RIGHT'], ['Mouse Up', '', '']],
+
+	'Mouse Move' : [['Mouse Move', 'test.png'], ['Screen Should Contain', 'test.png'], ['Mouse Move', '']],
+
+	'Mouse Up' : [['Mouse Move', 'test.png', ''], ['Mouse Down', 'LEFT', 'RIGHT'], ['Mouse Up', 'LEFT', 'RIGHT']],
+
+	'Press Special Key' : [['Double Click', 'textFieldWithDefaultText.png'], ['Press Special Key', 'DELETE']],
+
+	'Reset Roi' : [['Reset roi']],
+
+	'Screen Should Not Contain' : [['Screen should not contain', 'image.png']],
+
+	'Select Region' : [['@{SelectedRegion}=', 'Select region']],
+
+	'Set Capture Folder' : [['Set captured folder', 'PATH']],
+
+	'Set Capture Matched Image' : [['Set Capture Matched Image', 'false']],
+
+	'Set Roi' : [['Set ROI', '[x, y, w, h]', ''], ['Set ROI', '[x, y, w, h]', '2']],
+
+	'Set Timeout' : [['Set timeout', '10']],
+
+	'Wait For Image' : [['Wait For Image', 'wanted.png', 'notWanted.png', '5']],
+
+	'Wait For Multiple Images' : [['@{wanted_images} =', 'Create List', 'wanted_image1.png', 'wanted_image2.png', ''], ['@{not_wanted_images} =', 'Create List', 'not_wanted_image1.png', 'not_wanted_image2.png', 'not_wanted_image3.png'], ['Wait For Multiple Images', '900', '10', '${wanted_images}', '${not_wanted_images}']],
+
+	'Wheel Down' : [['Wheel Down', '5', ''], ['Wheel Down', '5', 'test.png']],
+
+	'Wheel Up' : [['Wheel Up', '5', ''], ['Wheel Up', '5', 'test.png']]
 
 }
