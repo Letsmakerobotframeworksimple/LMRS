@@ -40,6 +40,7 @@ keyword = {
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'No', 'placeholder' : '${Variable}='},{'htmltag' : 'text', 'element' : 'Get Current Date', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Time Zone', 'Mandatory' : 'No', 'placeholder' : 'local'},{'htmltag' : 'text', 'element' : 'Increment', 'Mandatory' : 'No', 'placeholder' : 'increment=0'},{'htmltag' : 'text', 'element' : 'Result Format', 'Mandatory' : 'No', 'placeholder' : 'result_format=timestamp'},{'htmltag' : 'select', 'element' : 'Exclude Millis', 'Mandatory' : 'No', 'placeholder' : 'exclude_millis=True,False'}]
 	},
 	'Click Element' : {
+		'library' : 'SeleniumLibrary',
 		'key' : 'Click Element',
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Click Element', 'Mandatory' : 'Yes', 'placeholder' : 'Xpath of Button'},{'htmltag' : 'text', 'element' : 'Xpath', 'Mandatory' : 'Yes', 'placeholder' : 'Xpath of Button'}]
 	},
@@ -289,6 +290,7 @@ keyword = {
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Import Variables', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword Name'},{'htmltag' : 'text', 'element' : 'My Variables', 'Mandatory' : 'Yes', 'placeholder' : 'Variables'},{'htmltag' : 'text', 'element' : 'Argument 1', 'Mandatory' : 'No', 'placeholder' : 'args'},{'htmltag' : 'text', 'element' : 'Argument 2', 'Mandatory' : 'No', 'placeholder' : 'args'}]
 	},
 	'Input Text' : {
+		'library' : 'SeleniumLibrary',
 		'key' : 'Input Text',
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Input Text', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Xpath', 'Mandatory' : 'Yes', 'placeholder' : 'Xpath of Button'}, {'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'Yes', 'placeholder' : 'Values (or) ${VariableName}'}]
 	},
@@ -308,6 +310,7 @@ keyword = {
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Keyword Should Exist', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword Name'},{'htmltag' : 'text', 'element' : 'Keyword Name', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword Name'},{'htmltag' : 'text', 'element' : 'Message', 'Mandatory' : 'Yes', 'placeholder' : 'msg=Your Message'}]
 	},
 	'Length Should Be' : {
+		'library' : 'Collections',
 		'key' : 'Length Should Be',
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Length Should Be', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword Name'},{'htmltag' : 'text', 'element' : 'Item', 'Mandatory' : 'Yes', 'placeholder' : 'Item'},{'htmltag' : 'text', 'element' : 'Length', 'Mandatory' : 'Yes', 'placeholder' : 'Integer'},{'htmltag' : 'text', 'element' : 'Message', 'Mandatory' : 'Yes', 'placeholder' : 'msg=Your Message'}]
 	},
@@ -572,10 +575,12 @@ keyword = {
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Suite Variable', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'Yes', 'placeholder' : '${variableName}'},{'htmltag' : 'text', 'element' : 'Value', 'Mandatory' : 'No', 'placeholder' : 'String'}]
 	},
 	'Set Task Variable' : {
+		'library' : 'BuiltIn',
 		'key' : 'Set Task Variable',
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Task Variable', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Variable', 'Mandatory' : 'Yes', 'placeholder' : '${variableName}'},{'htmltag' : 'text', 'element' : 'Value', 'Mandatory' : 'No', 'placeholder' : 'String'}]
 	},
 	'Set Test Documentation' : {
+		'library' : 'BuiltIn',
 		'key' : 'Set Test Documentation',
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Set Test Documentation', 'Mandatory' : 'Yes', 'placeholder' : 'Keyword'},{'htmltag' : 'text', 'element' : 'Document', 'Mandatory' : 'Yes', 'placeholder' : 'doc'},{'htmltag' : 'select', 'element' : 'Append', 'Mandatory' : 'No', 'placeholder' : 'append= True,False'}]
 	},
@@ -775,18 +780,22 @@ keyword = {
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Wait Until Page Contains element', 'Mandatory' : 'Yes', 'placeholder' : 'Xpath'},{'htmltag' : 'text', 'element' : 'Xpath', 'Mandatory' : 'Yes', 'placeholder' : 'Xpath of Button'}, {'htmltag' : 'text', 'element' : 'Time', 'Mandatory' : 'No', 'placeholder' : 'In seconds'}]
 	},
 	'*** Variables ***' : {
+		'library' : 'BuiltIn',
 		'key' : '*** Variables ***',
 		'keywordlist' : [{'htmltag' : 'text', 'element' : '*** Variables ***', 'Mandatory' : 'Yes', 'placeholder' : 'Variables'},{'htmltag' : 'text', 'element' : 'Variable Name', 'Mandatory' : 'Yes', 'placeholder' : 'String'},{'htmltag' : 'text', 'element' : 'Variable value', 'Mandatory' : 'Yes', 'placeholder' : 'value'}]
 	},
 	'*** Settings ***' : {
+		'library' : 'BuiltIn',
 		'key' : '*** Settings ***',
 		'keywordlist' : [{'htmltag' : 'text', 'element' : '*** Settings ***', 'Mandatory' : 'Yes', 'placeholder' : 'Variables'},{'htmltag' : 'text', 'element' : 'Import', 'Mandatory' : 'Yes', 'placeholder' : 'String'},{'htmltag' : 'text', 'element' : 'Name/path', 'Mandatory' : 'Yes', 'placeholder' : 'value'}]
 	},
 	'*** Test Cases ***' : {
+		'library' : 'BuiltIn',
 		'key' : '*** Test Cases ***',
 		'keywordlist' : [{'htmltag' : 'text', 'element' : '*** Test Cases ***', 'Mandatory' : 'Yes', 'placeholder' : 'Variables'},{'htmltag' : 'text', 'element' : 'Test Case Name', 'Mandatory' : 'Yes', 'placeholder' : 'String'}]
 	},
 	'Open Browser' : {
+		'library' : 'SeleniumLibrary',
 		'key' : 'Open Browser',
 		'keywordlist' : [{'htmltag' : 'text', 'element' : 'Open Browser', 'Mandatory' : 'Yes', 'placeholder' : 'Variables'},{'htmltag' : 'text', 'element' : 'Url', 'Mandatory' : 'Yes', 'placeholder' : 'Url'},{'htmltag' : 'text', 'element' : 'Browser Name', 'Mandatory' : 'Yes', 'placeholder' : 'String'}]
 	},
