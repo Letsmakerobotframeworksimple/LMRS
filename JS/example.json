@@ -454,6 +454,80 @@ example = {
 
 	'Wheel Down' : [['Wheel Down', '5', ''], ['Wheel Down', '5', 'test.png']],
 
-	'Wheel Up' : [['Wheel Up', '5', ''], ['Wheel Up', '5', 'test.png']]
+	'Wheel Up' : [['Wheel Up', '5', ''], ['Wheel Up', '5', 'test.png']],
+	
+	'Add Cookie' : [['Add Cookie', 'foo', 'bar', '', ''], ['Add Cookie', 'foo', 'bar', 'domain=example.com', ''], ['Add Cookie', 'foo', 'bar', 'expiry=2027-09-28 16:21:35', '# Expiry as timestamp.'], ['Add Cookie', 'foo', 'bar', 'expiry=1822137695', '# Expiry as epoch seconds.']],
+
+	'Assign Id To Element' : [['Assign ID to Element', "//ul[@class='example' and ./li[contains(., 'Stuff')]]", 'my id'], ['Page Should Contain Element', 'my id', '']],
+
+	'Capture Element Screenshot' : [['Capture Element Screenshot', 'id:image_id', ''], ['Capture Element Screenshot', 'id:image_id', '${OUTPUTDIR}/id_image_id-1.png'], ['Capture Element Screenshot', 'id:image_id', 'EMBED']],
+
+	'Capture Page Screenshot' : [['Capture Page Screenshot', ''], ['File Should Exist', '${OUTPUTDIR}/selenium-screenshot-1.png'], ['${path} =', 'Capture Page Screenshot'], ['File Should Exist', '${OUTPUTDIR}/selenium-screenshot-2.png'], ['File Should Exist', '${path}'], ['Capture Page Screenshot', 'custom_name.png'], ['File Should Exist', '${OUTPUTDIR}/custom_name.png'], ['Capture Page Screenshot', 'custom_with_index_{index}.png'], ['File Should Exist', '${OUTPUTDIR}/custom_with_index_1.png'], ['Capture Page Screenshot', 'formatted_index_{index:03}.png'], ['File Should Exist', '${OUTPUTDIR}/formatted_index_001.png'], ['Capture Page Screenshot', 'EMBED'], ['File Should Not Exist', 'EMBED']],
+
+	'Choose File' : [['Choose File', 'my_upload_field', '${CURDIR}/trades.csv']],
+
+	'Click Element' : [['Click Element', 'id:button', '', '# Would click element without any modifiers.'], ['Click Element', 'id:button', 'CTRL', '# Would click element with CTLR key pressed down.'], ['Click Element', 'id:button', 'CTRL+ALT', '# Would click element with CTLR and ALT keys pressed down.'], ['Click Element', 'id:button', 'action_chain=True', '# Clicks the button using an Selenium  ActionChains']],
+
+	'Create Webdriver' : [['# Use proxy with Firefox', '', '', ''], ['${proxy}=', 'Evaluate', 'selenium.webdriver.Proxy()', 'modules=selenium, selenium.webdriver'], ['${proxy.http_proxy}=', 'Set Variable', 'localhost:8888', ''], ['Create Webdriver', 'Firefox', 'proxy=${proxy}', ''], ['# Use proxy with PhantomJS', '', '', ''], ['${service args}=', 'Create List', '--proxy=192.168.132.104:8888', ''], ['Create Webdriver', 'PhantomJS', 'service_args=${service args}', '']],
+
+	'Drag And Drop' : [['Drag And Drop', 'css:div#element', 'css:div.target']],
+
+	'Drag And Drop By Offset' : [['Drag And Drop By Offset', 'myElem', '50', '-35', '# Move myElem 50px right and 35px down']],
+
+	'Execute Async Javascript' : [['Execute Async JavaScript', 'var callback = arguments[arguments.length - 1]; window.setTimeout(callback, 2000);', ''], ['Execute Async JavaScript', '${CURDIR}/async_js_to_execute.js', ''], ['${result} =', 'Execute Async JavaScript', ''], ['...', 'var callback = arguments[arguments.length - 1];', ''], ['...', 'function answer(){callback("text");};', ''], ['...', 'window.setTimeout(answer, 2000);', ''], ['Should Be Equal', '${result}', 'text']],
+
+	'Execute Javascript' : [['Execute JavaScript', "window.myFunc('arg1', 'arg2')", '', '', ''], ['Execute JavaScript', '${CURDIR}/js_to_execute.js', '', '', ''], ['Execute JavaScript', 'alert(arguments[0]);', 'ARGUMENTS', '123', ''], ['Execute JavaScript', 'ARGUMENTS', '123', 'JAVASCRIPT', 'alert(arguments[0]);']],
+
+	'Get Browser Aliases' : [['Open Browser', 'https://example.com', 'alias=BrowserA', ''], ['Open Browser', 'https://example.com', 'alias=BrowserB', ''], ['&amp;{aliases}', 'Get Browser Aliases', '', '# &amp;{aliases} = { BrowserA=1|BrowserB=2 }'], ['Log', '${aliases.BrowserA}', '', '# logs 1'], ['FOR', '${alias}', 'IN', '@{aliases}'], ['', 'Log', '${alias}', '# logs BrowserA and BrowserB'], ['END', '', '', '']],
+
+	'Get Browser Ids' : [['@{browser_ids}=', 'Get Browser Ids', '', ''], ['FOR', '${id}', 'IN', '@{browser_ids}'], ['', '@{window_titles}=', 'Get Window Titles', 'browser=${id}'], ['', 'Log', 'Browser ${id} has these windows: ${window_titles}', ''], ['END', '', '', '']],
+
+	'Get Cookie' : [[], ['name', 'The name of a cookie.'], ['value', 'Value of the cookie.'], ['path', 'Indicates a URL path, for example /.'], ['domain', 'The domain, the cookie is visible to.'], ['secure', 'When true, the cookie is only used with HTTPS connections.'], ['httpOnly', 'When true, the cookie is not accessible via JavaScript.'], ['expiry', 'Python datetime object indicating when the cookie expires.'], ['extra', 'Possible attributes outside of the WebDriver specification']],
+
+	'Get Element Attribute' : [['${id}=', 'Get Element Attribute', 'css:h1', 'id']],
+
+	'Get Element Count' : [['${count} =', 'Get Element Count', 'name:div_name'], ['Should Be True', '${count} &gt; 2', '']],
+
+	'Get Element Size' : [['${width}', '${height} =', 'Get Element Size', 'css:div#container']],
+
+	'Get List Items' : [['${labels} =', 'Get List Items', 'mylist', ''], ['${values} =', 'Get List Items', 'css:#example select', 'values=True']],
+
+	'Get Window Position' : [['${x}', '${y}=', 'Get Window Position']],
+
+	'Get Window Size' : [['${width}', '${height}=', 'Get Window Size', ''], ['${width}', '${height}=', 'Get Window Size', 'True']],
+
+	'Handle Alert' : [['Handle Alert', '', '', '# Accept alert.'], ['Handle Alert', 'action=DISMISS', '', '# Dismiss alert.'], ['Handle Alert', 'timeout=10 s', '', '# Use custom timeout and accept alert.'], ['Handle Alert', 'DISMISS', '1 min', '# Use custom timeout and dismiss alert.'], ['${message} =', 'Handle Alert', '', '# Accept alert and get its message.'], ['${message} =', 'Handle Alert', 'LEAVE', '# Leave alert open and get its message.']],
+
+	'Input Password' : [['Input Password', 'password_field', 'password']],
+
+	'List Selection Should Be' : [['List Selection Should Be', 'gender', 'Female', ''], ['List Selection Should Be', 'interests', 'Test Automation', 'Python']],
+
+	'Open Browser' : [[], ['Firefox', 'firefox, ff'], ['Google Chrome', 'googlechrome, chrome, gc'], ['Headless Firefox', 'headlessfirefox'], ['Headless Chrome', 'headlesschrome'], ['Internet Explorer', 'internetexplorer, ie'], ['Edge', 'edge'], ['Safari', 'safari'], ['Opera', 'opera'], ['Android', 'android'], ['Iphone', 'iphone'], ['PhantomJS', 'phantomjs'], ['HTMLUnit', 'htmlunit'], ['HTMLUnit with Javascript', 'htmlunitwithjs']],
+
+	'Page Should Contain Element' : [['Page Should Contain Element', 'div_name', 'limit=1', '# Keyword fails.'], ['Page Should Contain Element', 'div_name', 'limit=2', '# Keyword passes.'], ['Page Should Contain Element', 'div_name', 'limit=none', '# None is considered one or more.'], ['Page Should Contain Element', 'div_name', '', '# Same as above.']],
+
+	'Press Keys' : [['Press Keys', 'text_field', 'AAAAA', '', '# Sends string "AAAAA" to element.'], ['Press Keys', 'None', 'BBBBB', '', '# Sends string "BBBBB" to currently active browser.'], ['Press Keys', 'text_field', 'E+N+D', '', '# Sends string "END" to element.'], ['Press Keys', 'text_field', 'XXX', 'YY', '# Sends strings "XXX" and "YY" to element.'], ['Press Keys', 'text_field', 'XXX+YY', '', '# Same as above.'], ['Press Keys', 'text_field', 'ALT+ARROW_DOWN', '', '# Pressing "ALT" key down, then pressing ARROW_DOWN and then releasing both keys.'], ['Press Keys', 'text_field', 'ALT', 'ARROW_DOWN', '# Pressing "ALT" key and then pressing ARROW_DOWN.'], ['Press Keys', 'text_field', 'CTRL+c', '', '# Pressing CTRL key down, sends string "c" and then releases CTRL key.'], ['Press Keys', 'button', 'RETURN', '', '# Pressing "ENTER" key to element.']],
+
+	'Register Keyword To Run On Failure' : [['Register Keyword To Run On Failure', 'Log Source', ''], ['${previous kw}=', 'Register Keyword To Run On Failure', 'NONE'], ['Register Keyword To Run On Failure', '${previous kw}', '']],
+
+	'Select Frame' : [['Select Frame', 'top-frame', "# Select frame with id or name 'top-frame'"], ['Click Link', 'example', "# Click link 'example' in the selected frame"], ['Unselect Frame', '', '# Back to main frame.'], ['Select Frame', "//iframe[@name='xxx']", '# Select frame using xpath']],
+
+	'Select Radio Button' : [['Select Radio Button', 'size', 'XL'], ['Select Radio Button', 'contact', 'email']],
+
+	'Set Selenium Implicit Wait' : [['${orig wait} =', 'Set Selenium Implicit Wait', '10 seconds'], ['Perform AJAX call that is slow', '', ''], ['Set Selenium Implicit Wait', '${orig wait}', '']],
+
+	'Set Selenium Speed' : [['Set Selenium Speed', '0.5 seconds']],
+
+	'Set Selenium Timeout' : [['${orig timeout} =', 'Set Selenium Timeout', '15 seconds'], ['Open page that loads slowly', '', ''], ['Set Selenium Timeout', '${orig timeout}', '']],
+
+	'Set Window Position' : [['Set Window Position', '100', '200']],
+
+	'Set Window Size' : [['Set Window Size', '800', '600', ''], ['Set Window Size', '800', '600', 'True']],
+
+	'Switch Browser' : [['Open Browser', 'http://google.com', 'ff', ''], ['Location Should Be', 'http://google.com', '', ''], ['Open Browser', 'http://yahoo.com', 'ie', 'alias=second'], ['Location Should Be', 'http://yahoo.com', '', ''], ['Switch Browser', '1', '# index', ''], ['Page Should Contain', "I'm feeling lucky", '', ''], ['Switch Browser', 'second', '# alias', ''], ['Page Should Contain', 'More Yahoo!', '', ''], ['Close All Browsers', '', '', '']],
+
+	'Switch Window' : [['Click Link', 'popup1', '', '# Open new window'], ['Switch Window', 'example', '', '# Select window using default strategy'], ['Title Should Be', 'Pop-up 1', '', ''], ['Click Button', 'popup2', '', '# Open another window'], ['${handle} =', 'Switch Window', 'NEW', '# Select latest opened window'], ['Title Should Be', 'Pop-up 2', '', ''], ['Switch Window', '${handle}', '', '# Select window using handle'], ['Title Should Be', 'Pop-up 1', '', ''], ['Switch Window', 'MAIN', '', '# Select the main window'], ['Title Should Be', 'Main', '', ''], ['${excludes} =', 'Get Window Handles', '', '# Get list of current windows'], ['Click Link', 'popup3', '', '# Open one more window'], ['Switch Window', '${excludes}', '', '# Select window using excludes'], ['Title Should Be', 'Pop-up 3', '', '']],
+
+	'Wait For Condition' : [['Wait For Condition', 'return document.title == "New Title"'], ['Wait For Condition', 'return jQuery.active == 0'], ['Wait For Condition', 'style = document.querySelector(\'h1\').style; return style.background == "red" &amp;&amp; style.color == "white"']]
 
 }
