@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link href="https://fonts.googleapis.com/css2?family=Piazzolla:wght@700&display=swap" rel="stylesheet">
 		<!-- js  -->
-		<script src="https://res.cloudinary.com/dqbvspvun/raw/upload/v1602404143/letsmakerobotframeworksimple/js/search_h8pzu5.js"></script>
+		<script src="https://res.cloudinary.com/dqbvspvun/raw/upload/v1602586022/letsmakerobotframeworksimple/js/search_ckbubx.js"></script>
 		<!-- JSON -->
 		<script type="text/javascript" src="JS/keyword.json"></script>
 		<script type="text/javascript" src="JS/document.json"></script>
@@ -22,7 +22,7 @@
 			var example = JSON.parse(JSON.stringify(example));
 			var keycount = Object.keys(keyword).length;
 		</script>
-		<link rel="stylesheet" href="https://res.cloudinary.com/dqbvspvun/raw/upload/v1602228095/letsmakerobotframeworksimple/css/search_z6wwdd.css">
+		<link rel="stylesheet" href="https://res.cloudinary.com/dqbvspvun/raw/upload/v1602585969/letsmakerobotframeworksimple/css/search_junapo.css">
 		<title>LMRS</title>
 		<link rel="icon" href="https://res.cloudinary.com/dqbvspvun/image/upload/v1602065420/letsmakerobotframeworksimple/img/lmrs_st554v.png" type="image/icon">
 	</head>
@@ -55,6 +55,52 @@
 					</div>
                         
 				</div>    
+			</section>
+			
+			<section class="our_latest_work section_padding" style="margin-bottom:50px;background-color:#162B45;padding-top:100px;padding-bottom:100px;">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-5">
+							<div class="section_tittle text-center">
+								<p style="font-size:25px">Our Supporting Libraries</p>
+								<h2></h2>
+							</div>
+						</div>
+					</div>
+				<div class="row justify-content-center" id="library-display">
+					<script>
+						var library, libkeyword, libdoc, libexamp, divtag, liblen, setlist, divtags;
+						var liblist = [];
+						for(var libkey in keyword){
+							liblist.push(keyword[libkey]['library']);
+						}
+						setlist = [...new Set(liblist)];
+						liblen = setlist.length;
+						divtags = '';
+						for(var i = 0; i < liblen; i++){
+							library = setlist[i];
+							libkeyword = 0;
+							libdoc = 0;
+							libexamp = 0;
+							for(var libvalue in keyword){
+								if(keyword[libvalue]['library'] == library){
+									libkeyword++;
+									if(keyworddoc[libvalue]){
+										libdoc++;
+									}
+									if(example[libvalue]){
+										libexamp++;
+									}	
+								}
+								
+							}
+							divtag = '<div class="col-lg-3 col-sm-6"><div class="card mb-3 card-hover" style="max-width: 18rem;"><div class="card-header">' + library + '</div><div class="card-body"><h5 class="card-title">Keyword: ' + libkeyword + '</h5><h5 class="card-title">Documentation: ' + libdoc + '</h5><h5 class="card-title">Examples: ' + libexamp + '</h5></div></div></div>';
+							divtags = divtags + divtag;
+						}
+						document.getElementById('library-display').innerHTML = divtags;
+					</script>
+				</div>
+				</div>
 			</section>
 
 			<!-- New Section -->
@@ -118,11 +164,11 @@
 			<!-- Keyword counter start -->
 			<section class="happy_client">
 				<div class="container">
-					<div class="row">
+					<div class="row" style="display:flex;justify-content:center;">
 						<div class="col-lg-3 col-sm-6">
 							<div class="single_happy_client">
 								
-								<span class="counter-1">
+								<span class="counter-1" style="margin-left:100px;text-align:center;">
 									<script>
 										const counter = document.querySelector(".counter-1");
 											let count = 1;
@@ -140,10 +186,11 @@
 						<div class="col-lg-3 col-sm-6">
 							<div class="single_happy_client">
 								
-								<span class="counter-2">
+								<span class="counter-2" style="margin-left:100px;text-align:center;">
 									<script>
 										const counter2 = document.querySelector(".counter-2");
 											count = 1;
+											console.log(Object.keys(keyworddoc).length);
 											setInterval(()=>{
 												if(count < Object.keys(keyworddoc).length){
 													count++;
@@ -157,7 +204,7 @@
 						</div>
 						<div class="col-lg-3 col-sm-6">
 							<div class="single_happy_client">								
-								<span class="counter-3">
+								<span class="counter-3" style="margin-left:100px;text-align:center;">
 									<script>
 										const counter3 = document.querySelector(".counter-3");
 											count = 1;
